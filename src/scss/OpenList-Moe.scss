@@ -1,5 +1,5 @@
 /**
- * OpenList Moe v1.0-beta - 202511302056
+ * OpenList Moe v1.0-beta - 202511302153
  * Repository: https://github.com/SajunaOo/OpenList-Moe
  * Author: 朱茱 (https://www.isajuna.com)
  * (C) 2025 朱茱 - AGPL-3.0 Licensed
@@ -415,7 +415,7 @@ div.aplayer {
  * 
  * - 缩略图自适应
  * - 信息文本色彩
- * - 文件名和文件信息文本色彩日夜切换过渡
+ * - 文件名/文件信息色彩日夜切换过渡
  */
 .fileinfo {
   > .hope-image {
@@ -597,7 +597,7 @@ div.hope-drawer__overlay {
  * 
  * - 下拉触发器半透明背景
  * - 输入框背景半透明背景
- * - 输入框悬停和焦点背景半透明背景
+ * - 输入框悬停/焦点半透明背景
  */
 .hope-modal__body {
   .hope-select__trigger {
@@ -653,7 +653,7 @@ div.hope-modal__overlay {
 }
 
 /**
- * 对话框图标按钮和目录树
+ * 对话框图标按钮/目录树
  * 
  * - 图标按钮样式修复（覆盖通用按钮）
  * - 图标按钮悬停半透明背景
@@ -746,7 +746,7 @@ label.hope-c-PJLV-iiLirPY-css {
  * 下拉触发器 兼容搜索/文件预览/设置
  * 
  * - 毛玻璃背景
- * - 悬停和焦点半透明背景
+ * - 悬停/焦点半透明背景
  * - 焦点额外阴影
  * - 焦点状态边框
  */
@@ -803,7 +803,7 @@ div.hope-menu__content {
  * 文本输入框
  * 
  * - 毛玻璃背景
- * - 悬停和焦点状态背景毛玻璃
+ * - 悬停/焦点状态背景毛玻璃
  * - 焦点阴影和边框颜色
  * - 占位符色彩和日夜切换过渡
  */
@@ -910,12 +910,21 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
   box-shadow: var(--moe-style-border-02);
 }
 
-/** 错误提示信息毛玻璃背景 */
+/** 
+* 错误提示
+*
+* - 毛玻璃背景
+* - 背景/文本色彩日夜切换过渡
+*/
 .hope-c-PJLV {
   &.hope-c-PJLV-iwUksD-css,
   &.hope-c-PJLV-ikvBale-css {
     @include glass(var(--moe-opacity-02), 10px);
-    transition: background-color .25s;/** 日夜切换过渡 */
+    transition: background-color .25s;
+  }
+
+  &.hope-c-PJLV-ibieBKe-css {
+    transition: color .25s;
   }
 }
 
@@ -967,12 +976,13 @@ a.hope-anchor {
  * 登录页样式优化
  * 
  * - Logo尺寸调整
- * - 隐藏登录标题和装饰元素
+ * - 隐藏登录标题/装饰元素
  * - 背景透明
- * - 表单区域毛玻璃和背景色彩日夜切换过渡
+ * - 表单区域毛玻璃背景
+ * - 表单区域背景色彩日夜切换过渡
  * - 表单区域移动端宽度调整
  * - 修复按钮背景叠加毛玻璃（覆盖通用按钮）
- * - 语言切换/暗色模式/通行密钥按钮元素色彩和日夜切换过渡
+ * - 语言/日夜/密钥按钮色彩和日夜切换过渡 
  */
 .hope-c-PJLV {
   &.hope-c-PJLV-ibwASZs-css {
@@ -1030,7 +1040,7 @@ div.hope-form-helper-text {
  * 文本区域
  * 
  * - 毛玻璃背景
- * - 悬停和焦点毛玻璃背景
+ * - 悬停/焦点毛玻璃背景
  * - 焦点阴影和重置边框色彩
  */
 textarea.hope-textarea {
@@ -1065,7 +1075,7 @@ span.hope-select__placeholder {
  * 开关组件
  * 
  * - 自定义色彩
- * - 修复开启状态下日夜切换过渡异常
+ * - 修复开启状态下样式日夜切换过渡异常
  * - 焦点阴影和重置边框色彩
  */
 span.hope-switch__control {
@@ -1083,7 +1093,7 @@ span.hope-switch__control {
 }
 
 /**
- * 列表布局 兼容用户和存储列表
+ * 列表布局 兼容用户/存储列表
  * 
  * - 毛玻璃背景过渡
  * - 背景色彩日夜切换过渡
@@ -1330,7 +1340,7 @@ div.hope-c-PJLV-ijfrpgj-css {
  * 
  * - 毛玻璃背景
  * - 修复添加存储驱动输入框（覆盖文本输入框）
- * — 按钮悬停和焦点高亮
+ * — 按钮悬停/焦点高亮
  * - 焦点状态边框
  */
 div.hope-select__trigger {
@@ -1407,7 +1417,7 @@ div.hope-select__trigger {
  * 手动扫描区域
  * 
  * - 毛玻璃背景
- * - 背景和文本色彩日夜切换过渡
+ * - 背景/文本色彩日夜切换过渡
  */
 .hope-c-PJLV {
   &.hope-c-PJLV-ihIsjwr-css,
