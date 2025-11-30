@@ -1,5 +1,5 @@
 /**
- * OpenList Moe v1.0-beta - 202511301929
+ * OpenList Moe v1.0-beta - 202511302056
  * Repository: https://github.com/SajunaOo/OpenList-Moe
  * Author: 朱茱 (https://www.isajuna.com)
  * (C) 2025 朱茱 - AGPL-3.0 Licensed
@@ -451,6 +451,21 @@ a.hope-button {
 /** 文件预览下拉触发器边框隐藏去除 */
 button.hope-select__trigger {
   border-color: transparent;
+}
+
+/**
+ * 文件预览自动下一页选择框
+ * 
+ * - 容器样式
+ * - 悬停状态高亮
+ */
+.hope-c-PJLV-irBNHm-css {
+  @include labelbox;
+  backdrop-filter: blur(10px);
+  
+  &:hover {
+    @include bgc(var(--moe-opacity-05));
+  }
 }
 
 /** 文件预览第三方程序图标悬停效果 */
@@ -1346,7 +1361,7 @@ div.hope-select__trigger {
  * - 容器样式
  * - 悬停状态高亮
  */
-.hope-c-PJLV-ihhIGLr-css {
+.hope-c-PJLV-ikGHENL-css {
   @include labelbox;
   backdrop-filter: blur(10px);
   
