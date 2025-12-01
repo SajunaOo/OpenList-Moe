@@ -1,5 +1,5 @@
 /**
- * OpenList Moe v1.0-beta - 202512012003
+ * OpenList Moe v1.0-beta - 202512012128
  * Repository: https://github.com/SajunaOo/OpenList-Moe
  * Author: 朱茱 (https://www.isajuna.com)
  * (C) 2025 朱茱 - AGPL-3.0 Licensed
@@ -604,30 +604,7 @@ div.hope-drawer__overlay {
   background-color: rgba(0, 0, 0, var(--moe-opacity-03));
 }
 
-
-/**
- * 本地设置组件半透明背景修复（覆盖下拉触发器） 兼容搜索
- * 
- * - 下拉触发器半透明背景
- * - 输入框背景半透明背景
- * - 输入框悬停/焦点半透明背景
- */
-.hope-modal__body {
-  .hope-select__trigger {
-    backdrop-filter: none;
-  }
-  
-  .hope-input {
-    backdrop-filter: none;
-    
-    &:hover,
-    &:focus {
-      backdrop-filter: none;
-    }
-  }
-}
-
-/** ================== 搜索功能 ================== */
+/** ================== 搜索对话框 ================== */
 /** 搜索按钮禁用状态 */
 button.hope-icon-button {
   &:disabled,
@@ -654,6 +631,7 @@ button.hope-icon-button {
 }
 
 /** ================== 模态对话框 ================== */
+/** =========== 通用样式 =========== */
 /** 对话框毛玻璃背景 */
 section.hope-modal__content {
   @include glass(var(--moe-opacity-02), 10px);
@@ -686,11 +664,28 @@ div.hope-modal__overlay {
   }
 }
 
+/**
+ * 对话框内组件半透明背景修复 兼容搜索/本地设置
+ * 
+ * - 下拉触发器半透明背景（覆盖通用下拉触发器）
+ * - 输入框背景半透明背景（覆盖通用输入框）
+ */
+.hope-modal__body {
+  .hope-select__trigger {
+    backdrop-filter: none;
+  }
+  
+  .hope-input {
+    backdrop-filter: none;
+  }
+}
+
 /** 对话框按钮样式修复（覆盖通用按钮） */
 .hope-modal__footer .hope-button {
   backdrop-filter: none;
 }
 
+/** =========== 上传 =========== */
 /**
  * 上传方式选择框
  * 
@@ -734,6 +729,7 @@ div.hope-modal__overlay {
   }
 }
 
+/** =========== 重命名 =========== */
 /**
  * 重命名方式选择框
  * 
@@ -748,6 +744,7 @@ div.hope-modal__overlay {
   }
 }
 
+/** =========== 操作文件 =========== */
 /**
  * 选择目标文件夹/新建文件
  * 
@@ -772,7 +769,7 @@ label.hope-c-PJLV-iiLirPY-css {
 
 /** ================== 下拉菜单 ================== */
 /**
- * 下拉触发器 兼容搜索/文件预览/设置
+ * 通用下拉触发器 兼容搜索对话框/文件预览/本地设置/后台管理
  * 
  * - 毛玻璃背景
  * - 悬停/焦点半透明背景
@@ -795,7 +792,7 @@ button.hope-select__trigger {
 }
 
 /**
- * 下拉内容区域 兼容预览/本地设置/后台管理
+ * 通用下拉内容区域 兼容搜索对话框/文件预览/本地设置/后台管理
  * 
  * - 毛玻璃背景
  * - 选项背景色过渡
@@ -814,7 +811,7 @@ div.hope-select__content {
 }
 
 /**
- * 菜单组件 兼容语言切换/视图切换
+ * 通用菜单组件 兼容语言切换/视图切换
  * 
  * - 毛玻璃背景
  * - 激活项高亮
@@ -882,7 +879,7 @@ button.hope-button {
 }
 
 /**
- * 对话框关闭按钮
+ * 通用对话框关闭按钮
  * 
  * - 过渡动画
  * - 额外悬停状态阴影
