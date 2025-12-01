@@ -19,8 +19,8 @@
 ![PC管理](screenshot\screenshot-4237987659876.png)
 
 <p align="center">
-  <img src="screenshot\screenshot-4234325673769.png" alt="移动端首页" width="45%"/>
-  <img src="screenshot\screenshot-1754234234234.png" alt="移动端管理" width="45%"/>
+  <img src="screenshot\screenshot-4234325673769.png" alt="移动端首页" width="49%"/>
+  <img src="screenshot\screenshot-1754234234234.png" alt="移动端管理" width="49%"/>
 </p>
 
 ## 🚀 使用
@@ -33,7 +33,7 @@
 <style>
 /** 更改url以更改背景图，删除本css或留空url将调用默认背景图 */
 :root {
-  --moe-theme-color: 248, 179, 78; /** 必填 该主题色用于修复视图切换按钮背景色 */
+  --moe-theme-color: 248, 179, 78; /** 必填 该主题色用于视图切换按钮修复和边框高亮 */
   --moe-bg-image: url("https://gcore.jsdelivr.net/gh/SajunaOo/OpenList-Moe-Image/light_desktop/早秋_2.webp");/** 默认白天模式背景图 */
   --moe-bg-image-small: url("https://gcore.jsdelivr.net/gh/SajunaOo/OpenList-Moe-Image/light_small/沉浸感_3.webp");/** 默认白天模式移动端背景图 */
 }
