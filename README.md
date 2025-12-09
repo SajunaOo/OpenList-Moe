@@ -14,7 +14,7 @@
 
 ## 🖼️ 截图
 
-![桌面端首页](screenshot\desktop\screenshot-7984646497959.webp)
+![桌面端首页](screenshot/desktop/screenshot-7984646497959.webp)
 
 <table>
   <tr>
