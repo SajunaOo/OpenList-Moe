@@ -43,6 +43,7 @@
 ## 🚀 使用
 
 ### 自定义头部
+
 ```
 <!-- 更改href和font-family以更改字体，删除本<link>和字体css则使用OpenList默认字体 -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600&display=swap" rel="stylesheet">
@@ -51,12 +52,12 @@
 /** 更改url以更改背景图，删除本css或留空url将调用默认背景图 */
 :root {
   --moe-color-theme: 248, 179, 78; /** 必填 */
-  --moe-bg-image-desktop: url("https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe-Image/light_desktop/早秋_2.webp");/** 默认白天模式背景图 */
+  --moe-bg-image-desktop: url("https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe-Image/light_desktop/早秋_2.webp");/** 默认白天模式桌面端背景图 */
   --moe-bg-image-mobile: url("https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe-Image/light_mobile/沉浸感_3.webp");/** 默认白天模式移动端背景图 */
 }
 
 .hope-ui-dark {
-  --moe-bg-image-desktop: url("https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe-Image/dark_desktop/新春快乐_5.webp");/** 默认夜间模式背景图 */
+  --moe-bg-image-desktop: url("https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe-Image/dark_desktop/新春快乐_5.webp");/** 默认夜间模式桌面端背景图 */
   --moe-bg-image-mobile: url("https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe-Image/dark_mobile/沉浸感_6.webp");/** 默认夜间模式移动端背景图 */
 }
 
