@@ -1,18 +1,18 @@
 /**
- * OpenList Moe v1.0.0-beta.2 - 202512092031
+ * OpenList Moe v1.0.0-beta.2 - 202512101820
  * Repository: https://github.com/SajunaOo/OpenList-Moe
  * Author: 朱茱 (https://www.isajuna.com)
  * (C) 2025 朱茱 - AGPL-3.0 Licensed
  * 
  * Modified beautification component for:
  * OpenList v4.1.8 - (C) OpenListTeam - AGPL-3.0 Licensed
-*/
+ */
 
 /**
  * Transforms OpenList with modern glassmorphism design using semi-transparent layers and backdrop blur.
  * Features comprehensive light/dark mode variables and refined component styling.
  * Maintains optimal readability and usability through clean, minimal aesthetics.
-*/
+ */
 
 /** 全屏背景图加载完成淡入 */
 window.addEventListener('load', () => {
