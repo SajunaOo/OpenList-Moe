@@ -1,5 +1,5 @@
 /**
- * OpenList Moe v1.0.0-beta.2 - 202512101922
+ * OpenList Moe v1.0.0-beta.2 - 202512101951
  * Repository: https://github.com/SajunaOo/OpenList-Moe
  * Author: 朱茱 (https://www.isajuna.com)
  * (C) 2025 朱茱 - AGPL-3.0 Licensed
@@ -176,15 +176,17 @@ kbd {
  * 
  * - 毛玻璃背景
  * - 圆角与阴影适配
- * - 背景色日夜切换过渡
+ * - 样式日夜切换过渡
  * - 移除吸附状态遮罩
  */
 nav.nav {
   @include glass(var(--moe-opacity-low), 5px);
   box-shadow: var(--hope-shadows-lg);
   border-radius: var(--hope-radii-xl);
-  transition: background-color .25s;
-  
+  transition:
+    background-color .25s,
+    box-shadow .25s;
+    
   &::after {
     display: none;
   }
@@ -220,11 +222,13 @@ nav.nav {
 }
 
 /** ================== 文件列表 ================== */
-/** 列表/复选框/右键菜单 */
-/** 列表区域半透明背景 */
+/** 列表/复选框/提示文本/右键菜单 */
+/** 列表区域半透明背景和样式日夜切换过渡 */
 div.obj-box {
   @include bgc(var(--moe-opacity-low));
-  transition: background-color .25s;/** 日夜切换过渡 */
+  transition:
+    background-color .25s,
+    box-shadow .25s;
 }
 
 /** 选中项毛玻璃背景 */
@@ -270,6 +274,11 @@ span.hope-checkbox__control {
     border-color: var(--moe-color-checkbox);
     box-shadow: 0 0 0 2px var(--moe-color-checkbox);
   }
+}
+
+/** 图片视图无图片提示文本色日夜切换过渡 */
+.viselect-container .hope-heading {
+  transition: color .25s;
 }
 
 /** 列表右键菜单毛玻璃背景 */
@@ -601,9 +610,9 @@ div.left-toolbar {
   }
 }
 
-/** ================== 左侧文件目录树 ================== */
+/** ================== 侧边栏 ================== */
 /**
- * 左侧文件目录树 兼容对话框文件目录树
+ * 侧边栏 兼容对话框文件目录树
  * 
  * - 悬停文本高亮
  * - 文本色日夜切换过渡
@@ -620,7 +629,7 @@ div.left-toolbar {
     background-color .75s;
 }
 
-/** 移动端左侧文件目录树文本过长处理 */
+/** 移动端侧边栏文本过长处理 */
 .hope-c-PJLV-ieGWMbI-css .hope-c-PJLV-igSqJIB-css {
   @media (max-width: 768px) {
     text-overflow: ellipsis;
@@ -629,13 +638,15 @@ div.left-toolbar {
   }
 }
 
-/** 左侧文件目录树容器毛玻璃背景 */
+/** 侧边栏容器毛玻璃背景和样式日夜切换过渡 */
 div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
   @include glass(var(--moe-opacity-medium), 5px);
-  transition: background-color .25s;/** 日夜切换过渡 */
+  transition:
+    background-color .25s,
+    box-shadow .25s;
 }
 
-/** 左侧文件目录树选中目录悬停高亮 兼容小窗文件目录树 */
+/** 侧边栏选中目录悬停高亮 兼容小窗文件目录树 */
 .hope-c-PJLV.hope-c-PJLV-iZZmce-css {
   &:hover,
   &[data-hover] {
@@ -644,13 +655,15 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
 }
 
 /** ================== 本地设置 ================== */
-/** 本地设置面板毛玻璃背景 兼容移动端后台左侧边栏 */
+/** 本地设置抽屉毛玻璃背景和样式日夜切换过渡 兼容移动端后台左侧边栏 */
 section.hope-drawer__content {
   @include glass(var(--moe-opacity-medium), 5px);
-  transition: background-color .25s;/** 日夜切换过渡 */
+  transition:
+    background-color .25s,
+    box-shadow .25s;
 }
 
-/** 本地设置面板关闭按钮日夜切换过渡 */
+/** 本地设置抽屉关闭按钮日夜切换过渡 */
 .hope-drawer__content .hope-modal__close-button {
   transition:
     color .25s,
@@ -658,18 +671,18 @@ section.hope-drawer__content {
     box-shadow .25s;
 }
 
-/** 本地设置表单文本色日夜切换过渡 兼容后台 */
+/** 本地设置抽屉表单文本色日夜切换过渡 兼容后台 */
 .hope-form-label {
   transition: color .25s;
 }
 
-/** 本地设置底部切换按钮色 */
+/** 本地设置抽屉底部切换按钮色 */
 .hope-c-PJLV.hope-c-PJLV-iiyTmEm-css {
   color: var(--moe-color-icon);
   transition: color .25s;/** 日夜切换过渡 */
 }
 
-/** 本地设置面板遮罩透明度 */
+/** 本地设置抽屉遮罩透明度 */
 div.hope-drawer__overlay {
   background-color: rgba(0, 0, 0, var(--moe-opacity-medium));
 }
