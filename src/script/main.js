@@ -1,10 +1,10 @@
 /**
- * OpenList Moe v1.0.0-beta.2 - 202512101820
+ * OpenList Moe v1.0.0-beta.2 - 202512171450
  * Repository: https://github.com/SajunaOo/OpenList-Moe
  * Author: 朱茱 (https://www.isajuna.com)
  * (C) 2025 朱茱 - AGPL-3.0 Licensed
  * 
- * Modified beautification component for:
+ * Beautification component crafted for:
  * OpenList v4.1.8 - (C) OpenListTeam - AGPL-3.0 Licensed
  */
 

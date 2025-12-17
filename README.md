@@ -74,13 +74,29 @@ body, .markdown-body, .aplayer {
 <script src="https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe/dist/js/OpenList-Moe.min.js"></script>
 
 <!-- 如果您不需要添加备案号，请删除以下代码 -->
-<div id="beian-container" hidden>
-  <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener" class="beian-link ">
+<div class="beian-container" style="text-align: center;" hidden>
+  <a class="hope-anchor hope-c-PJLV-idrWMwW-css" href="https://beian.miit.gov.cn" target="_blank" rel="noopener" style="font-size: 14px;">
     豫 ICP 备 2025000000 号</a>
 </div>
 
 <script>
 // 备案信息加载
-(()=>{const targetNode=document.documentElement;const insertElement=()=>{const footer=document.querySelector('.footer');if(footer){const container=document.getElementById('beian-container');footer.append(container);container.hidden=false;return true}return false};const observer=new MutationObserver(()=>{if(insertElement()){observer.disconnect()}});observer.observe(document,{childList:true,subtree:true})})();
+(()=>{let _o;const _f=()=>{const e=document.querySelector('.footer'),t=document.querySelector('.beian-container');return e&&t&&(e.append(t),t.hidden=!1,_o?.disconnect(),_o=null,!0)};_f()||(_o=new MutationObserver(_f), _o.observe(document,{childList:1,subtree:1}))})();
 </script>
+```
+
+### 更多修改
+
+如果你想在自定义特定元素的样式，请参考[main.scss](https://github.com/SajunaOo/OpenList-Moe/blob/main/src/styles/main.scss)中的**全局变量定义**
+
+比如我想修改复选框与开关的颜色，可以添加以下代码：
+
+```
+:root {
+  --moe-color-checkbox: #f8b34e;
+}
+
+.hope-ui-dark {
+  --moe-color-checkbox: #f8b34e;
+}
 ```
