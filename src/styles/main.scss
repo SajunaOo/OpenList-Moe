@@ -1,5 +1,5 @@
 /**
- * OpenList Moe v1.0.0-beta.2 - 2025121820
+ * OpenList Moe v1.0.0 - 202512172205
  * Repository: https://github.com/SajunaOo/OpenList-Moe
  * Author: 朱茱 (https://www.isajuna.com)
  * (C) 2025 朱茱 - AGPL-3.0 Licensed
@@ -43,26 +43,26 @@
 /** 明暗模式色彩系统、透明度及背景图配置 */
 :root {
   /** 色彩系统 */
-  --moe-color-bg-primary: 255 255 255;  /** 背景主色 */
-  --moe-color-theme: 248 179 78;        /** 主题色 */
-  --moe-color-text-primary: #000;     /** 主要文本色 */
-  --moe-color-text-secondary: #444;   /** 次要文本色 */
-  --moe-color-checkbox: #000;         /** 复选框色 */
-  --moe-color-switch: #000;           /** 开关色 */
-  --moe-color-border: #000;           /** 边框/阴影色 */
-  --moe-color-icon: #000;             /** SVG图标按钮色 */
+  --moe-color-bg-primary: 255 255 255;/** 背景主色 */
+  --moe-color-theme: 248 179 78;/** 主题色 */
+  --moe-color-text-primary: #000;/** 主要文本色 */
+  --moe-color-text-secondary: #444;/** 次要文本色 */
+  --moe-color-checkbox: #000;/** 复选框色 */
+  --moe-color-switch: #000;/** 开关色 */
+  --moe-color-border: #000;/** 边框/阴影色 */
+  --moe-color-icon: #000;/** SVG图标按钮色 */
   
   /** 阴影样式 */
-  --moe-shadow-thin: 0 0 0 1px var(--moe-color-border);               /** 细边框阴影 */
-  --moe-shadow-medium: 0 0 0 2px var(--moe-color-border);             /** 中等边框阴影 */
-  --moe-shadow-theme-thin: 0 0 0 1px rgb(var(--moe-color-theme));     /** 细主题色阴影 */
-  --moe-shadow-theme-medium: 0 0 0 2px rgb(var(--moe-color-theme));   /** 中等主题色阴影 */
+  --moe-shadow-thin: 0 0 0 1px var(--moe-color-border);/** 细边框阴影 */
+  --moe-shadow-medium: 0 0 0 2px var(--moe-color-border);/** 中等边框阴影 */
+  --moe-shadow-theme-thin: 0 0 0 1px rgb(var(--moe-color-theme));/** 细边框主题色阴影 */
+  --moe-shadow-theme-medium: 0 0 0 2px rgb(var(--moe-color-theme));/** 中等边框主题色阴影 */
   
   /** 透明度配置 */
-  --moe-opacity-admin: 20%;              /** 后台透明度 */
-  --moe-opacity-high: 20%;               /** 20%不透明度 */
-  --moe-opacity-medium: 30%;             /** 30%不透明度 */
-  --moe-opacity-low: 50%;                /** 50%不透明度 */
+  --moe-opacity-admin: 20%;/** 后台透明度 */
+  --moe-opacity-high: 20%;/** 20%不透明度 */
+  --moe-opacity-medium: 30%;/** 30%不透明度 */
+  --moe-opacity-low: 50%;/** 50%不透明度 */
   
   /** 背景图配置 */
   --moe-bg-image-desktop: url("https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe-Image/light_desktop/早秋_2.webp");
@@ -159,7 +159,7 @@ body {
   }
   
   .hope-menu__trigger {
-    background-color: rgb(var(--moe-color-theme) / .15);
+    background-color: rgb(var(--moe-color-theme) / 15%);
     box-shadow: none !important;
   }
 }
@@ -194,7 +194,7 @@ body {
 }
 
 /**
- * 面包屑导航 兼容压缩文件面包屑
+ * 面包屑导航
  * 
  * - 悬停文本高亮
  * - 文本色日夜过渡
@@ -250,7 +250,7 @@ body {
 }
 
 /**
- * 复选框
+ * 通用复选框样式
  * 
  * - 复选框色
  * - 半透明背景
@@ -612,7 +612,7 @@ a.hope-button {
 
 /** ================== 侧边栏 ================== */
 /**
- * 侧边栏 兼容对话框文件目录树
+ * 侧边栏文件目录树 兼容对话框
  * 
  * - 悬停文本高亮
  * - 文本色日夜切换过渡
@@ -646,11 +646,11 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
     box-shadow .25s;
 }
 
-/** 侧边栏选中目录悬停高亮 兼容小窗文件目录树 */
+/** 侧边栏目录树选中目录悬停高亮 兼容对话框 */
 .hope-c-PJLV.hope-c-PJLV-iZZmce-css {
   &:hover,
   &[data-hover] {
-    background-color: rgb(24 144 255 / .8);
+    background-color: rgb(24 144 255 / 80%);
   }
 }
 
@@ -840,7 +840,7 @@ label.hope-c-PJLV-iiLirPY-css {
 }
 
 /**
- * 通用下拉列表内容区域样式 兼容搜索对话框/文件预览/本地设置/后台管理
+ * 通用下拉列表内容区域样式
  * 
  * - 毛玻璃背景
  * - 选项背景色过渡
@@ -860,7 +860,7 @@ label.hope-c-PJLV-iiLirPY-css {
 }
 
 /**
- * 通用菜单列表内容区域样式 兼容语言切换/视图切换
+ * 通用菜单列表内容区域样式
  * 
  * - 毛玻璃背景
  * - 选项激活高亮
@@ -1164,7 +1164,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
 }
 
 /**
- * 开关
+ * 通用开关样式
  * 
  * - 开关色
  * - 修复开启状态下样式日夜切换过渡异常
@@ -1185,7 +1185,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
 }
 
 /**
- * 列表布局 兼容用户/存储列表
+ * 列表布局
  * 
  * - 背景色日夜切换过渡
  * - 毛玻璃背景过渡

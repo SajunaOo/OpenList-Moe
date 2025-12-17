@@ -51,7 +51,7 @@
 <style>
 /** 更改url以更改背景图，删除本css或留空url将调用默认背景图 */
 :root {
-  --moe-color-theme: 248, 179, 78; /** 必填 */
+  --moe-color-theme: 248 179 78; /** 必填 */
   --moe-bg-image-desktop: url("https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe-Image/light_desktop/早秋_2.webp");/** 默认白天模式桌面端背景图 */
   --moe-bg-image-mobile: url("https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe-Image/light_mobile/沉浸感_3.webp");/** 默认白天模式移动端背景图 */
 }
