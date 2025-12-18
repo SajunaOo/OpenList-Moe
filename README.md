@@ -2,15 +2,15 @@
 
 **为OpenList全局注入半透明模糊效果，支持日夜切换，覆盖文件列表/预览/后台等全组件**
 
-> 一个基于文件列表程序OpenList的美化
+> 一个适用于文件列表程序 **OpenList** 的美化
 
 ## ✨ 特性
 
-#### 🌓 兼容日/夜间模式 - 不同背景与配色
+🌓 **兼容日/夜间模式 - 不同背景与配色**
 
-#### 🪟 全元素毛玻璃效果 - 半透明元素结合背景模糊
+🪟 **全元素毛玻璃效果 - 半透明元素结合背景模糊**
 
-#### 🎨 多层次透明度调校 - 完美的视觉层次
+🎨 **多层次透明度调校 - 完美的视觉层次**
 
 ## 🖼️ 截图
 
@@ -45,13 +45,13 @@
 ### 自定义头部
 
 ```
-<!-- 更改href和font-family以更改字体，删除本<link>和字体css则使用OpenList默认字体 -->
+<!-- 修改href和font-family以自定义字体；删除本<link>标签和字体CSS则使用OpenList默认字体 -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe/dist/css/OpenList-Moe.min.css" rel="stylesheet">
 <style>
-/** 更改url以更改背景图，删除本css或留空url将调用默认背景图 */
+/** 修改URL以自定义背景，删除本CSS则使用OpenList Moe默认背景 */
 :root {
-  --moe-color-theme: 248 179 78; /** 必填 */
+  --moe-color-theme: 248 179 78; /** 主题色（必填） */
   --moe-bg-image-desktop: url("https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe-Image/light_desktop/早秋_2.webp");/** 默认白天模式桌面端背景图 */
   --moe-bg-image-mobile: url("https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe-Image/light_mobile/沉浸感_3.webp");/** 默认白天模式移动端背景图 */
 }
