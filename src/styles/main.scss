@@ -1,5 +1,5 @@
 /**
- * OpenList Moe v1.0.0 - 202512172221
+ * OpenList Moe v1.0.1 - 202512182050
  * Repository: https://github.com/SajunaOo/OpenList-Moe
  * Author: 朱茱 (https://www.isajuna.com)
  * (C) 2025 朱茱 - AGPL-3.0 Licensed
@@ -1445,7 +1445,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
   white-space: nowrap;
 }
 
-/** 存储表格布局切换选项框容器文本色日夜切换过渡 */
+/** 存储表格布局切换选项框毛玻璃容器文本色日夜切换过渡 */
 .hope-switch__label {
   transition: color .25s;
 }
@@ -1459,7 +1459,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
 }
 
 /** 修复添加存储驱动输入框（覆盖通用文本输入框样式）*/
-.hope-c-PJLV.hope-c-PJLV-ieKzbxa-css {
+input.hope-c-PJLV.hope-c-PJLV-ieKzbxa-css {
   background-color: transparent;
   backdrop-filter: none;
   box-shadow: none;
