@@ -1,5 +1,5 @@
 /**
- * OpenList Moe v1.0.1 - 202512182050
+ * OpenList Moe v1.0.1 - 202512221957
  * Repository: https://github.com/SajunaOo/OpenList-Moe
  * Author: 朱茱 (https://www.isajuna.com)
  * (C) 2025 朱茱 - AGPL-3.0 Licensed
@@ -14,10 +14,10 @@
  * Maintains optimal readability and usability through clean, minimal aesthetics.
  */
 
+const MOE_VERSION = "1.0.1";
+
 /** 全屏背景图加载完成淡入 */
-window.addEventListener('load', () => {
-  document.body.classList.add('loaded');
-});
+window.addEventListener('load', () => document.body.classList.add('loaded'));
 
 console.log(`
 ███████╗ █████╗      ██╗██╗   ██╗███╗   ██╗ █████╗ 
@@ -28,4 +28,11 @@ console.log(`
 ╚══════╝╚═╝  ╚═╝ ╚════╝  ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═╝
                                                    
 `);
-console.log("\n %c OpenList Moe v1.0.1 %c www.isajuna.com","color:#777777;background:linear-gradient(to right,#ebf2ed,#e5ebee,#f0e5c7,#f8eef0);padding:5px 0 5px 1px;","color:#fff;background:#f8f8f8;padding:5px 10px 5px 0px;");
+
+console.log("\n %c OpenList Moe %c v" + MOE_VERSION + " ",
+  "padding: 5px 0; border-radius: 3px 0 0 3px; color: #fff; background: #FF6699; font-weight: bold;",
+  "padding: 5px 0; border-radius: 0 3px 3px 0; color: #fff; background: #FF9999; font-weight: bold;");
+
+console.log("\n %c Beautified by 朱茱 %c www.isajuna.com",
+  "padding: 5px 0; border-radius: 3px 0 0 3px; color: #777777; background: linear-gradient(to right,#ebf2ed,#e5ebee,#f0e5c7,#f8eef0); font-weight: bold;",
+  "padding: 5px 7px 5px 0; border-radius: 0 3px 3px 0; color: #fff; background: #f8f8f8; font-weight: bold;");
