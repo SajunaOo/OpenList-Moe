@@ -1,5 +1,5 @@
 /**
- * OpenList Moe v1.0.1 - 202512182050
+ * OpenList Moe v1.0.1 - 202512251722
  * Repository: https://github.com/SajunaOo/OpenList-Moe
  * Author: 朱茱 (https://www.isajuna.com)
  * (C) 2025 朱茱 - AGPL-3.0 Licensed
@@ -145,22 +145,23 @@ body {
  * - 搜索框毛玻璃背景
  * - 搜索框背景色过渡
  * - 搜索框悬停高亮
- * - 视图切换按钮样式修复（覆盖通用按钮样式）
  */
-.header-right {
-  .hope-c-PJLV-ikCuBvM-css {
-    backdrop-filter: blur(10px);
-    transition: background-color .25s;
-    
-    &:hover,
-    &[data-hover] {
-      @include glass(var(--moe-opacity-high));
-    }
-  }
+.hope-c-PJLV.hope-c-PJLV-ikCuBvM-css {
+  backdrop-filter: blur(10px);
+  transition: background-color .25s;
   
-  .hope-menu__trigger {
-    background-color: rgb(var(--moe-color-theme) / 15%);
-    box-shadow: none !important;
+  &:hover,
+  &[data-hover] {
+    @include glass(var(--moe-opacity-high));
+  }
+}
+
+/** 头部右侧区域视图切换按钮样式修复（覆盖通用按钮样式） */
+.header-right .hope-menu__trigger {
+  background-color: rgb(var(--moe-color-theme) / 15%);
+  
+  &:hover {
+  box-shadow: none;
   }
 }
 
@@ -254,7 +255,7 @@ body {
  * 
  * - 复选框色
  * - 半透明背景
- * - 样式和日夜切换过渡
+ * - 样式过渡和日夜切换过渡
  * - 悬停/焦点高亮
  */
 .hope-c-PJLV.hope-checkbox__control {
@@ -560,28 +561,23 @@ a.hope-button {
 }
 
 /** ================== 工具栏 ================== */
-/**
- * 右侧工具栏
- * 
- * - 毛玻璃背景
- * - 背景色日夜切换过渡
- * - 图标样式悬停过渡
- */
+/** 右侧工具栏毛玻璃背景 */
 .hope-c-PJLV.left-toolbar {
   @include glass(var(--moe-opacity-medium), 5px);
-  transition: background-color .25s;
-  
-  .hope-icon {
+  transition: background-color .25s;/** 日夜切换过渡 */
+}
+
+/** 右侧工具栏图标样式悬停过渡 */
+.hope-c-PJLV.left-toolbar-box .hope-icon { 
+  transition:
+    color .75s,
+    background-color .5s;
+    
+  &:hover,
+  &[data-hover] {
     transition:
-      color .75s,
-      background-color .5s;
-      
-    &:hover,
-    &[data-hover] {
-      transition:
-        color .25s cubic-bezier(.4, 0, 1, 1),
-        background-color .25s cubic-bezier(.4, 0, 1, 1);
-    }
+      color .25s cubic-bezier(.4, 0, 1, 1),
+      background-color .25s cubic-bezier(.4, 0, 1, 1);
   }
 }
 
@@ -655,20 +651,24 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
 }
 
 /** ================== 本地设置 ================== */
-/** 本地设置抽屉毛玻璃背景和样式日夜切换过渡 兼容移动端后台左侧边栏 */
+/**
+ * 本地设置抽屉 兼容移动端后台左侧边栏
+ * 
+ * - 毛玻璃背景
+ * - 抽屉/关闭按钮样式日夜切换过渡
+ */
 .hope-c-PJLV.hope-drawer__content {
   @include glass(var(--moe-opacity-medium), 5px);
   transition:
     background-color .25s,
     box-shadow .25s;
-}
-
-/** 本地设置抽屉关闭按钮日夜切换过渡 */
-.hope-drawer__content .hope-modal__close-button {
-  transition:
-    color .25s,
-    background-color .25s,
-    box-shadow .25s;
+    
+  .hope-modal__close-button {
+    transition:
+      color .25s,
+      background-color .25s,
+      box-shadow .25s;
+  }
 }
 
 /** 本地设置抽屉表单文本色日夜切换过渡 兼容后台 */
