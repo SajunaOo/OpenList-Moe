@@ -1,5 +1,5 @@
 /**
- * OpenList Moe v1.0.1 - 202512251722
+ * OpenList Moe v1.0.1 - 202512252323
  * Repository: https://github.com/SajunaOo/OpenList-Moe
  * Author: 朱茱 (https://www.isajuna.com)
  * (C) 2025 朱茱 - AGPL-3.0 Licensed
@@ -140,13 +140,12 @@ body {
 }
 
 /**
- * 头部右侧区域
+ * 搜索框
  * 
- * - 搜索框毛玻璃背景
- * - 搜索框背景色过渡
- * - 搜索框悬停高亮
+ * - 毛玻璃背景
+ * - 悬停高亮
  */
-.hope-c-PJLV.hope-c-PJLV-ikCuBvM-css {
+.header-right > .hope-stack {
   backdrop-filter: blur(10px);
   transition: background-color .25s;
   
@@ -156,20 +155,20 @@ body {
   }
 }
 
-/** 头部右侧区域视图切换按钮样式修复（覆盖通用按钮样式） */
+/** 搜索框内快捷键样式日夜切换过渡 */
+.hope-kbd {
+  transition:
+    background-color .25s,
+    border-color .25s;
+}
+
+/** 视图切换按钮样式修复（覆盖通用按钮样式） */
 .header-right .hope-menu__trigger {
   background-color: rgb(var(--moe-color-theme) / 15%);
   
   &:hover {
   box-shadow: none;
   }
-}
-
-/** 搜索快捷键样式过渡 */
-.hope-kbd {
-  transition:
-    background-color .25s,
-    border-color .25s;
 }
 
 /** ================== 导航栏 ================== */
@@ -198,7 +197,7 @@ body {
  * 面包屑导航
  * 
  * - 悬停文本高亮
- * - 文本色日夜过渡
+ * - 文本色日夜切换过渡
  * - 焦点边框高亮
  * - 分隔符色日夜切换过渡
  */
@@ -225,10 +224,10 @@ body {
 
 /** ================== 文件列表 ================== */
 /** 列表/复选框/提示文本/右键菜单 */
-/** 列表区域半透明背景和样式日夜切换过渡 */
+/** 列表区域半透明背景 */
 .hope-c-PJLV.obj-box {
   @include glass(var(--moe-opacity-low));
-  transition:
+  transition:/** 日夜切换过渡 */
     background-color .25s,
     box-shadow .25s;
 }
@@ -634,7 +633,12 @@ a.hope-button {
   }
 }
 
-/** 侧边栏容器毛玻璃背景和样式日夜切换过渡 */
+/**
+ * 侧边栏容器
+ * 
+ * - 毛玻璃背景
+ * - 样式日夜切换过渡
+ */
 div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
   @include glass(var(--moe-opacity-medium), 5px);
   transition:
@@ -773,13 +777,13 @@ section.hope-modal__content {
   }
 }
 
-/** 上传提示文本色 */
+/** 上传图标按钮提示文本色 */
 .hope-c-PJLV-ikuKgRb-css {
   color: var(--moe-color-text-secondary);
 }
 
 /** 上传结果边框悬停高亮 */
-.hope-c-PJLV-idWfUrU-css {
+.hope-c-PJLV-idbApbi-css > div:nth-child(2) {
   transition:
     border-color .25s,
     box-shadow .25s;
@@ -968,7 +972,7 @@ button.hope-button {
  * - 按钮样式过渡
  * - 悬停色反转
  */
-div.hope-c-PJLV.hope-c-PJLV-igqSGEg-css {
+.left-toolbar-box ~ :last-of-type:not(.center-toolbar) {
   @include glass(var(--moe-opacity-low), 10px);
   color: rgb(var(--moe-color-theme));
   transition:
@@ -1006,7 +1010,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
  * - 文本色
  * - 悬停文本高亮
  */
-.hope-c-PJLV.hope-c-PJLV-ijhihzA-css {
+.hope-list__item .hope-anchor {
   color: var(--moe-color-text-primary);
   transition: background-color .75s;
   
@@ -1418,8 +1422,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
  * - 样式日夜切换过渡
  * - 悬停高亮
  */
-.hope-c-PJLV.hope-c-PJLV-ikUCTIy-css,
-.hope-c-PJLV.hope-c-PJLV-ijfrpgj-css {
+.hope-c-PJLV-icFwTcd-css > .hope-stack {
   @include glass(var(--moe-opacity-high), 10px);
   transition:
     color .25s,
