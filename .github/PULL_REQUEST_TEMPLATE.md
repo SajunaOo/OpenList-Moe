@@ -4,12 +4,12 @@ PR标题规范
 格式：emoji type(scope): description
 
 类型与emoji：
-✨ feat     - 新增样式
-🐛 fix      - 修复问题
-📝 docs     - 文档更新
-🎨 style    - 样式调整
-♻️ refactor - 重构优化
-🏗️ build    - 构建相关
+✨ feat      - 新增样式
+🐛 fix       - 修复问题
+📝 docs      - 文档更新
+🎨 style     - 样式调整
+♻️ refactor  - 重构优化
+🏗️ build     - 构建相关
 
 常用scope：
 ui      - 界面/组件样式
