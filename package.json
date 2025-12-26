@@ -8,6 +8,6 @@
     "prod:js": "node build.js --prod-js"
   },
   "devDependencies": {
-    "sass": "^1.94.2"
+    "sass": "1.97.1"
   }
 }
