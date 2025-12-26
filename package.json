@@ -1,6 +1,7 @@
 {
   "name": "openlist-moe",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "opversion": "4.1.8",
   "scripts": {
     "build": "node build.js",
     "dev:css": "node build.js --dev-css",
