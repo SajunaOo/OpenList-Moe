@@ -1,11 +1,11 @@
 /**
- * OpenList Moe v1.0.1 - 202512221957
+ * OpenList Moe {{VERSION}} - {{TIMESTAMP}}
  * Repository: https://github.com/SajunaOo/OpenList-Moe
  * Author: 朱茱 (https://www.isajuna.com)
  * (C) 2025 朱茱 - AGPL-3.0 Licensed
  * 
  * Beautification component crafted for:
- * OpenList v4.1.8 - (C) OpenListTeam - AGPL-3.0 Licensed
+ * OpenList {{OPVERSION}} - (C) OpenListTeam - AGPL-3.0 Licensed
  */
 
 /**
@@ -13,8 +13,6 @@
  * Features comprehensive light/dark mode variables and refined component styling.
  * Maintains optimal readability and usability through clean, minimal aesthetics.
  */
-
-const MOE_VERSION = "1.0.1";
 
 /** 全屏背景图加载完成淡入 */
 window.addEventListener('load', () => document.body.classList.add('loaded'));
