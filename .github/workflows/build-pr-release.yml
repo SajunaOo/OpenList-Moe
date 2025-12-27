@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'OpenList Moe 版本 格式: v1.0.0'
+        description: 'Moe 版本 格式: v1.0.0'
         required: true
         type: string
       op_version:
@@ -14,6 +14,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  workflows: write
 
 jobs:
   build-and-pr:
@@ -73,20 +74,19 @@ jobs:
             - [ ] 确认版本号正确
             - [ ] 确认样式符合预期" \
             --label "ci-release,automated-pr"
-
       - name: 准备发布产物
         run: |
-          mkdir -p release-artifacts
-          tar -czf "release-artifacts/OpenList-Moe-${{ github.event.inputs.version }}.tar.gz" dist/
-          zip -r "release-artifacts/OpenList-Moe-${{ github.event.inputs.version }}.zip" dist/
+          mkdir -p release
+          tar -czf "release/OpenList-Moe-${{ github.event.inputs.version }}.tar.gz" dist/
+          zip -r "release/OpenList-Moe-${{ github.event.inputs.version }}.zip" dist/
 
       - name: 上传产物
         uses: actions/upload-artifact@v4
         with:
-          name: release-assets-${{ github.event.inputs.version }}
+          name: openlist-moe-${{ github.event.inputs.version }}
           path: |
             dist/
-            release-artifacts/
+            release/
 
   create-draft-release:
     needs: build-and-pr
@@ -97,7 +97,7 @@ jobs:
       - name: 下载构建产物
         uses: actions/download-artifact@v4
         with:
-          name: release-assets-${{ github.event.inputs.version }}
+          name: openlist-moe-${{ github.event.inputs.version }}
           path: artifacts/
 
       - name: 创建草稿 Release
@@ -109,12 +109,13 @@ jobs:
           name: "🎉 ${{ env.VERSION }} (待发布)"
           draft: true
           prerelease: false
-          target_commitish: "build/dist-${{ github.event.inputs.version }}"
+          target_commitish: "main"
           body: |
             **这是一个工作流自动创建的发行版草稿。**
             
             - **版本**: ${{ env.VERSION }}
-            - **来源分支**: build/dist-${{ env.VERSION }}
+            - **标签**: ${{ env.VERSION }}
+            - **目标分支**: main
             - **包含文件**: 最小化的 CSS、JS 文件及完整压缩包。
             
             **请在发布前：**
@@ -122,8 +123,21 @@ jobs:
             2.  核对构建文件。
             3.  补充完整的变更日志。
             4.  点击 "Publish release"。
+
+            🛠️ **本次更新......**
+            ## 🎨 **代码**
+            <!-- 描述代码层面的变更 -->
+
+            ## ✨ **交互**
+            <!-- 描述组件样式的新增与优化 -->
+
+            ## 🛠️ **组件**
+            <!-- 描述组件样式的修复 -->
+
+            ## 📋 **兼容**
+            此版本兼容 **OpenList v4.1.8**
           files: |
             artifacts/dist/css/OpenList-Moe.min.css
             artifacts/dist/js/OpenList-Moe.min.js
-            artifacts/release-artifacts/OpenList-Moe-${{ env.VERSION }}.tar.gz
-            artifacts/release-artifacts/OpenList-Moe-${{ env.VERSION }}.zip
+            artifacts/release/OpenList-Moe-${{ env.VERSION }}.tar.gz
+            artifacts/release/OpenList-Moe-${{ env.VERSION }}.zip
