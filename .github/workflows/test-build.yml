@@ -1,0 +1,37 @@
+name: 测试构建
+
+on:
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-test:
+    name: 构建与上传产物
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装依赖
+        run: npm ci
+
+      - name: 执行CI构建脚本
+        run: npm run ci
+        env:
+          MOE_VERSION: 'Test'
+          OP_VERSION: 'Test'
+
+      - name: 上传构建产物
+        uses: actions/upload-artifact@v4
+        with:
+          # 项目名 + PR编号 + 提交哈希
+          name: openlist-moe-pr-${{ github.event.pull_request.number }}-${{ github.event.pull_request.head.sha }}
+          path: |
+            dist/css/OpenList-Moe.min.css
+            dist/js/OpenList-Moe.min.js
+          retention-days: 1
