@@ -1,14 +1,17 @@
 {
-  "name": "openlist-moe",
-  "version": "1.0.1",
-  "opversion": "4.1.8",
+  "name": "openlist-moe-build",
+  "version": "1.1.0",
+  "description": "OpenList Moe 构建工具",
+  "private": true,
   "scripts": {
-    "build": "node build.js",
-    "dev:css": "node build.js --dev-css",
-    "prod:css": "node build.js --prod-css",
-    "prod:js": "node build.js --prod-js"
+    "ci": "node build.js ci",
+    "build": "node build.js build",
+    "css": "node build.js css",
+    "css:dev": "node build.js css:dev",
+    "js": "node build.js js",
+    "js:dev": "node build.js js:dev"
   },
-  "devDependencies": {
+  "dependencies": {
     "sass": "1.97.1"
   }
 }

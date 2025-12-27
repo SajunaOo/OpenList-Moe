@@ -1,0 +1,25 @@
+name: 测试构建
+on:
+  workflow_dispatch
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build-test:
+    name: 构建与上传产物
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+      - name: 安装依赖
+        run: npm ci
+      - name: 执行构建脚本 (非CI模式)
+        run: npm run build
+      - name: 上传构建产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: 构建产物-${{ github.run_id }}
+          path: |
+            dist/css/OpenList-Moe.min.css
+            dist/js/OpenList-Moe.min.js
+          retention-days: 1
