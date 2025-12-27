@@ -14,7 +14,6 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  workflows: write
 
 jobs:
   build-and-pr:
@@ -46,7 +45,7 @@ jobs:
 
       - name: 创建Pull Request
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.REPO_OWNER_TOKEN }}
         run: |
           # 直接创建PR并关联仓库中已存在的标签
           gh pr create \
