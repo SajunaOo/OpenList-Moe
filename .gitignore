@@ -1,0 +1,14 @@
+# 依赖目录
+node_modules/
+
+# 本地构建输出目录
+build/
+
+# 编辑器目录
+.vscode/
+
+# 操作系统文件
+.DS_Store
+
+# 忽略私人目录
+SAJUNA/
