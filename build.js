@@ -5,9 +5,18 @@ const path = require('path');
 
 const CONFIG = {
   headerLines: 15,
+  outputDirs: {
+    local: {
+      css: 'build/css',
+      js: 'build/js'
+    },
+    ci: {
+      css: 'dist/css',
+      js: 'dist/js'
+    }
+  },
   css: {
     input: 'src/styles/main.scss',
-    outputDir: 'dist/css',
     devFile: 'OpenList-Moe.css',
     prodFile: 'OpenList-Moe.min.css',
     minifyApi: '/developers/cssminifier/api/raw',
@@ -15,7 +24,6 @@ const CONFIG = {
   },
   js: {
     input: 'src/script/main.js',
-    outputDir: 'dist/js',
     devFile: 'OpenList-Moe.js',
     prodFile: 'OpenList-Moe.min.js',
     minifyApi: '/developers/javascript-minifier/api/raw',
@@ -33,6 +41,11 @@ function getBuildInfo(isCI) {
     return { MOE_VERSION, OP_VERSION, isCI: true, timestamp: getCurrentTimestamp() };
   }
   return { MOE_VERSION: 'Test', OP_VERSION: 'Test', isCI: false, timestamp: getCurrentTimestamp() };
+}
+
+function getOutputDir(type, isCI) {
+  const buildType = isCI ? 'ci' : 'local';
+  return CONFIG.outputDirs[buildType][type];
 }
 
 function getCurrentTimestamp() {
@@ -133,9 +146,11 @@ async function build(type, buildInfo, isProd = true) {
   const content = compileSource(type, buildInfo);
   if (!content) return false;
 
-  ensureDir(config.outputDir);
+  const outputDir = getOutputDir(type, buildInfo.isCI);
+  ensureDir(outputDir);
+  
   const fileName = isProd ? config.prodFile : config.devFile;
-  const outputPath = path.join(config.outputDir, fileName);
+  const outputPath = path.join(outputDir, fileName);
 
   // 开发版：直接写入
   if (!isProd) {
