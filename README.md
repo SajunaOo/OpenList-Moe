@@ -2,7 +2,7 @@
   
 <!-- 项目头像 -->
 <a href="https://github.com/SajunaOo/OpenList-Moe" target="_blank">
-  <img style="width: 160px; border-radius: 50%;" src="https://cdn.jsdmirror.com/gh/SajunaOo/Image/OpenList-Moe/avatar.webp" alt="OpenList Moe" >
+  <img style="width: 160px;" src="https://cdn.jsdmirror.com/gh/SajunaOo/Image/OpenList-Moe/avatar.webp" alt="OpenList Moe" >
 </a>
 
 <!-- 项目标题 -->
@@ -10,18 +10,16 @@
 
 <!-- 徽标区 -->
 <p style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;">
-  <!-- 版本 -->
-  <a href="https://github.com/SajunaOo/OpenList-Moe/releases"><img src="https://img.shields.io/github/v/release/SajunaOo/OpenList-Moe?label=版本&style=flat-square&color=4A90E2" alt="版本"></a>
-  <!-- 下载量 -->
-  <a href="https://github.com/SajunaOo/OpenList-Moe/releases"><img src="https://img.shields.io/github/downloads/SajunaOo/OpenList-Moe/total?style=flat-square&label=下载量&color=7ED321" alt="下载量"></a>
-  <!-- 构建状态 -->
-  <a href="https://github.com/SajunaOo/OpenList-Moe/actions/workflows/build-pr-release.yml"><img src="https://img.shields.io/github/actions/workflow/status/SajunaOo/OpenList-Moe/build-pr-release.yml?style=flat-square&label=构建" alt="构建状态"></a>
-  <!-- 许可证 -->
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/SajunaOo/OpenList-Moe?style=flat-square&color=9013FE&label=许可证" alt="许可证"></a>
-  <!-- 星标 -->
-  <a href="https://github.com/SajunaOo/OpenList-Moe/stargazers"><img src="https://img.shields.io/github/stars/SajunaOo/OpenList-Moe?style=flat-square&label=星标&color=F5A623" alt="星标"></a>
-  <!-- OpenList -->
-  <a href="https://github.com/OpenListTeam/OpenList"><img src="https://img.shields.io/badge/适配-OpenList-D53941?style=flat-square" alt="适配OpenList"></a>
+  <!-- Release Version -->
+  <a href="https://github.com/SajunaOo/OpenList-Moe/releases"><img src="https://img.shields.io/github/v/release/SajunaOo/OpenList-Moe?&style=flat-square&color=4A90E2" alt="Release (with filter)"></a>
+   <!-- Downloads -->
+  <a href="https://github.com/SajunaOo/OpenList-Moe/releases"><img src="https://img.shields.io/github/downloads/SajunaOo/OpenList-Moe/total?style=flat-square&color=7ED321&logo=github" alt="Downloads"></a>
+  <!-- Build Status -->
+  <a href="https://github.com/SajunaOo/OpenList-Moe/actions/workflows/build-pr-release.yml"><img src="https://img.shields.io/github/actions/workflow/status/SajunaOo/OpenList-Moe/build-pr-release.yml?style=flat-square" alt="Build Status"></a>
+  <!-- License -->
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/SajunaOo/OpenList-Moe?style=flat-square&color=9013FE&label=License" alt="License"></a>
+  <!-- Stars -->
+  <a href="https://github.com/SajunaOo/OpenList-Moe/stargazers"><img src="https://img.shields.io/github/stars/SajunaOo/OpenList-Moe?style=flat-square&color=F5A623" alt="Repo stars"></a>
 </p>
 
 <!-- 项目简介 -->
@@ -157,3 +155,9 @@ OpenList-Moe/
 ## 📄 许可证
 
 本项目采用 **AGPL-3.0** 许可证。详见 [LICENSE](LICENSE) 文件。
+
+## 🤩 贡献者
+
+<a href="https://github.com/SajunaOo/OpenList-Moe/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=SajunaOo/OpenList-Moe" />
+</a>
