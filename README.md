@@ -2,14 +2,14 @@
   
 <!-- 项目头像 -->
 <a href="https://github.com/SajunaOo/OpenList-Moe" target="_blank">
-  <img style="width: 160px;" src="https://cdn.jsdmirror.com/gh/SajunaOo/Image/OpenList-Moe/avatar.webp" alt="OpenList Moe" >
+  <img width="160" src="https://cdn.jsdmirror.com/gh/SajunaOo/Image/OpenList-Moe/avatar.webp" alt="OpenList Moe">
 </a>
 
 <!-- 项目标题 -->
-<h1 style="font-family: 'SF Mono', 'Fira Code'; font-weight: 600; letter-spacing: -0.5px;">OpenList Moe</h1>
+<h1>OpenList Moe</h1>
 
 <!-- 徽标区 -->
-<p style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;">
+<p>
   <!-- Release Version -->
   <a href="https://github.com/SajunaOo/OpenList-Moe/releases"><img src="https://img.shields.io/github/v/release/SajunaOo/OpenList-Moe?&style=flat-square&color=4A90E2" alt="Release (with filter)"></a>
    <!-- Downloads -->
@@ -23,7 +23,7 @@
 </p>
 
 <!-- 项目简介 -->
-<p style="font-size: 16px; line-height: 30px;">
+<p>
   <strong>为 OpenList 全局注入半透明模糊效果<br>支持日夜切换，覆盖文件列表/预览/后台等全组件</strong>
 </p>
 
@@ -42,6 +42,7 @@
 ## 🖼️ 截图
 
 ### 桌面端
+
 ![桌面端首页](screenshot/desktop/screenshot-7984646497959.webp)
 
 <table>
@@ -56,6 +57,7 @@
 </table>
 
 ### 移动端
+
 <table>
   <tr>
     <td><img alt="移动端首页" src="screenshot/mobile/screenshot-5497841311752.webp"></td>
