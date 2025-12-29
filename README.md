@@ -2,36 +2,31 @@
   
 <!-- 项目头像 -->
 <a href="https://github.com/SajunaOo/OpenList-Moe" target="_blank">
-  <img width="160" src="https://cdn.jsdmirror.com/gh/SajunaOo/Image/OpenList-Moe/avatar.webp" alt="OpenList Moe 徽标">
+  <img style="width: 160px; border-radius: 50%;" src="https://cdn.jsdmirror.com/gh/SajunaOo/Image/OpenList-Moe/avatar.webp" alt="OpenList Moe" >
 </a>
 
 <!-- 项目标题 -->
-<h1 style="font-family: 'SF Mono', 'Fira Code'; font-weight: 600; letter-spac9ing: -0.5px; margin-bottom: 10px;">OpenList Moe</h1>
+<h1 style="font-family: 'SF Mono', 'Fira Code'; font-weight: 600; letter-spacing: -0.5px;">OpenList Moe</h1>
 
 <!-- 徽标区 -->
-<p>
-  <!-- 发行版 -->
-  <a href="https://github.com/SajunaOo/OpenList-Moe/releases"><img src="https://img.shields.io/github/v/release/SajunaOo/OpenList-Moe?label=版本&style=flat-square&color=orange" alt="GitHub release"></a>
+<p style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;">
+  <!-- 版本 -->
+  <a href="https://github.com/SajunaOo/OpenList-Moe/releases"><img src="https://img.shields.io/github/v/release/SajunaOo/OpenList-Moe?label=版本&style=flat-square&color=4A90E2" alt="版本"></a>
   <!-- 下载量 -->
-  <a href="https://github.com/SajunaOo/OpenList-Moe/releases">
-    <img src="https://img.shields.io/github/downloads/SajunaOo/OpenList-Moe/total?style=flat-square&label=下载量&color=green" alt="GitHub all releases">
-  </a>
-  <!-- 许可证 -->
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/SajunaOo/OpenList-Moe?style=flat-square&color=blue&label=许可证" alt="许可证"></a>
-  <!-- OpenList -->
-  <a href="https://github.com/OpenListTeam/OpenList"><img src="https://img.shields.io/badge/适配-OpenList-red?style=flat-square" alt="适配OpenList"></a>
-  <!-- CI -->
+  <a href="https://github.com/SajunaOo/OpenList-Moe/releases"><img src="https://img.shields.io/github/downloads/SajunaOo/OpenList-Moe/total?style=flat-square&label=下载量&color=7ED321" alt="下载量"></a>
+  <!-- 构建状态 -->
   <a href="https://github.com/SajunaOo/OpenList-Moe/actions/workflows/build-pr-release.yml"><img src="https://img.shields.io/github/actions/workflow/status/SajunaOo/OpenList-Moe/build-pr-release.yml?style=flat-square&label=构建" alt="构建状态"></a>
+  <!-- 许可证 -->
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/SajunaOo/OpenList-Moe?style=flat-square&color=9013FE&label=许可证" alt="许可证"></a>
   <!-- 星标 -->
-  <a href="https://github.com/SajunaOo/OpenList-Moe/stargazers"><img src="https://img.shields.io/github/stars/SajunaOo/OpenList-Moe?style=flat-square&label=星标&color=yellow" alt="GitHub Repo stars"></a>
+  <a href="https://github.com/SajunaOo/OpenList-Moe/stargazers"><img src="https://img.shields.io/github/stars/SajunaOo/OpenList-Moe?style=flat-square&label=星标&color=F5A623" alt="星标"></a>
+  <!-- OpenList -->
+  <a href="https://github.com/OpenListTeam/OpenList"><img src="https://img.shields.io/badge/适配-OpenList-D53941?style=flat-square" alt="适配OpenList"></a>
 </p>
 
 <!-- 项目简介 -->
-<p style="margin-top: 20px; font-size: 1.1em; max-width: 800px;">
-  <strong>为OpenList全局注入半透明模糊效果，支持日夜切换，覆盖文件列表/预览/后台等全组件</strong>
-</p>
-<p style="color: #666; margin-bottom: 30px;">
-  一个适用于文件列表程序 <strong>OpenList</strong> 的美化样式
+<p style="font-size: 16px; line-height: 30px;">
+  <strong>为 OpenList 全局注入半透明模糊效果<br>支持日夜切换，覆盖文件列表/预览/后台等全组件</strong>
 </p>
 
 </div>
@@ -78,8 +73,9 @@
 
 ## 🚀 快速开始
 
-### 基本使用
-在 OpenList 的自定义头部设置添加以下代码：
+### 基础样式
+
+在 OpenList 的 **自定义头部** 添加以下代码：
 
 ```html
 <!-- 修改 href 和 font-family 以自定义字体，删除字体 <link> 和字体 CSS 则使用 OpenList 默认字体 -->
@@ -107,7 +103,8 @@ body, .markdown-body, .aplayer {
 ```
 
 ### JavaScript 和备案信息
-在 OpenList 的自定义内容设置添加以下代码：
+
+在 OpenList 的 **自定义内容** 添加以下代码：
 
 ```html
 <script src="https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe/dist/js/OpenList-Moe.min.js"></script>
@@ -127,9 +124,11 @@ body, .markdown-body, .aplayer {
 ## 🎨 自定义配置
 
 ### 查看源码变量
+
 如果你需要深度定制特定元素的样式，可以参考 [main.scss](https://github.com/SajunaOo/OpenList-Moe/blob/main/src/styles/main.scss) 中的 **全局变量定义** 部分。
 
 ### 示例：修改复选框颜色
+
 ```css
 :root {
   --moe-color-checkbox: #f8b34e; /* 白天模式复选框颜色 */
