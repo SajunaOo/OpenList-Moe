@@ -102,8 +102,8 @@ body {
     content: "";
     position: fixed;
     inset: 0;
-    background: var(--moe-bg-image-desktop) center/cover no-repeat;
     z-index: -1;
+    background: var(--moe-bg-image-desktop) center/cover no-repeat;
     transition: background-image .25s;
     
     @media (max-width: 430px) {
@@ -116,7 +116,7 @@ body {
     position: fixed;
     inset: 0;
     z-index: -1;
-    background: rgb(var(--moe-color-bg-primary));
+    background-color: rgb(var(--moe-color-bg-primary));
     opacity: 1;
     transition: opacity 1.5s;
   }
@@ -400,7 +400,7 @@ body {
     transition: border-left .25s;
   }
   
-  code,code span {
+  code, code span {
     transition: color .25s;
   }
 
