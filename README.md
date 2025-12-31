@@ -96,7 +96,7 @@
 }
 
 /** 字体设置 */
-body, .markdown-body, .aplayer {
+body, .markdown-body, .aplayer, .art-video-player {
   font-family: 'Noto Serif SC' !important;
 }
 </style>
