@@ -1194,6 +1194,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
  * - 背景色日夜切换过渡
  * - 毛玻璃背景过渡
  * - 悬停毛玻璃背景
+ * - 移除按钮毛玻璃效果以修复闪烁
  */
 .hope-tbody .hope-tr {
   transition:
@@ -1207,6 +1208,10 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
     td {
       background-color: transparent !important;
     }
+  }
+  
+  .hope-button {
+    backdrop-filter: none;
   }
 }
 
@@ -1421,6 +1426,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
  * - 毛玻璃背景
  * - 样式日夜切换过渡
  * - 悬停高亮
+ * - 移除按钮毛玻璃效果以修复闪烁
  */
 .hope-c-PJLV-icFwTcd-css > .hope-stack {
   @include glass(var(--moe-opacity-high), 10px);
@@ -1439,6 +1445,10 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
       backdrop-filter 1s,
       border-color .25s,
       box-shadow .25s;
+  }
+  
+  .hope-button {
+    backdrop-filter: none;
   }
 }
 
