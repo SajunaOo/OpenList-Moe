@@ -2,7 +2,7 @@
 node_modules/
 
 # 本地构建输出目录
-build/
+dist/
 
 # 编辑器目录
 .vscode/
