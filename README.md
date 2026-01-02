@@ -95,8 +95,15 @@
   --moe-bg-image-mobile: url("https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe-Image/dark_mobile/沉浸感_6.webp"); /** 默认夜间模式移动端背景图 */
 }
 
-/** 字体设置 */
-body, .markdown-body, .aplayer, .art-video-player {
+/**
+ * 自定义字体
+ * 
+ * - 全局字体
+ * - Markdown 区域字体
+ * - Aplayer 音乐播放器字体
+ * - ArtPlayer 视频播放器和 tooltip 提示字体
+ */
+body, .markdown-body, .aplayer, .art-video-player, [class*=hint--]:after {
   font-family: 'Noto Serif SC' !important;
 }
 </style>
