@@ -224,7 +224,7 @@ const main = async () => {
     process.exit(1);
   }
   
-  console.log(`🚀 OpenList Moe ${buildType === 'ci' ? 'CI' : '本地'}构建系统\n` + '='.repeat(50));
+  console.log(`🚀 OpenList Moe ${buildType === 'ci' ? 'CI ' : '本地'}构建系统\n` + '='.repeat(50));
   
   try {
     const isCIBuild = buildType === 'ci';
