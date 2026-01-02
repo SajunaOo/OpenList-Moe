@@ -80,7 +80,7 @@
 ```html
 <!-- 修改 href 和 font-family 以自定义字体，删除字体 <link> 和字体 CSS 则使用 OpenList 默认字体 -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe/dist/css/OpenList-Moe.min.css" rel="stylesheet">
+<link href="https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe@dist/css/OpenList-Moe.min.css" rel="stylesheet">
 
 <style>
 /** 修改 URL 以自定义背景，删除背景 CSS 则使用 OpenList Moe 默认背景 */
@@ -107,7 +107,7 @@ body, .markdown-body, .aplayer, .art-video-player {
 在 OpenList 的 **自定义内容** 添加以下代码：
 
 ```html
-<script src="https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe/dist/js/OpenList-Moe.min.js"></script>
+<script src="https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe@dist/js/OpenList-Moe.min.js"></script>
 
 <!-- 如果你不需要添加备案号，请删除以下代码 -->
 <div class="beian-container" style="text-align: center;" hidden>

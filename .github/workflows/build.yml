@@ -1,0 +1,47 @@
+name: Test Build
+
+on:
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-test:
+    name: Build and upload artifacts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Get OpenList latest version
+        id: op_version
+        run: |
+          OP_VERSION=$(curl -s "https://api.github.com/repos/OpenListTeam/OpenList/releases/latest" | jq -r '.tag_name')
+          if [ -z "$OP_VERSION" ]; then
+            echo "Failed to get OpenList latest version" >&2
+            exit 1
+          fi
+          echo "OP_VERSION=$OP_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run test build script
+        run: npm run ci
+        env:
+          MOE_VERSION: ${{ github.run_id }}  # 使用 GitHub 提供的运行 ID 作为版本号
+          OP_VERSION: ${{ steps.op_version.outputs.OP_VERSION }}
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          # Project name + PR number + run ID
+          name: openlist-moe-${{ github.event.pull_request.number || 'manual' }}-run-${{ github.run_id }}
+          path: |
+            dist/css/OpenList-Moe.min.css
+            dist/js/OpenList-Moe.min.js
+          retention-days: 1
