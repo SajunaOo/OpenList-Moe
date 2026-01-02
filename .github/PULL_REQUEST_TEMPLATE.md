@@ -1,24 +1,12 @@
 <!--
-PR标题规范
+PR 标题规范
 
 格式：emoji type(scope): description
 
 类型与emoji：
-✨ feat      - 新增样式
-🐛 fix       - 修复问题
-📝 docs      - 文档更新
-🎨 style     - 样式调整
-♻️ refactor  - 重构优化
-🔧 chore     - 维护任务（工作流、配置、依赖、工具）
-🏗️ build     - 构建相关（特指构建产物或流程变更）
-
-常用scope：
-ui      - 界面/组件
-css     - CSS/SCSS代码
-js      - JavaScript代码
-readme  - 文档
-ci      - 工作流
-dist    - 构建产物
+✨ feat   - 新样式 (用户可感知的新样式)
+🐛 fix    - 修复问题 (修正错误或异常行为)
+🔧 other  - 其他变更 (文档、重构、样式、构建、维护等所有非功能修改)
 -->
 
 ## 📝 描述
