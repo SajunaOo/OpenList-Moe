@@ -15,7 +15,7 @@
    <!-- Downloads -->
   <a href="https://github.com/SajunaOo/OpenList-Moe/releases"><img src="https://img.shields.io/github/downloads/SajunaOo/OpenList-Moe/total?style=flat-square&color=7ED321&logo=github" alt="Downloads"></a>
   <!-- Build Status -->
-  <a href="https://github.com/SajunaOo/OpenList-Moe/actions/workflows/build-pr-release.yml"><img src="https://img.shields.io/github/actions/workflow/status/SajunaOo/OpenList-Moe/build-pr-release.yml?style=flat-square" alt="Build Status"></a>
+  <a href="https://github.com/SajunaOo/OpenList-Moe/actions/workflows/release.yml"><img src="https://img.shields.io/github/actions/workflow/status/SajunaOo/OpenList-Moe/release.yml?style=flat-square" alt="Build Status"></a>
   <!-- License -->
   <a href="LICENSE"><img src="https://img.shields.io/github/license/SajunaOo/OpenList-Moe?style=flat-square&color=9013FE&label=License" alt="License"></a>
   <!-- Stars -->
