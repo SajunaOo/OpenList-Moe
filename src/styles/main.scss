@@ -210,7 +210,8 @@ body {
     
     transition: 
       color .25s,
-      background-color .25s;
+      background-color .25s,
+      box-shadow .25s;
       
     &:focus {
       box-shadow: var(--moe-shadow-medium);
