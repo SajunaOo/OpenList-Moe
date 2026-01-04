@@ -50,7 +50,7 @@
   --moe-color-checkbox: #000;/** 复选框色 */
   --moe-color-switch: #000;/** 开关色 */
   --moe-color-border: #000;/** 边框/阴影色 */
-  --moe-color-icon: #000;/** SVG图标按钮色 */
+  --moe-color-icon: #000;/** SVG 图标按钮色 */
   
   /** 阴影样式 */
   --moe-shadow-thin: 0 0 0 1px var(--moe-color-border);/** 细边框阴影 */
@@ -60,9 +60,9 @@
   
   /** 透明度配置 */
   --moe-opacity-admin: 20%;/** 后台透明度 */
-  --moe-opacity-high: 20%;/** 20%不透明度 */
-  --moe-opacity-medium: 30%;/** 30%不透明度 */
-  --moe-opacity-low: 50%;/** 50%不透明度 */
+  --moe-opacity-high: 20%;/** 20% 不透明度 */
+  --moe-opacity-medium: 30%;/** 30% 不透明度 */
+  --moe-opacity-low: 50%;/** 50% 不透明度 */
   
   /** 背景图配置 */
   --moe-bg-image-desktop: url("https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe-Image/light_desktop/早秋_2.webp");
@@ -128,7 +128,7 @@ body {
 
 /** ================== 头部区域 ================== */
 /** Logo/头部/搜索框/视图切换按钮 */
-/** Logo尺寸调整 */
+/** Logo 尺寸调整 */
 .header-left .hope-image {
   width: auto;
   height: 35px;
@@ -327,8 +327,8 @@ body {
 }
 
 /** ================== 文件预览 ================== */
-/** Markdown区域/文件预览/代码块/播放器/缩略图/信息/按钮/面包屑 */
-/** Markdown区域半透明背景 */
+/** Markdown 区域/文件预览/代码块/播放器/缩略图/信息/按钮/面包屑 */
+/** Markdown 区域半透明背景 */
 .hope-c-PJLV {
   &.hope-c-PJLV-iiuDLME-css,
   &.hope-c-PJLV-ikSuVsl-css {
@@ -338,7 +338,7 @@ body {
 }
 
 /**
- * Markdown表格
+ * Markdown 表格
  * 
  * - 毛玻璃背景
  * - 斑马纹行配色
@@ -366,7 +366,7 @@ body {
 }
 
 /**
- * Markdown组件色日夜切换过渡
+ * Markdown 组件色日夜切换过渡
  * 
  * - 多级标题
  * - 文本内容
@@ -438,7 +438,7 @@ pre {
 }
 
 /**
- * aplayer播放器
+ * Aplayer 播放器
  * 
  * - 毛玻璃背景
  * - 背景色日夜切换过渡
@@ -464,13 +464,13 @@ div.aplayer {
   }
 }
 
-/** aplayer播放器音乐信息文本色日夜切换过渡 */
+/** Aplayer 播放器音乐信息文本色日夜切换过渡 */
 .aplayer-title,
 .aplayer-author {
   transition: color .25s;
 }
 
-/** aplayer播放器音乐信息底部边框色日夜切换过渡 */
+/** Aplayer 播放器音乐信息底部边框色日夜切换过渡 */
 .aplayer-info {
   transition: border-bottom .25s;
 }
@@ -553,7 +553,7 @@ a.hope-button {
   }
 }
 
-/** Github压缩文件底部分割线和字符串文本色日夜切换过渡 */
+/** Github 压缩文件底部分割线和字符串文本色日夜切换过渡 */
 .hope-divider,
 .hope-c-PJLV-idKQrVC-css {
   transition: color .25s;
@@ -583,8 +583,8 @@ a.hope-button {
 /**
  * 底部工具栏
  * 
- * - 毛玻璃背景（OpenList自带blur_8px）
- * - 背景/SVG按钮色日夜切换过渡
+ * - 毛玻璃背景（OpenList 自带 blur:8px;）
+ * - 背景/SVG 按钮色日夜切换过渡
  * - 按钮悬停高亮
  */
 .center-toolbar {
@@ -606,24 +606,6 @@ a.hope-button {
 }
 
 /** ================== 侧边栏 ================== */
-/**
- * 侧边栏文件目录树 兼容对话框
- * 
- * - 悬停文本高亮
- * - 文本色日夜切换过渡
- */
-.folder-tree-box .hope-text {
-  &:hover,
-  &[data-hover] {
-    background-color: rgb(var(--moe-color-theme));
-    transition: background-color .25s;
-  }
-  
-  transition:
-    color .25s,
-    background-color .75s;
-}
-
 /** 移动端侧边栏文本过长处理 */
 .hope-c-PJLV-ieGWMbI-css .hope-c-PJLV-igSqJIB-css {
   @media (max-width: 768px) {
@@ -644,14 +626,6 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
   transition:
     background-color .25s,
     box-shadow .25s;
-}
-
-/** 侧边栏目录树选中目录悬停高亮 兼容对话框 */
-.hope-c-PJLV.hope-c-PJLV-iZZmce-css {
-  &:hover,
-  &[data-hover] {
-    background-color: rgb(24 144 255 / 80%);
-  }
 }
 
 /** ================== 本地设置 ================== */
@@ -691,6 +665,33 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
   background-color: rgb(0 0 0 / var(--moe-opacity-medium));
 }
 
+/** ================== 文件目录树 ================== */
+/**
+ * 通用文件目录树样式
+ * 
+ * - 悬停文本高亮
+ * - 文本色日夜切换过渡
+ */
+.folder-tree-box .hope-text {
+  &:hover,
+  &[data-hover] {
+    background-color: rgb(var(--moe-color-theme));
+    transition: background-color .25s;
+  }
+  
+  transition:
+    color .25s,
+    background-color .75s;
+}
+
+/** 通用文件目录树选中项样式 悬停文本高亮 */
+.hope-c-PJLV.hope-c-PJLV-iZZmce-css {
+  &:hover,
+  &[data-hover] {
+    background-color: rgb(24 144 255 / 80%);
+  }
+}
+
 /** ================== 模态对话框 ================== */
 /** =========== 通用样式 =========== */
 /** 对话框毛玻璃背景 */
@@ -704,7 +705,7 @@ section.hope-modal__content {
 }
 
 /**
- * 对话框图标按钮/目录树
+ * 对话框图标按钮
  * 
  * - 图标按钮样式修复（覆盖通用按钮样式）
  * - 图标按钮悬停高亮
@@ -992,20 +993,20 @@ button.hope-button {
 }
 
 /** ================== 其他组件 ================== */
-/** 通知/Markdown目录树/a标签选项/页脚 */
+/** 通知/Markdown 目录树/a 标签选项/页脚 */
 /** 通知毛玻璃背景 */
 .hope-c-PJLV.hope-notification {
   @include glass(var(--moe-opacity-high), 10px);
 }
 
-/** Markdown目录树样式 */
+/** Markdown 目录树样式 */
 div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
   @include glass(var(--moe-opacity-high), 10px);
   box-shadow: var(--moe-shadow-theme-medium);
 }
 
 /**
- * Markdown目录树文本
+ * Markdown 目录树文本
  * 
  * - 文本色
  * - 悬停文本高亮
@@ -1067,14 +1068,14 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
 /**
  * 登录页样式
  * 
- * - Logo尺寸调整
+ * - Logo 尺寸调整
  * - 隐藏登录标题/装饰元素
  * - 背景透明
  * - 表单区域毛玻璃背景
  * - 表单区域背景色日夜切换过渡
  * - 表单区域移动端宽度调整
  * - 修复按钮样式修复（覆盖通用按钮样式）
- * - SVG按钮色和日夜切换过渡
+ * - SVG 按钮色和日夜切换过渡
  */
 .hope-c-PJLV {
   &.hope-c-PJLV-ibwASZs-css {
@@ -1313,13 +1314,13 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
 }
 
 /** =========== 个人资料页 =========== */
-/** h2标题色日夜切换过渡 */
+/** h2 标题色日夜切换过渡 */
 .hope-c-PJLV-ikedsVN-css h2 {
   transition: color .25s;
 }
 
 /**
- * WebAuthn认证卡片 兼容对象存储卡片
+ * WebAuthn 认证卡片 兼容对象存储卡片
  * 
  * - 毛玻璃背景
  * - 背景色日夜切换过渡
@@ -1334,14 +1335,14 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
   }
 }
 
-/** SSH密钥卡片毛玻璃背景 */
+/** SSH 密钥卡片毛玻璃背景 */
 .hope-c-PJLV-igJUvZO-css {
   @include glass(var(--moe-opacity-high), 10px);
   transition: background-color .25s;/** 日夜切换过渡 */
 }
 
 /** =========== 其他页 =========== */
-/** h2标题色日夜切换过渡 */
+/** h2 标题色日夜切换过渡 */
 .hope-c-PJLV-ijycFhp-css h2 {
   transition: color .25s;
 }
@@ -1505,7 +1506,7 @@ input.hope-c-PJLV.hope-c-PJLV-ieKzbxa-css {
 }
 
 /** =========== 索引管理 =========== */
-/** 索引页h2标题色日夜切换过渡 */
+/** 索引页 h2 标题色日夜切换过渡 */
 .hope-c-PJLV-ihLrQtz-css h2 {
   transition: color .25s;
 }
