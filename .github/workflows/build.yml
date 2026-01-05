@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run test build script
+      - name: Build
         run: npm run ci
         env:
           MOE_VERSION: ${{ github.run_id }}  # 使用 GitHub 提供的运行 ID 作为版本号
