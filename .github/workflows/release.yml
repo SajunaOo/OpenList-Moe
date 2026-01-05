@@ -1,42 +1,18 @@
-name: Release
+name: Release builds
 
 on:
-  push:
-    tags:
-      - 'v*'
+  release:
+    types: [ published ]
 
 permissions:
   contents: write
 
 jobs:
-  changelog:
-    name: Generate Changelog
+  release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Generate changelog
-        run: npx changelogithub
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          INPUT_FROM: main
-
-  build:
-    runs-on: ubuntu-latest
-    outputs:
-      MOE_VERSION: ${{ steps.moe_version.outputs.MOE_VERSION }}
-      OP_VERSION: ${{ steps.op_version.outputs.OP_VERSION }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Get Moe version
-        id: moe_version
-        run: |
-          echo "MOE_VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
 
       - name: Get OpenList latest version
         id: op_version
@@ -49,12 +25,12 @@ jobs:
           echo "OP_VERSION=$OP_VERSION" >> $GITHUB_OUTPUT
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build
         run: npm run ci
         env:
-          MOE_VERSION: ${{ steps.moe_version.outputs.MOE_VERSION }}
+          MOE_VERSION: ${{ github.ref_name }}
           OP_VERSION: ${{ steps.op_version.outputs.OP_VERSION }}
           
       - name: Deploy to dist branch
@@ -65,44 +41,22 @@ jobs:
           clean: true
           git-config-name: "github-actions[bot]"
           git-config-email: "github-actions[bot]@users.noreply.github.com"
-          commit-message: "🏗️ build(dist): ${{ steps.moe_version.outputs.MOE_VERSION }}"
+          commit-message: "🏗️ build(dist): ${{ github.ref_name }}"
 
-      - name: Prepare release artifacts
+      - name: Prepare release assets
         run: |
           mkdir -p release
           cd dist
           tar -czf "../release/OpenList-Moe-${{ github.ref_name }}.tar.gz" css js
           zip -qr "../release/OpenList-Moe-${{ github.ref_name }}.zip" css js
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+      - name: Update release content and assets
+        uses: softprops/action-gh-release@v2
         with:
-          name: openlist-moe-${{ steps.moe_version.outputs.MOE_VERSION }}
-          path: |
-            dist/css/
-            dist/js/
-            release/
-
-  release:
-    needs: [changelog, build]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: openlist-moe-${{ needs.build.outputs.MOE_VERSION }}
-          path: artifacts/
-
-      - name: Update release content and artifacts
-        uses: softprops/action-gh-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.REPO_OWNER_TOKEN }}
-        with:
-          tag_name: ${{ needs.build.outputs.MOE_VERSION }}
-          name: "🎉 ${{ needs.build.outputs.MOE_VERSION }}"
-          target_commitish: "main"
+          tag_name: ${{ github.ref_name }}
+          name: "🎉 ${{ github.ref_name }}"
           files: |
-            artifacts/dist/css/OpenList-Moe.min.css
-            artifacts/dist/js/OpenList-Moe.min.js
-            artifacts/release/OpenList-Moe-${{ needs.build.outputs.MOE_VERSION }}.tar.gz
-            artifacts/release/OpenList-Moe-${{ needs.build.outputs.MOE_VERSION }}.zip
+            dist/css/OpenList-Moe.min.css
+            dist/js/OpenList-Moe.min.js
+            release/OpenList-Moe-${{ github.ref_name }}.tar.gz
+            release/OpenList-Moe-${{ github.ref_name }}.zip
