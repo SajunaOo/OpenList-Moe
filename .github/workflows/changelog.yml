@@ -19,6 +19,6 @@ jobs:
           fetch-depth: 0
 
       - name: Generate Changelog
-        run: npx changelogithub
+        run: npx changelogithub --name "🎉 ${{ github.ref_name }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

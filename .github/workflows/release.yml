@@ -50,11 +50,10 @@ jobs:
           tar -czf "../release/OpenList-Moe-${{ github.ref_name }}.tar.gz" css js
           zip -qr "../release/OpenList-Moe-${{ github.ref_name }}.zip" css js
 
-      - name: Update release content and assets
+      - name: Update assets
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
-          name: "🎉 ${{ github.ref_name }}"
           files: |
             dist/css/OpenList-Moe.min.css
             dist/js/OpenList-Moe.min.js
