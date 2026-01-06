@@ -785,7 +785,7 @@ section.hope-modal__content {
 }
 
 /** 上传结果边框悬停高亮 */
-.hope-c-PJLV-idbApbi-css > div:nth-child(2) {
+.hope-c-PJLV-idbApbi-css > .hope-stack:not(.hope-c-PJLV-ijHHMAb-css) {
   transition:
     border-color .25s,
     box-shadow .25s;
