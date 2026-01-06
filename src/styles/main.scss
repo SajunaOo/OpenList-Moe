@@ -104,11 +104,18 @@ body {
     inset: 0;
     z-index: -1;
     background: var(--moe-bg-image-desktop) center/cover no-repeat;
-    transition: background-image .25s;
-    
+    filter: blur(20px);
+    transition:
+      filter 2s,
+      background-image .25s;
+      
     @media (max-width: 430px) {
       background-image: var(--moe-bg-image-mobile);
     }
+  }
+  
+  &.loaded::before {
+    filter: none;
   }
   
   &::after {
@@ -208,7 +215,7 @@ body {
       background-color: rgb(var(--moe-color-theme));
     }
     
-    transition: 
+    transition:
       color .25s,
       background-color .25s,
       box-shadow .25s;
