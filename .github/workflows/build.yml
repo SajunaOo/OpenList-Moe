@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-        
+
       - name: Get OpenList Latest Version
         id: op_version
         run: |
