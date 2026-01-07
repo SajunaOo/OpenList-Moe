@@ -12,6 +12,8 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Shanghai
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
