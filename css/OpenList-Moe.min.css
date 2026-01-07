@@ -1,5 +1,5 @@
 /**
- * OpenList Moe v1.1.1 - 202601080009
+ * OpenList Moe v1.1.1 - 202601080044
  * Repository: https://github.com/SajunaOo/OpenList-Moe
  * Author: 朱茱 (https://www.isajuna.com)
  * (C) 2025 朱茱 - AGPL-3.0 Licensed
