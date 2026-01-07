@@ -20,11 +20,12 @@ jobs:
       - name: Get OpenList latest version
         id: op_version
         run: |
-          OP_VERSION=$(curl -s "https://api.github.com/repos/OpenListTeam/OpenList/releases/latest" | jq -r '.tag_name')
-          if [ -z "$OP_VERSION" ]; then
+          OP_VERSION=$(git ls-remote --tags --sort="v:refname" https://github.com/OpenListTeam/OpenList.git | tail -n1 | sed 's#.*/##')
+          if [[ ! $OP_VERSION == v* ]]; then
             echo "Failed to get OpenList latest version" >&2
             exit 1
           fi
+          echo "OpenList Latest version : $OP_VERSION"
           echo "OP_VERSION=$OP_VERSION" >> $GITHUB_OUTPUT
 
       - name: Install dependencies
