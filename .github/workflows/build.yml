@@ -11,24 +11,24 @@ concurrency:
 
 jobs:
   build:
-    name: Build and upload artifacts
+    name: Build And Upload Artifacts
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v4
         
-      - name: Get OpenList latest version
+      - name: Get OpenList Latest Version
         id: op_version
         run: |
           OP_VERSION=$(git ls-remote --tags --sort="v:refname" https://github.com/OpenListTeam/OpenList.git | tail -n1 | sed 's#.*/##')
           if [[ ! $OP_VERSION == v* ]]; then
-            echo "Failed to get OpenList latest version" >&2
+            echo "Failed To Get OpenList Latest Version" >&2
             exit 1
           fi
-          echo "OpenList Latest version : $OP_VERSION"
+          echo "OpenList Latest Version : $OP_VERSION"
           echo "OP_VERSION=$OP_VERSION" >> $GITHUB_OUTPUT
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: npm ci
 
       - name: Build
@@ -38,7 +38,7 @@ jobs:
           MOE_VERSION: ${{ github.event.pull_request.number || 'manual' }}-${{ github.run_id }}
           OP_VERSION: ${{ steps.op_version.outputs.OP_VERSION }}
 
-      - name: Upload build artifacts
+      - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
           # Project name + PR number + Run ID

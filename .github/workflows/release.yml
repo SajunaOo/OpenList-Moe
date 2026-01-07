@@ -1,4 +1,4 @@
-name: Release builds
+name: Release Builds
 
 on:
   release:
@@ -9,23 +9,24 @@ permissions:
 
 jobs:
   release:
+    name: Release
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Get OpenList latest version
+      - name: Get OpenList Latest Version
         id: op_version
         run: |
           OP_VERSION=$(git ls-remote --tags --sort="v:refname" https://github.com/OpenListTeam/OpenList.git | tail -n1 | sed 's#.*/##')
           if [[ ! $OP_VERSION == v* ]]; then
-            echo "Failed to get OpenList latest version" >&2
+            echo "Failed To Get OpenList Latest Version" >&2
             exit 1
           fi
           echo "OpenList Latest version : $OP_VERSION"
           echo "OP_VERSION=$OP_VERSION" >> $GITHUB_OUTPUT
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: npm ci
 
       - name: Build
@@ -34,7 +35,7 @@ jobs:
           MOE_VERSION: ${{ github.ref_name }}
           OP_VERSION: ${{ steps.op_version.outputs.OP_VERSION }}
           
-      - name: Deploy to dist branch
+      - name: Deploy To Dist Branch
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
@@ -44,14 +45,14 @@ jobs:
           git-config-email: "github-actions[bot]@users.noreply.github.com"
           commit-message: "🏗️ build(dist): ${{ github.ref_name }}"
 
-      - name: Prepare release assets
+      - name: Prepare Release Assets
         run: |
           mkdir -p release
           cd dist
           tar -czf "../release/OpenList-Moe-${{ github.ref_name }}.tar.gz" css js
           zip -qr "../release/OpenList-Moe-${{ github.ref_name }}.zip" css js
 
-      - name: Update assets
+      - name: Update Assets
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
