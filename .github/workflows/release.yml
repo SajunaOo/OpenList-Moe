@@ -2,7 +2,7 @@ name: Release Builds
 
 on:
   release:
-    types: [ published ]
+    types: [published]
 
 permissions:
   contents: write
