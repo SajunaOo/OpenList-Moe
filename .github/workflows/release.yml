@@ -58,7 +58,6 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
-          append: true
           files: |
             dist/css/OpenList-Moe.min.css
             dist/js/OpenList-Moe.min.js
