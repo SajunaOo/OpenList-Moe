@@ -26,7 +26,7 @@ const CONFIG = {
 const utils = {
   getBuildInfo: async (isLocalBuild = true) => {
     const TIMESTAMP = utils.getCurrentTimestamp();
-    
+
     // 本地构建直接使用硬编码值
     if (isLocalBuild) {
       return {
@@ -36,10 +36,10 @@ const utils = {
         TIMESTAMP,
       };
     }
-    
+
     // CI构建使用环境变量
     const { MOE_VERSION, OP_VERSION } = process.env;
-    
+
     if (!MOE_VERSION || !OP_VERSION) {
       throw new Error('CI模式下缺少必要的环境变量 MOE_VERSION 或 OP_VERSION');
     }
@@ -55,9 +55,9 @@ const utils = {
   getCurrentTimestamp: () => {
     const now = new Date();
     const pad = (n) => String(n).padStart(2, '0');
-    return `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}${pad(
-      now.getHours()
-    )}${pad(now.getMinutes())}`;
+    return `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(
+      now.getDate()
+    )}${pad(now.getHours())}${pad(now.getMinutes())}`;
   },
 
   ensureDir: (dir) => {
@@ -91,7 +91,10 @@ const utils = {
   calculateCompression: (original, compressed) => {
     const originalSize = Buffer.byteLength(original, 'utf-8');
     const compressedSize = Buffer.byteLength(compressed, 'utf-8');
-    const ratio = (((originalSize - compressedSize) / originalSize) * 100).toFixed(1);
+    const ratio = (
+      ((originalSize - compressedSize) / originalSize) *
+      100
+    ).toFixed(1);
     return {
       originalKB: (originalSize / 1024).toFixed(1),
       compressedKB: (compressedSize / 1024).toFixed(1),
@@ -146,7 +149,11 @@ const processors = {
 const build = async (type, buildInfo, isDevBuild = false) => {
   const config = CONFIG[type];
   const startTime = Date.now();
-  console.log(`${config.icon} 构建${isDevBuild ? '开发版' : '生产版'} ${type.toUpperCase()}...`);
+  console.log(
+    `${config.icon} 构建${
+      isDevBuild ? '开发版' : '生产版'
+    } ${type.toUpperCase()}...`
+  );
 
   const { header, body } = processors.compileSource(type, buildInfo);
 
@@ -172,7 +179,9 @@ const build = async (type, buildInfo, isDevBuild = false) => {
       outputContent = `${header}\n\n${compressed}`;
       const devContent = `${header}\n${body}`; // 开发版整体内容用于正确比较压缩率
       const stats = utils.calculateCompression(devContent, outputContent);
-      console.log(`📊 压缩率: ${stats.ratio}% (${stats.originalKB}KB → ${stats.compressedKB}KB)`);
+      console.log(
+        `📊 压缩率: ${stats.ratio}% (${stats.originalKB}KB → ${stats.compressedKB}KB)`
+      );
     }
 
     fs.writeFileSync(outputPath, outputContent);
@@ -182,7 +191,9 @@ const build = async (type, buildInfo, isDevBuild = false) => {
     return true;
   } catch (error) {
     const buildTime = Date.now() - startTime;
-    throw new Error(`${type.toUpperCase()}构建失败: ${error.message} (耗时: ${buildTime}ms)`);
+    throw new Error(
+      `${type.toUpperCase()}构建失败: ${error.message} (耗时: ${buildTime}ms)`
+    );
   }
 };
 
@@ -212,7 +223,8 @@ const buildAll = async (buildInfo, isDevBuild = false) => {
     console.log(`\n❌ 构建失败: ${failed.map((item) => item.type).join(', ')}`);
     failed.forEach(
       (item) =>
-        item.error && console.error(`   ${item.type.toUpperCase()}错误:`, item.error.message)
+        item.error &&
+        console.error(`   ${item.type.toUpperCase()}错误:`, item.error.message)
     );
     return false;
   } else {
@@ -220,7 +232,11 @@ const buildAll = async (buildInfo, isDevBuild = false) => {
     if (successful.length > 0) {
       console.log(
         `📁 输出文件: ${successful
-          .map((item) => path.basename(CONFIG[item.type][isDevBuild ? 'devFile' : 'prodFile']))
+          .map((item) =>
+            path.basename(
+              CONFIG[item.type][isDevBuild ? 'devFile' : 'prodFile']
+            )
+          )
           .join(', ')}`
       );
     }
@@ -239,12 +255,19 @@ const main = async () => {
     process.exit(1);
   }
 
-  console.log(`🚀 OpenList Moe ${buildType === 'ci' ? 'CI ' : '本地'}构建系统\n` + '='.repeat(50));
+  console.log(
+    `🚀 OpenList Moe ${buildType === 'ci' ? 'CI ' : '本地'}构建系统\n` +
+      '='.repeat(50)
+  );
 
   try {
     const isCIBuild = buildType === 'ci';
     const buildInfo = await utils.getBuildInfo(!isCIBuild); // CI构建时传入false，本地构建时传入true
-    const buildTypeName = isCIBuild ? 'CI 生产' : buildType === 'dev' ? '本地开发' : '本地生产';
+    const buildTypeName = isCIBuild
+      ? 'CI 生产'
+      : buildType === 'dev'
+      ? '本地开发'
+      : '本地生产';
     console.log(`${buildType === 'dev' ? '🔧' : '📦'} ${buildTypeName}构建`);
     console.log(
       `📌 版本: Moe ${buildInfo.MOE_VERSION}, OpenList ${buildInfo.OP_VERSION}, 时间戳: ${buildInfo.TIMESTAMP}`
