@@ -31,22 +31,22 @@ const utils = {
     if (isLocalBuild) {
       return {
         MOE_VERSION: 'Test',
-        MOE_VERSION_LOG: TIMESTAMP, // 本地构建时MOE_VERSION_LOG等于TIMESTAMP
+        MOE_VERSION_LOG: TIMESTAMP, // 本地构建时 MOE_VERSION_LOG 等于 TIMESTAMP
         OP_VERSION: 'Test',
         TIMESTAMP,
       };
     }
 
-    // CI构建使用环境变量
+    // CI 构建使用环境变量
     const { MOE_VERSION, OP_VERSION } = process.env;
 
     if (!MOE_VERSION || !OP_VERSION) {
-      throw new Error('CI模式下缺少必要的环境变量 MOE_VERSION 或 OP_VERSION');
+      throw new Error('CI 模式下缺少必要的环境变量 MOE_VERSION 或 OP_VERSION');
     }
 
     return {
       MOE_VERSION,
-      MOE_VERSION_LOG: MOE_VERSION, // CI构建时MOE_VERSION_LOG等于MOE_VERSION
+      MOE_VERSION_LOG: MOE_VERSION, // CI 构建时 MOE_VERSION_LOG 等于 MOE_VERSION
       OP_VERSION,
       TIMESTAMP,
     };
@@ -119,7 +119,7 @@ const processors = {
     const header = utils.replacePlaceholders(headerLines.join('\n'), buildInfo);
     let body = utils.replacePlaceholders(bodyLines.join('\n'), buildInfo);
 
-    // 编译 - 将SCSS编译为CSS
+    // 编译 - 将 SCSS 编译为 CSS
     if (type === 'css') {
       const result = sass.compileString(body, {
         style: 'expanded',
@@ -262,7 +262,7 @@ const main = async () => {
 
   try {
     const isCIBuild = buildType === 'ci';
-    const buildInfo = await utils.getBuildInfo(!isCIBuild); // CI构建时传入false，本地构建时传入true
+    const buildInfo = await utils.getBuildInfo(!isCIBuild); // CI 构建时传入 false，本地构建时传入 true
     const buildTypeName = isCIBuild
       ? 'CI 生产'
       : buildType === 'dev'
