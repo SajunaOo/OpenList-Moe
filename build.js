@@ -25,30 +25,31 @@ const CONFIG = {
 // 工具函数
 const utils = {
   getBuildInfo: async (isLocalBuild = true) => {
+    const TIMESTAMP = utils.getCurrentTimestamp();
+    
+    // 本地构建直接使用硬编码值
     if (isLocalBuild) {
-      // 本地构建直接使用硬编码值
-      const TIMESTAMP = utils.getCurrentTimestamp();
       return {
         MOE_VERSION: 'Test',
         MOE_VERSION_LOG: TIMESTAMP, // 本地构建时MOE_VERSION_LOG等于TIMESTAMP
         OP_VERSION: 'Test',
         TIMESTAMP,
       };
-    } else {
-      // CI构建必须有环境变量
-      const { MOE_VERSION, OP_VERSION } = process.env;
-
-      if (!MOE_VERSION || !OP_VERSION) {
-        throw new Error('CI模式下缺少必要的环境变量 MOE_VERSION 或 OP_VERSION');
-      }
-
-      return {
-        MOE_VERSION,
-        MOE_VERSION_LOG: MOE_VERSION, // CI构建时MOE_VERSION_LOG等于MOE_VERSION
-        OP_VERSION,
-        TIMESTAMP: utils.getCurrentTimestamp(),
-      };
     }
+    
+    // CI构建使用环境变量
+    const { MOE_VERSION, OP_VERSION } = process.env;
+    
+    if (!MOE_VERSION || !OP_VERSION) {
+      throw new Error('CI模式下缺少必要的环境变量 MOE_VERSION 或 OP_VERSION');
+    }
+
+    return {
+      MOE_VERSION,
+      MOE_VERSION_LOG: MOE_VERSION, // CI构建时MOE_VERSION_LOG等于MOE_VERSION
+      OP_VERSION,
+      TIMESTAMP,
+    };
   },
 
   getCurrentTimestamp: () => {
