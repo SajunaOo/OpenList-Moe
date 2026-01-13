@@ -52,8 +52,6 @@ jobs:
     needs: get_versions
     env:
       TZ: Asia/Shanghai
-      MOE_VERSION: ${{ needs.get_versions.outputs.moe_version }}
-      OP_VERSION: ${{ needs.get_versions.outputs.op_version }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -64,8 +62,8 @@ jobs:
       - name: Build
         run: npm run ci
         env:
-          MOE_VERSION: ${{ env.MOE_VERSION }}
-          OP_VERSION: ${{ env.OP_VERSION }}
+          MOE_VERSION: ${{ needs.get_versions.outputs.moe_version }}
+          OP_VERSION: ${{ needs.get_versions.outputs.op_version }}
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
