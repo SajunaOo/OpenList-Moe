@@ -1,0 +1,129 @@
+name: Manual Release Operations
+
+on:
+  workflow_dispatch:
+    inputs:
+      operation_type:
+        description: 'Type of operation to perform'
+        required: true
+        default: 'rebuild-assets'
+        type: choice
+        options:
+          - rebuild-assets
+          - update-dist
+          - full-release
+
+permissions:
+  contents: write
+
+jobs:
+  get_versions:
+    name: Get Version Info
+    runs-on: ubuntu-latest
+    outputs:
+      op_version: ${{ steps.get_op_version.outputs.OP_VERSION }}
+      moe_version: ${{ steps.get_moe_version.outputs.MOE_VERSION }}
+    steps:
+      - name: Get OpenList Latest Version
+        id: get_op_version
+        run: |
+          OP_VERSION=$(git ls-remote --tags --sort="v:refname" https://github.com/OpenListTeam/OpenList.git | tail -n1 | sed 's#.*/##')
+          if [[ ! $OP_VERSION == v* ]]; then
+            echo "Failed To Get OpenList Latest Version" >&2
+            exit 1
+          fi
+          echo "OpenList Latest Version : $OP_VERSION"
+          echo "OP_VERSION=$OP_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Get Moe Latest Version
+        id: get_moe_version
+        run: |
+          MOE_VERSION=$(git ls-remote --tags --sort="v:refname" https://github.com/SajunaOo/OpenList-Moe.git | tail -n1 | sed 's#.*/##')
+          if [[ ! $MOE_VERSION == v* ]]; then
+            echo "Failed To Get Moe Latest Version" >&2
+            exit 1
+          fi
+          echo "Moe Latest Version : $MOE_VERSION"
+          echo "MOE_VERSION=$MOE_VERSION" >> $GITHUB_OUTPUT
+
+  build:
+    name: Build Assets
+    runs-on: ubuntu-latest
+    needs: get_versions
+    env:
+      TZ: Asia/Shanghai
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run ci
+        env:
+          MOE_VERSION: ${{ needs.get_versions.outputs.moe_version }}
+          OP_VERSION: ${{ needs.get_versions.outputs.op_version }}
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: openlist-moe-${{ needs.get_versions.outputs.op_version }}
+          path: dist/
+          retention-days: 1
+
+  upload_release_assets:
+    name: Upload Release Assets
+    runs-on: ubuntu-latest
+    needs: [get_versions, build]
+    if: ${{ inputs.operation_type == 'rebuild-assets' || inputs.operation_type == 'full-release' }}
+    steps:
+      - name: Download Built Assets
+        uses: actions/download-artifact@v4
+        with:
+          name: openlist-moe-${{ needs.get_versions.outputs.op_version }}
+          path: dist/
+
+      - name: Prepare Release Assets
+        run: |
+          mkdir -p release
+          cd dist
+          tar -czf "../release/OpenList-Moe-${{ needs.get_versions.outputs.moe_version }}.tar.gz" css js
+          zip -qr "../release/OpenList-Moe-${{ needs.get_versions.outputs.moe_version }}.zip" css js
+
+      - name: Update Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ needs.get_versions.outputs.moe_version }}
+          files: |
+            dist/css/OpenList-Moe.min.css
+            dist/js/OpenList-Moe.min.js
+            release/OpenList-Moe-${{ needs.get_versions.outputs.moe_version }}.tar.gz
+            release/OpenList-Moe-${{ needs.get_versions.outputs.moe_version }}.zip
+
+  update_dist:
+    name: Update Dist Branch
+    runs-on: ubuntu-latest
+    needs: [get_versions, build]
+    if: ${{ inputs.operation_type == 'update-dist' || inputs.operation_type == 'full-release' }}
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Download Built Assets
+        uses: actions/download-artifact@v4
+        with:
+          name: openlist-moe-${{ needs.get_versions.outputs.op_version }}
+          path: dist/
+
+      - name: Deploy To Dist Branch
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          branch: dist
+          clean: true
+          git-config-name: "github-actions[bot]"
+          git-config-email: "github-actions[bot]@users.noreply.github.com"
+          commit-message: "🏗️ build(dist): ${{ needs.get_versions.outputs.moe_version }}"
