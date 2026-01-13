@@ -68,7 +68,7 @@ jobs:
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: built-assets
+          name: openlist-moe-${{ needs.get_versions.outputs.op_version }}
           path: dist/
           retention-days: 1
 
@@ -81,7 +81,7 @@ jobs:
       - name: Download Built Assets
         uses: actions/download-artifact@v4
         with:
-          name: built-assets
+          name: openlist-moe-${{ needs.get_versions.outputs.op_version }}
           path: dist/
 
       - name: Prepare Release Assets
@@ -115,7 +115,7 @@ jobs:
       - name: Download Built Assets
         uses: actions/download-artifact@v4
         with:
-          name: built-assets
+          name: openlist-moe-${{ needs.get_versions.outputs.op_version }}
           path: dist/
 
       - name: Deploy To Dist Branch
