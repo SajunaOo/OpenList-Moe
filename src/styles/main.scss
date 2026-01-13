@@ -257,6 +257,13 @@ body {
   }
 }
 
+/** 列表项目录大小普通文本样式调整 */
+.size {
+  display: flex;
+  justify-content: flex-end;
+  white-space: nowrap;
+}
+
 /**
  * 通用复选框样式
  * 
@@ -792,7 +799,7 @@ section.hope-modal__content {
 }
 
 /** 上传结果边框悬停高亮 */
-.hope-c-PJLV-idbApbi-css > .hope-stack:not(.hope-c-PJLV-ijHHMAb-css) {
+.hope-c-PJLV-idbApbi-css > .hope-stack:not(.hope-c-PJLV-ijHHMAb-css, .hope-c-PJLV-ihVlqVC-css) {
   transition:
     border-color .25s,
     box-shadow .25s;
