@@ -168,5 +168,5 @@ OpenList-Moe/
 ## 🤩 贡献者
 
 <a href="https://github.com/SajunaOo/OpenList-Moe/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=SajunaOo/OpenList-Moe" />
+  <img src="https://contrib.sajuna.moe/api?repo=SajunaOo/OpenList-Moe&radius=64" />
 </a>
