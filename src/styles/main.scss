@@ -675,9 +675,10 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
   transition: color .25s; /** 日夜切换过渡 */
 }
 
-/** 本地设置抽屉遮罩透明度 */
+/** 本地设置抽屉遮罩毛玻璃背景 */
 .hope-c-PJLV.hope-drawer__overlay {
   background-color: rgb(0 0 0 / var(--moe-opacity-medium));
+  backdrop-filter: blur(10px);
 }
 
 /** ================== 文件目录树 ================== */
@@ -714,9 +715,10 @@ section.hope-modal__content {
   @include glass(var(--moe-opacity-high), 10px);
 }
 
-/** 对话框遮罩透明度 */
+/** 对话框遮罩毛玻璃背景 */
 .hope-c-PJLV.hope-modal__overlay {
   background-color: rgb(0 0 0 / var(--moe-opacity-medium));
+  backdrop-filter: blur(10px);
 }
 
 /**
