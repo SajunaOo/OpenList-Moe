@@ -59,7 +59,7 @@
   --moe-shadow-theme-medium: 0 0 0 2px rgb(var(--moe-color-theme)); /** 中等边框主题色阴影 */
 
   /** 透明度配置 */
-  --moe-opacity-admin: 30%; /** 后台透明度 */
+  --moe-opacity-admin: 30%; /** 后台界面背景不透明度 */
   --moe-opacity-high: 20%; /** 20% 不透明度 */
   --moe-opacity-medium: 30%; /** 30% 不透明度 */
   --moe-opacity-low: 50%; /** 50% 不透明度 */
@@ -1136,7 +1136,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
 /** ================== 后台管理 ================== */
 /** =========== 全局样式 =========== */
 /** 背景/输入框/文本区域/标签/下拉触发器/开关/列表/对话框 */
-/** 后台主背景 */
+/** 后台界面背景色 */
 .hope-c-PJLV.hope-c-PJLV-iiLzBwx-css {
   @include glass(var(--moe-opacity-admin));
   transition: background-color .25s; /** 日夜切换过渡 */
