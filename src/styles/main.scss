@@ -712,7 +712,7 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
 /** =========== 通用样式 =========== */
 /** 对话框半透明背景 */
 section.hope-modal__content {
-  @include glass(var(--moe-opacity-high));
+  @include glass(var(--moe-opacity-medium));
 }
 
 /** 对话框遮罩毛玻璃背景 */
