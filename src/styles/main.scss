@@ -25,14 +25,9 @@
 
 /** 选项框容器 */
 @mixin labelbox($blur: 0) {
-  background-color: rgb(var(--moe-color-bg-primary) / var(--moe-opacity-high));
+  @include glass(var(--moe-opacity-high), $blur);
   border-radius: var(--hope-radii-md);
   padding: var(--hope-space-2);
-  transition: background-color .25s;
-
-  @if $blur > 0 {
-    backdrop-filter: blur($blur);
-  }
 
   &:hover {
     @include glass(var(--moe-opacity-low));
