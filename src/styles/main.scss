@@ -28,6 +28,7 @@
   @include glass(var(--moe-opacity-high), $blur);
   border-radius: var(--hope-radii-md);
   padding: var(--hope-space-2);
+  transition: background-color .25s;
 
   &:hover {
     @include glass(var(--moe-opacity-low));
