@@ -524,6 +524,11 @@ a.hope-button {
   }
 }
 
+/** 文件预览/编辑编码下拉触发器透明度过渡 */
+.hope-c-PJLV-iciJSBF-css {
+  transition: opacity .25s;
+}
+
 /** 文件预览下拉触发器边框隐藏 */
 .hope-c-PJLV.hope-select__trigger {
   border-color: transparent;
