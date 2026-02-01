@@ -524,8 +524,9 @@ a.hope-button {
   }
 }
 
-/** 文件预览/编辑编码下拉触发器透明度过渡 */
-.hope-c-PJLV-iciJSBF-css {
+/** 文件预览/编辑编码下拉触发器层级调整和透明度过渡 */
+.hope-c-PJLV.hope-c-PJLV-iciJSBF-css {
+  z-index: 99;
   transition: opacity .25s;
 }
 
