@@ -589,6 +589,11 @@ a.hope-button {
   transition: background-color .25s; /** 日夜切换过渡 */
 }
 
+/** 右侧工具栏层级调整 */
+.left-toolbar-box {
+  z-index: 99;
+}
+
 /** 右侧工具栏图标样式悬停过渡 */
 .hope-c-PJLV.left-toolbar-box .hope-icon {
   transition:
