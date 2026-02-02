@@ -524,13 +524,25 @@ a.hope-button {
   }
 }
 
+/**
+ * 文件预览/编辑编码下拉触发器样式修复
+ * 
+ * - 层级调整
+ * - 毛玻璃背景
+ * - 透明度过渡
+ */
+.hope-c-PJLV.hope-c-PJLV-iciJSBF-css {
+  z-index: 99;
+  backdrop-filter: blur(10px);
+  transition: opacity .25s;
+}
+
 /** 文件预览下拉触发器边框隐藏 */
 .hope-c-PJLV.hope-select__trigger {
   border-color: transparent;
 }
 
-/**
- * 文件预览自动下一页选项框毛玻璃容器 */
+/** 文件预览自动下一页选项框毛玻璃容器 */
 .hope-c-PJLV-irBNHm-css {
   @include labelbox(10px);
 }
