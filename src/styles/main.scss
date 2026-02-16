@@ -265,7 +265,7 @@ body {
  * 
  * - 复选框色
  * - 半透明背景
- * - 样式过渡和日夜切换过渡
+ * - 样式/日夜切换过渡
  * - 悬停/焦点高亮
  */
 .hope-c-PJLV.hope-checkbox__control {
@@ -464,8 +464,8 @@ div.aplayer {
       transition: background-color .75s;
 
       &:hover {
-        transition: background-color .25s;
         background-color: rgb(var(--moe-color-bg-primary) / var(--moe-opacity-high)) !important;
+        transition: background-color .25s;
       }
     }
 
@@ -1098,7 +1098,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
  * 登录页样式
  * 
  * - Logo 尺寸调整
- * - 隐藏登录标题/装饰元素
+ * - 隐藏登录标题/装饰元素/记住账号/忘记密码
  * - 背景透明
  * - 表单区域毛玻璃背景
  * - 表单区域背景色日夜切换过渡
@@ -1249,7 +1249,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
 /**
  * 列表布局
  * 
- * - 表头和表体行底边框隐藏
+ * - 表头/表体行底边框隐藏
  * - 字体色日夜切换过渡
  */
 .hope-tr {
@@ -1456,7 +1456,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
 }
 
 /** =========== 存储管理 =========== */
-/** 标签/卡片/列表/输入框/下拉触发器 */
+/** 标签/卡片/输入框/下拉触发器 */
 /** 存储驱动标签毛玻璃背景 */
 .hope-c-PJLV.hope-select__tag {
   @include glass(var(--moe-opacity-medium));
