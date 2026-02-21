@@ -1000,7 +1000,7 @@ button.hope-button {
  * - 毛玻璃背景
  * - 按钮色
  * - 按钮样式过渡
- * - 悬停色反转
+ * - 悬停高亮
  */
 .left-toolbar-box ~ :last-of-type:not(.center-toolbar) {
   @include glass(var(--moe-opacity-low), 10px);
@@ -1223,16 +1223,17 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
  * 
  * - 背景色日夜切换过渡
  * - 毛玻璃背景过渡
- * - 悬停毛玻璃背景
- * - 移除按钮毛玻璃效果以修复闪烁
+ * - 悬停高亮
+ * - 移除按钮毛玻璃效果（覆盖通用按钮样式）
  */
 .hope-tbody .hope-tr {
-  @include glass(var(--moe-opacity-high), 10px);
+  backdrop-filter: blur(10px);
   transition:
     background-color .25s,
     backdrop-filter .3s;
 
   &:hover {
+    @include glass(var(--moe-opacity-medium));
     backdrop-filter: none;
     transition: backdrop-filter 1s;
 
@@ -1267,7 +1268,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
 
 /** 列表表头毛玻璃 */
 .hope-thead .hope-tr {
-  @include glass(var(--moe-opacity-high), 10px);
+  @include glass(var(--moe-opacity-medium), 10px);
   transition: background-color .25s; /** 日夜切换过渡 */
 }
 
