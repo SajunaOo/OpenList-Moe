@@ -265,7 +265,7 @@ body {
  * 
  * - 复选框色
  * - 半透明背景
- * - 样式过渡和日夜切换过渡
+ * - 样式/日夜切换过渡
  * - 悬停/焦点高亮
  */
 .hope-c-PJLV.hope-checkbox__control {
@@ -464,8 +464,8 @@ div.aplayer {
       transition: background-color .75s;
 
       &:hover {
-        transition: background-color .25s;
         background-color: rgb(var(--moe-color-bg-primary) / var(--moe-opacity-high)) !important;
+        transition: background-color .25s;
       }
     }
 
@@ -1000,7 +1000,7 @@ button.hope-button {
  * - 毛玻璃背景
  * - 按钮色
  * - 按钮样式过渡
- * - 悬停色反转
+ * - 悬停高亮
  */
 .left-toolbar-box ~ :last-of-type:not(.center-toolbar) {
   @include glass(var(--moe-opacity-low), 10px);
@@ -1098,7 +1098,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
  * 登录页样式
  * 
  * - Logo 尺寸调整
- * - 隐藏登录标题/装饰元素
+ * - 隐藏登录标题/装饰元素/记住账号/忘记密码
  * - 背景透明
  * - 表单区域毛玻璃背景
  * - 表单区域背景色日夜切换过渡
@@ -1223,16 +1223,18 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
  * 
  * - 背景色日夜切换过渡
  * - 毛玻璃背景过渡
- * - 悬停毛玻璃背景
- * - 移除按钮毛玻璃效果以修复闪烁
+ * - 悬停高亮
+ * - 移除按钮毛玻璃效果（覆盖通用按钮样式）
  */
 .hope-tbody .hope-tr {
+  backdrop-filter: blur(10px);
   transition:
     background-color .25s,
     backdrop-filter .3s;
 
   &:hover {
-    @include glass(var(--moe-opacity-high), 10px);
+    @include glass(var(--moe-opacity-medium));
+    backdrop-filter: none;
     transition: backdrop-filter 1s;
 
     td {
@@ -1245,12 +1247,29 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
   }
 }
 
-/** 列表行列样式日夜切换过渡 */
-.hope-tbody .hope-td,
-.hope-thead .hope-th {
-  transition:
-    color .25s,
-    border-bottom .25s;
+/**
+ * 列表布局
+ * 
+ * - 表头/表体行底边框隐藏
+ * - 字体色日夜切换过渡
+ */
+.hope-tr {
+  .hope-th,
+  .hope-td {
+    border-bottom: none;
+    transition: color .25s;
+  }
+}
+
+/** 列表圆角 */
+.hope-c-PJLV-ihPwlBp-css {
+  border-radius: var(--hope-radii-md);
+}
+
+/** 列表表头毛玻璃 */
+.hope-thead .hope-tr {
+  @include glass(var(--moe-opacity-medium), 10px);
+  transition: background-color .25s; /** 日夜切换过渡 */
 }
 
 /** 再确认对话框毛玻璃背景和边框隐藏 */
@@ -1438,7 +1457,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
 }
 
 /** =========== 存储管理 =========== */
-/** 标签/卡片/列表/输入框/下拉触发器 */
+/** 标签/卡片/输入框/下拉触发器 */
 /** 存储驱动标签毛玻璃背景 */
 .hope-c-PJLV.hope-select__tag {
   @include glass(var(--moe-opacity-medium));
