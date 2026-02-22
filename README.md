@@ -138,11 +138,11 @@ body, .markdown-body, .aplayer, .art-video-player, [class*=hint--]:after {
 
 ```css
 :root {
-  --moe-color-checkbox: #f8b34e; /* 白天模式复选框颜色 */
+  --moe-color-checkbox: #f8b34e; /** 白天模式复选框颜色 */
 }
 
 .hope-ui-dark {
-  --moe-color-checkbox: #f8b34e; /* 夜间模式复选框颜色 */
+  --moe-color-checkbox: #f8b34e; /** 夜间模式复选框颜色 */
 }
 ```
 
@@ -155,8 +155,8 @@ OpenList-Moe/
 │   │   └── main.scss     # 样式文件
 │   └── script/
 │       └── main.js       # 脚本文件
-├── dist/                 # 构建输出目录
-├── screenshot/           # 截图目录
+├── dist/                 # 构建输出
+├── screenshot/           # 效果截图
 ├── build.js              # 构建脚本
 └── README.md             # 项目文档
 ```
