@@ -123,8 +123,8 @@ body, .markdown-body, .aplayer, .art-video-player, [class*=hint--]:after {
 </div>
 
 <script>
-// 备案信息加载
-(()=>{let _o;const _f=()=>{const e=document.querySelector('.footer'),t=document.querySelector('.beian-container');return e&&t&&(e.append(t),t.hidden=!1,_o?.disconnect(),_o=null,!0)};_f()||(_o=new MutationObserver(_f), _o.observe(document,{childList:1,subtree:1}))})();
+/** 备案信息加载 */
+(()=>{const e=new MutationObserver(()=>{const o=document.querySelector(".footer"),n=document.querySelector(".beian-container");o&&n&&(o.append(n),n.hidden=!1,e.disconnect(),clearTimeout(t))}),t=setTimeout(()=>e.disconnect(),5e3);e.observe(document.body,{childList:!0,subtree:!0})})();
 </script>
 ```
 
@@ -138,11 +138,11 @@ body, .markdown-body, .aplayer, .art-video-player, [class*=hint--]:after {
 
 ```css
 :root {
-  --moe-color-checkbox: #f8b34e; /* 白天模式复选框颜色 */
+  --moe-color-checkbox: #f8b34e; /** 白天模式复选框颜色 */
 }
 
 .hope-ui-dark {
-  --moe-color-checkbox: #f8b34e; /* 夜间模式复选框颜色 */
+  --moe-color-checkbox: #f8b34e; /** 夜间模式复选框颜色 */
 }
 ```
 
@@ -155,8 +155,8 @@ OpenList-Moe/
 │   │   └── main.scss     # 样式文件
 │   └── script/
 │       └── main.js       # 脚本文件
-├── dist/                 # 构建输出目录
-├── screenshot/           # 截图目录
+├── dist/                 # 构建输出
+├── screenshot/           # 效果截图
 ├── build.js              # 构建脚本
 └── README.md             # 项目文档
 ```
