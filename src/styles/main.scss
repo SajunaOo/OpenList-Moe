@@ -288,6 +288,11 @@ body {
   }
 }
 
+/** 列表视图文件计数信息文本色日夜切换过渡 */
+.list > .hope-text {
+  transition: color .25s;
+}
+
 /** 图片视图无图片提示文本色日夜切换过渡 */
 .viselect-container .hope-heading {
   transition: color .25s;
