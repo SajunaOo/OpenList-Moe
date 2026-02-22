@@ -123,8 +123,8 @@ body, .markdown-body, .aplayer, .art-video-player, [class*=hint--]:after {
 </div>
 
 <script>
-// 备案信息加载
-(()=>{let _o;const _f=()=>{const e=document.querySelector('.footer'),t=document.querySelector('.beian-container');return e&&t&&(e.append(t),t.hidden=!1,_o?.disconnect(),_o=null,!0)};_f()||(_o=new MutationObserver(_f), _o.observe(document,{childList:1,subtree:1}))})();
+/** 备案信息加载 */
+(()=>{const e=new MutationObserver(()=>{const o=document.querySelector(".footer"),n=document.querySelector(".beian-container");o&&n&&(o.append(n),n.hidden=!1,e.disconnect(),clearTimeout(t))}),t=setTimeout(()=>e.disconnect(),5e3);e.observe(document.body,{childList:!0,subtree:!0})})();
 </script>
 ```
 
