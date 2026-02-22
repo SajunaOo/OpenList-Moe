@@ -43,16 +43,16 @@
 
 ### 桌面端
 
-![桌面端首页](screenshot/desktop/screenshot-7984646497959.webp)
+![首页](screenshot/desktop/screenshot-5626723667778.webp)
 
 <table>
   <tr>
-    <td><img alt="桌面端首页" src="screenshot/desktop/screenshot-7941649794196.webp"></td>
-    <td><img alt="桌面端登录" src="screenshot/desktop/screenshot-5347525587747.webp"></td>
+    <td><img alt="登录" src="screenshot/desktop/screenshot-1011923039141.webp"></td>
+    <td><img alt="个人资料" src="screenshot/desktop/screenshot-2111170118649.webp"></td>
   </tr>
   <tr>
-    <td><img alt="桌面端存储管理" src="screenshot/desktop/screenshot-9734164764113.webp"></td>
-    <td><img alt="桌面端管理首页" src="screenshot/desktop/screenshot-8147104157344.webp"></td>
+    <td><img alt="存储管理" src="screenshot/desktop/screenshot-2737377783212.webp"></td>
+    <td><img alt="存储管理" src="screenshot/desktop/screenshot-4157237517840.webp"></td>
   </tr>
 </table>
 
@@ -60,14 +60,14 @@
 
 <table>
   <tr>
-    <td><img alt="移动端首页" src="screenshot/mobile/screenshot-5497841311752.webp"></td>
-    <td><img alt="移动端登录" src="screenshot/mobile/screenshot-5792856295526.webp"></td>
-    <td><img alt="移动端管理首页" src="screenshot/mobile/screenshot-9785664317984.webp"></td>
+    <td><img alt="首页" src="screenshot/mobile/screenshot-2788519257488.webp"></td>
+    <td><img alt="登录" src="screenshot/mobile/screenshot-1158418019785.webp"></td>
+    <td><img alt="个人资料" src="screenshot/mobile/screenshot-1734169724977.webp"></td>
   </tr>
   <tr>
-    <td><img alt="移动端用户管理" src="screenshot/mobile/screenshot-7416137946139.webp"></td>
-    <td><img alt="移动端存储管理" src="screenshot/mobile/screenshot-6497941389741.webp"></td>
-    <td><img alt="移动端任务管理" src="screenshot/mobile/screenshot-2141794613317.webp"></td>
+    <td><img alt="用户管理" src="screenshot/mobile/screenshot-1507916962604.webp"></td>
+    <td><img alt="存储管理" src="screenshot/mobile/screenshot-2958019565725.webp"></td>
+    <td><img alt="任务管理" src="screenshot/mobile/screenshot-2942716127920.webp"></td>
   </tr>
 </table>
 
