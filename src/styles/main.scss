@@ -755,11 +755,17 @@ section.hope-modal__content {
   }
 }
 
+/** 对话框按钮样式修复（覆盖通用按钮样式） */
+.hope-modal__footer .hope-button {
+  backdrop-filter: none;
+}
+
 /**
  * 对话框内组件半透明背景修复 兼容搜索/本地设置
  * 
  * - 下拉触发器（覆盖通用下拉触发器样式）
- * - 输入框背景（覆盖通用文本输入框样式）
+ * - 输入框（覆盖通用文本输入框样式）
+ * - 按钮（覆盖通用按钮样式）
  */
 .hope-modal__body {
   .hope-c-PJLV.hope-select__trigger {
@@ -769,11 +775,10 @@ section.hope-modal__content {
   .hope-input {
     backdrop-filter: none;
   }
-}
 
-/** 对话框按钮样式修复（覆盖通用按钮样式） */
-.hope-modal__footer .hope-button {
-  backdrop-filter: none;
+  .hope-button {
+    backdrop-filter: none;
+  }
 }
 
 /** =========== 搜索 =========== */
