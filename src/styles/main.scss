@@ -1407,6 +1407,11 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
   transition: background-color .25s; /** 日夜切换过渡 */
 }
 
+/** 任务列表最后一项分割线隐藏 */
+.hope-c-PJLV-ideOfeM-css:last-of-type .hope-divider {
+  display: none;
+}
+
 /** 任务列表文本色 */
 .hope-c-PJLV {
   &.hope-c-PJLV-ibOWCWv-css,
