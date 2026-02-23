@@ -514,21 +514,6 @@ div.aplayer {
 }
 
 /**
- * 文件下载按钮
- * 
- * - 毛玻璃背景
- * - 悬停高亮
- */
-a.hope-button {
-  @include glass(var(--moe-opacity-low), 10px);
-
-  &:hover {
-    @include glass(var(--moe-opacity-high));
-    box-shadow: var(--moe-shadow-medium);
-  }
-}
-
-/**
  * 文件预览/编辑编码下拉触发器样式修复
  * 
  * - 层级调整
@@ -737,23 +722,6 @@ section.hope-modal__content {
   background-color: rgb(0 0 0 / var(--moe-opacity-medium));
 }
 
-/**
- * 对话框图标按钮
- * 
- * - 图标按钮样式修复（覆盖通用按钮样式）
- * - 图标按钮悬停高亮
- */
-.hope-modal__body {
-  .hope-icon-button {
-    @include glass(var(--moe-opacity-high));
-    backdrop-filter: none;
-
-    &:hover {
-      @include glass(var(--moe-opacity-low));
-    }
-  }
-}
-
 /** 对话框按钮样式修复（覆盖通用按钮样式） */
 .hope-modal__footer .hope-button {
   backdrop-filter: none;
@@ -775,7 +743,7 @@ section.hope-modal__content {
     backdrop-filter: none;
   }
 
-  .hope-button {
+  .hope-c-PJLV.hope-button {
     backdrop-filter: none;
   }
 }
@@ -990,7 +958,7 @@ input.hope-input {
  * - 悬停高亮
  * - 激活半透明
  */
-button.hope-button {
+.hope-c-PJLV.hope-button {
   @include glass(var(--moe-opacity-low), 10px);
 
   &:disabled,
@@ -1007,6 +975,15 @@ button.hope-button {
 
   &:active {
     @include glass(var(--moe-opacity-high));
+  }
+}
+
+/** 通用图标按钮悬停高亮（覆盖通用按钮样式） */
+.hope-c-PJLV.hope-icon-button.hope-button {
+  @include glass(var(--moe-opacity-high));
+
+  &:hover {
+    @include glass(var(--moe-opacity-low));
   }
 }
 
@@ -1257,7 +1234,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
  * - 背景色日夜切换过渡
  * - 毛玻璃背景过渡
  * - 悬停高亮
- * - 按钮移除毛玻璃效果（覆盖通用按钮样式）
+ * - 按钮样式修复（覆盖通用按钮样式）
  */
 .hope-tbody .hope-tr {
   backdrop-filter: blur(10px);
@@ -1317,7 +1294,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
 }
 
 /** 再确认对话框按钮样式修复（覆盖通用按钮样式） */
-.hope-popover__body .hope-button {
+.hope-popover__body .hope-c-PJLV.hope-button {
   backdrop-filter: none;
 }
 
@@ -1411,7 +1388,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
   @include glass(var(--moe-opacity-high), 10px);
   transition: background-color .25s;
 
-  .hope-button {
+  .hope-c-PJLV.hope-button {
     backdrop-filter: none;
   }
 }
