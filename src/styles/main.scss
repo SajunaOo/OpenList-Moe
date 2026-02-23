@@ -777,13 +777,22 @@ section.hope-modal__content {
 }
 
 /** =========== 搜索 =========== */
-/** 搜索结果列表背景色过渡 */
+/**
+ * 搜索结果列表
+ * 
+ * - 悬停高亮
+ * - 最后一项分割线隐藏
+ */
 .hope-c-PJLV-idcOWKd-css {
   transition: background-color .75s;
 
   &:hover,
   &[data-hover] {
     transition: background-color .25s;
+  }
+
+  &:last-of-type {
+    border-bottom: none;
   }
 }
 
