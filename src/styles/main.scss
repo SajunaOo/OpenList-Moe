@@ -869,6 +869,11 @@ label.hope-c-PJLV-iiLirPY-css {
   }
 }
 
+/** 选择目标文件夹按钮样式修复（覆盖通用按钮样式） */
+.hope-modal__header .hope-button {
+  backdrop-filter: none;
+}
+
 /** ================== 下拉列表 ================== */
 /**
  * 通用下拉触发器样式
