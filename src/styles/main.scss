@@ -181,7 +181,7 @@ body {
  * - 毛玻璃背景
  * - 圆角与阴影适配
  * - 样式日夜切换过渡
- * - 移除吸附状态遮罩
+ * - 吸附状态遮罩移除
  */
 .hope-c-PJLV.nav {
   @include glass(var(--moe-opacity-low), 5px);
@@ -718,7 +718,7 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
     background-color .75s;
 }
 
-/** 通用文件目录树选中项样式 悬停文本高亮 */
+/** 通用文件目录树选中项悬停文本高亮 */
 .hope-c-PJLV.hope-c-PJLV-iZZmce-css {
   &:hover,
   &[data-hover] {
@@ -949,7 +949,7 @@ input.hope-input {
 /**
  * 输入框错误状态样式
  * 
- * - 错误提示文本色修复 覆盖后台输入框下提示文本色
+ * - 错误提示文本色修复（覆盖后台输入框下提示文本色）
  * - 错误状态焦点边框高亮
  */
 .hope-c-PJLV {
@@ -1021,7 +1021,7 @@ button.hope-button {
   }
 }
 
-/** 隐藏公告关闭按钮 */
+/** 公告关闭按钮隐藏 */
 .hope-notification__list .hope-close-button {
   display: none;
 }
@@ -1103,12 +1103,12 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
  * 登录页样式
  * 
  * - Logo 尺寸调整
- * - 隐藏登录标题/装饰元素/记住账号/忘记密码
+ * - 登录标题/装饰元素/记住账号/忘记密码文本隐藏
  * - 背景透明
  * - 表单区域毛玻璃背景
  * - 表单区域背景色日夜切换过渡
  * - 表单区域移动端宽度调整
- * - 修复按钮样式修复（覆盖通用按钮样式）
+ * - 按钮样式修复（覆盖通用按钮样式）
  * - SVG 按钮色和日夜切换过渡
  */
 .hope-c-PJLV {
@@ -1206,7 +1206,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
  * 通用开关样式
  * 
  * - 开关色
- * - 修复开启状态下样式日夜切换过渡异常
+ * - 开启状态下样式日夜切换过渡异常修复
  * - 焦点边框高亮
  */
 .hope-c-PJLV.hope-switch__control {
@@ -1229,7 +1229,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
  * - 背景色日夜切换过渡
  * - 毛玻璃背景过渡
  * - 悬停高亮
- * - 移除按钮毛玻璃效果（覆盖通用按钮样式）
+ * - 按钮移除毛玻璃效果（覆盖通用按钮样式）
  */
 .hope-tbody .hope-tr {
   backdrop-filter: blur(10px);
@@ -1299,7 +1299,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
  * 
  * - 毛玻璃背景
  * - 背景色日夜切换过渡
- * - 修复图标按钮样式（覆盖通用按钮样式）
+ * - 图标按钮样式修复（覆盖通用按钮样式）
  */
 #root header {
   @include glass(var(--moe-opacity-medium), 10px);
@@ -1485,7 +1485,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
  * - 毛玻璃背景
  * - 样式日夜切换过渡
  * - 悬停高亮
- * - 移除按钮毛玻璃效果以修复闪烁
+ * - 按钮移除毛玻璃效果以修复闪烁（覆盖通用按钮样式）
  */
 .hope-c-PJLV-icFwTcd-css > .hope-stack {
   @include glass(var(--moe-opacity-high), 10px);
@@ -1530,7 +1530,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
   }
 }
 
-/** 修复添加存储驱动输入框（覆盖通用文本输入框样式）*/
+/** 添加存储驱动输入框修复（覆盖通用文本输入框样式）*/
 input.hope-c-PJLV.hope-c-PJLV-ieKzbxa-css {
   background-color: transparent;
   backdrop-filter: none;
