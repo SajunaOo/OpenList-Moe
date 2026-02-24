@@ -85,7 +85,6 @@
 <style>
 /** 修改 URL 以自定义背景，删除背景 CSS 则使用 OpenList Moe 默认背景 */
 :root {
-  --moe-color-theme: 248 179 78; /** 主题色（必填） */
   --moe-bg-image-desktop: url("https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe-Image/light_desktop/玫瑰花海_1.webp"); /** 默认白天模式桌面端背景图 */
   --moe-bg-image-mobile: url("https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe-Image/light_mobile/沉浸感_5.webp"); /** 默认白天模式移动端背景图 */
 }
