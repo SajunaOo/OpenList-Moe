@@ -1045,7 +1045,7 @@ button.hope-button {
 }
 
 /** ================== 其他组件 ================== */
-/** 通知/Markdown 目录树/a 标签选项/页脚 */
+/** 通知/Markdown 目录树/a 标签选项/页脚/选中文本 */
 /** 通知毛玻璃背景 */
 .hope-c-PJLV.hope-notification {
   @include glass(var(--moe-opacity-high), 10px);
@@ -1114,6 +1114,11 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
   span {
     transition: color .25s;
   }
+}
+
+/** 选中文本背景色 */
+::selection {
+  background-color: rgb(var(--moe-color-theme));
 }
 
 /** ================== 登录页面 ================== */
