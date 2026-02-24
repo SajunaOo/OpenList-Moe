@@ -988,6 +988,7 @@ input.hope-input {
  * - 毛玻璃背景
  * - 禁用状态处理
  * - 悬停高亮
+ * - 激活半透明
  */
 button.hope-button {
   @include glass(var(--moe-opacity-low), 10px);
@@ -1002,6 +1003,10 @@ button.hope-button {
   &:hover {
     @include glass(var(--moe-opacity-high));
     box-shadow: var(--moe-shadow-medium);
+  }
+
+  &:active {
+    @include glass(var(--moe-opacity-high));
   }
 }
 
