@@ -165,8 +165,8 @@ body {
 }
 
 /** 视图切换按钮样式修复（覆盖通用按钮样式） */
-.header-right .hope-menu__trigger {
-  background-color: rgb(var(--moe-color-theme) / 15%) !important;
+.header-right .hope-c-PJLV.hope-menu__trigger.hope-icon-button {
+  background-color: rgb(var(--moe-color-theme) / 15%);
 
   &:hover {
     box-shadow: none;
