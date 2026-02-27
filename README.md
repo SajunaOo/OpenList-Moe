@@ -2,7 +2,7 @@
   
 <!-- 项目头像 -->
 <a href="https://github.com/SajunaOo/OpenList-Moe" target="_blank">
-  <img width="160" src="https://cdn.jsdmirror.com/gh/SajunaOo/Image/OpenList-Moe/avatar.webp" alt="OpenList Moe">
+  <img width="160" src="https://cdn.jsdmirror.com/gh/SajunaOo/Image/avatar/avatar2.webp" alt="OpenList Moe">
 </a>
 
 <!-- 项目标题 -->
@@ -85,13 +85,13 @@
 <style>
 /** 修改 URL 以自定义背景，删除背景 CSS 则使用 OpenList Moe 默认背景 */
 :root {
-  --moe-bg-image-desktop: url("https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe-Image/light_desktop/玫瑰花海_1.webp"); /** 默认白天模式桌面端背景图 */
-  --moe-bg-image-mobile: url("https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe-Image/light_mobile/沉浸感_5.webp"); /** 默认白天模式移动端背景图 */
+  --moe-bg-image-desktop: url("https://cdn.jsdmirror.com/gh/SajunaOo/Image/OpenList-Moe/light_desktop/玫瑰花海_1.webp"); /** 默认白天模式桌面端背景图 */
+  --moe-bg-image-mobile: url("https://cdn.jsdmirror.com/gh/SajunaOo/Image/OpenList-Moe/light_mobile/沉浸感_5.webp"); /** 默认白天模式移动端背景图 */
 }
 
 .hope-ui-dark {
-  --moe-bg-image-desktop: url("https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe-Image/dark_desktop/中秋佳节_3.webp"); /** 默认夜间模式桌面端背景图 */
-  --moe-bg-image-mobile: url("https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe-Image/dark_mobile/雪中小屋_5.webp"); /** 默认夜间模式移动端背景图 */
+  --moe-bg-image-desktop: url("https://cdn.jsdmirror.com/gh/SajunaOo/Image/OpenList-Moe/dark_desktop/中秋佳节_3.webp"); /** 默认夜间模式桌面端背景图 */
+  --moe-bg-image-mobile: url("https://cdn.jsdmirror.com/gh/SajunaOo/Image/OpenList-Moe/dark_mobile/雪中小屋_5.webp"); /** 默认夜间模式移动端背景图 */
 }
 
 /**
