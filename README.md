@@ -131,7 +131,7 @@ body, .markdown-body, .aplayer, .art-video-player, [class*=hint--]:after {
 
 ### 查看源码变量
 
-如果你需要深度定制特定元素的样式，可以参考 [main.scss](https://github.com/SajunaOo/OpenList-Moe/blob/main/src/styles/main.scss) 中的 **全局变量定义** 部分。
+如果你需要深度定制特定元素的样式，可以参考 [main.scss](src/styles/main.scss) 中的 **全局变量定义** 部分。
 
 ### 示例：修改复选框颜色
 
