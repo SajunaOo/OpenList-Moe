@@ -305,9 +305,9 @@ body {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: -1;
     @include glass(var(--moe-opacity-high), 10px);
     border-radius: inherit;
-    z-index: -1;
   }
 }
 
@@ -359,17 +359,9 @@ body {
  * - 斑马纹行配色
  */
 .markdown-body table {
-  position: relative;
   width: max-content !important;
   max-width: 100%;
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    backdrop-filter: blur(10px);
-    z-index: -1;
-  }
+  backdrop-filter: blur(10px);
 
   tr {
     background-color: rgb(var(--moe-color-bg-primary) / var(--moe-opacity-low)) !important;
