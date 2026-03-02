@@ -165,7 +165,7 @@ body {
 }
 
 /** 视图切换按钮样式修复（覆盖通用按钮样式） */
-.header-right .hope-menu__trigger {
+.header-right .hope-c-PJLV.hope-menu__trigger.hope-icon-button {
   background-color: rgb(var(--moe-color-theme) / 15%);
 
   &:hover {
@@ -451,7 +451,7 @@ pre {
  * - 背景色日夜切换过渡
  * - 列表项悬停高亮
  */
-div.aplayer {
+.hope-c-PJLV.aplayer {
   @include glass(var(--moe-opacity-high), 10px);
   transition: background-color .25s;
 
@@ -502,21 +502,6 @@ div.aplayer {
   .hope-heading,
   .hope-text {
     transition: color .25s;
-  }
-}
-
-/**
- * 文件下载按钮
- * 
- * - 毛玻璃背景
- * - 悬停高亮
- */
-a.hope-button {
-  @include glass(var(--moe-opacity-low), 10px);
-
-  &:hover {
-    @include glass(var(--moe-opacity-high));
-    box-shadow: var(--moe-shadow-medium);
   }
 }
 
@@ -720,7 +705,7 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
 /** ================== 模态对话框 ================== */
 /** =========== 通用样式 =========== */
 /** 对话框毛玻璃背景 */
-section.hope-modal__content {
+.hope-c-PJLV.hope-modal__content {
   @include glass(var(--moe-opacity-high), 10px);
 }
 
@@ -729,25 +714,8 @@ section.hope-modal__content {
   background-color: rgb(0 0 0 / var(--moe-opacity-medium));
 }
 
-/**
- * 对话框图标按钮
- * 
- * - 图标按钮样式修复（覆盖通用按钮样式）
- * - 图标按钮悬停高亮
- */
-.hope-modal__body {
-  .hope-icon-button {
-    @include glass(var(--moe-opacity-high));
-    backdrop-filter: none;
-
-    &:hover {
-      @include glass(var(--moe-opacity-low));
-    }
-  }
-}
-
 /** 对话框按钮样式修复（覆盖通用按钮样式） */
-.hope-modal__footer .hope-button {
+.hope-modal__footer .hope-c-PJLV.hope-button {
   backdrop-filter: none;
 }
 
@@ -763,11 +731,11 @@ section.hope-modal__content {
     backdrop-filter: none;
   }
 
-  .hope-input {
+  .hope-c-PJLV.hope-input {
     backdrop-filter: none;
   }
 
-  .hope-button {
+  .hope-c-PJLV.hope-button {
     backdrop-filter: none;
   }
 }
@@ -848,7 +816,7 @@ section.hope-modal__content {
  * - 容器样式过渡
  * - 前者选项的禁用状态处理
  */
-label.hope-c-PJLV-iiLirPY-css {
+.hope-checkbox.hope-c-PJLV-iiLirPY-css {
   @include labelbox;
   transition:
     opacity .25s,
@@ -861,7 +829,7 @@ label.hope-c-PJLV-iiLirPY-css {
 }
 
 /** 选择目标文件夹按钮样式修复（覆盖通用按钮样式） */
-.hope-modal__header .hope-button {
+.hope-modal__header .hope-c-PJLV.hope-button {
   backdrop-filter: none;
 }
 
@@ -936,7 +904,7 @@ label.hope-c-PJLV-iiLirPY-css {
  * - 焦点边框高亮
  * - 占位符色和日夜切换过渡
  */
-input.hope-input {
+.hope-c-PJLV.hope-input {
   @include glass(var(--moe-opacity-high), 10px);
 
   &:hover,
@@ -982,7 +950,7 @@ input.hope-input {
  * - 悬停高亮
  * - 激活半透明
  */
-button.hope-button {
+.hope-c-PJLV.hope-button {
   @include glass(var(--moe-opacity-low), 10px);
 
   &:disabled,
@@ -999,6 +967,15 @@ button.hope-button {
 
   &:active {
     @include glass(var(--moe-opacity-high));
+  }
+}
+
+/** 通用图标按钮悬停高亮（覆盖通用按钮样式） */
+.hope-c-PJLV.hope-icon-button.hope-button {
+  @include glass(var(--moe-opacity-high));
+
+  &:hover {
+    @include glass(var(--moe-opacity-low));
   }
 }
 
@@ -1249,7 +1226,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
  * - 背景色日夜切换过渡
  * - 毛玻璃背景过渡
  * - 悬停高亮
- * - 按钮移除毛玻璃效果（覆盖通用按钮样式）
+ * - 按钮样式修复（覆盖通用按钮样式）
  */
 .hope-tbody .hope-tr {
   backdrop-filter: blur(10px);
@@ -1309,7 +1286,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
 }
 
 /** 再确认对话框按钮样式修复（覆盖通用按钮样式） */
-.hope-popover__body .hope-button {
+.hope-popover__body .hope-c-PJLV.hope-button {
   backdrop-filter: none;
 }
 
@@ -1326,7 +1303,6 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
   transition: background-color .25s;
 
   .hope-icon-button {
-    @include glass(var(--moe-opacity-high));
     backdrop-filter: none;
   }
 }
@@ -1403,7 +1379,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
   @include glass(var(--moe-opacity-high), 10px);
   transition: background-color .25s;
 
-  .hope-button {
+  .hope-c-PJLV.hope-button {
     backdrop-filter: none;
   }
 }
@@ -1551,7 +1527,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
 }
 
 /** 添加存储驱动输入框修复（覆盖通用文本输入框样式）*/
-input.hope-c-PJLV.hope-c-PJLV-ieKzbxa-css {
+.hope-select__trigger .hope-c-PJLV.hope-input {
   background-color: transparent;
   backdrop-filter: none;
   box-shadow: none;
