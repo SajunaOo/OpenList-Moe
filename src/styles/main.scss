@@ -149,11 +149,18 @@ body {
  */
 .header-right > .hope-stack {
   backdrop-filter: blur(10px);
-  transition: background-color .25s;
+  transition:
+    color .25s,
+    background-color .25s;
 
-  &:hover,
-  &[data-hover] {
-    @include glass(var(--moe-opacity-high));
+  &:hover {
+    color: white;
+    background-color: rgb(var(--moe-color-theme));
+
+    .hope-kbd {
+      color: white;
+      background-color: rgb(var(--moe-color-theme));
+    }
   }
 }
 
@@ -164,11 +171,18 @@ body {
     border-color .25s;
 }
 
-/** 视图切换按钮样式修复（覆盖通用按钮样式） */
+/**
+* 视图切换按钮
+* 
+* 悬停高亮
+* 按钮样式修复（覆盖通用按钮样式）
+ */
 .header-right .hope-c-PJLV.hope-menu__trigger.hope-icon-button {
   background-color: rgb(var(--moe-color-theme) / 15%);
 
   &:hover {
+    color: white;
+    background-color: rgb(var(--moe-color-theme));
     box-shadow: none;
   }
 }
@@ -1453,7 +1467,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
 
 /** =========== 用户管理页 =========== */
 /**
- * 用户权限选项框毛玻璃容器 */
+ * 用户权限选项框毛玻璃容器  兼容压缩包密码输入 */
 .hope-c-PJLV-ikOKUHw-css {
   @include labelbox(10px);
 
