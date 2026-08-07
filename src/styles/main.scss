@@ -863,6 +863,44 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
   }
 }
 
+/** =========== 离线下载 =========== */
+/* 标签页触发器选中与未选中高亮 */
+.hope-c-PJLV.hope-c-ivMHWx-EevEv-cv {
+  color: rgb(var(--moe-color-theme));
+}
+
+.hope-c-PJLV.hope-c-ivMHWx-lnXQOQ-cv {
+  border-color: transparent;
+  color: var(--moe-color-text-primary);
+}
+
+/* 链接下载文本区域占位符色 */
+.hope-c-PJLV.hope-textarea::placeholder {
+  color: var(--hope-colors-neutral11);
+}
+
+/* 链接下载/BT下载表单说明文本色 */
+.hope-c-PJLV.hope-c-PJLV-ibFFErW-css,
+.hope-c-PJLV.hope-c-PJLV-ibSRtAz-css,
+.hope-c-PJLV.hope-c-PJLV-ijhsbmg-css {
+  color: var(--moe-color-text-secondary);
+}
+
+/* BT下载种子上传对话框悬停高亮 */
+.hope-c-PJLV.hope-c-PJLV-icJplsR-css {
+  transition:
+    background-color .25s,
+    border-color .25s,
+    box-shadow .25s;
+
+  &:hover,
+  &[data-hover] {
+    background-color: rgb(var(--moe-color-bg-primary) / var(--moe-opacity-low));
+    border-color: transparent;
+    box-shadow: var(--moe-shadow-medium);
+  }
+}
+
 /** =========== 重命名 =========== */
 /** 重命名方式选项框容器 */
 .hope-c-PJLV-ieqwtmo-css .hope-radio {
