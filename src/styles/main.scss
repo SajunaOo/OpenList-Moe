@@ -865,13 +865,15 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
 
 /** =========== 离线下载 =========== */
 /* 标签页触发器选中与未选中高亮 */
-.hope-c-PJLV.hope-c-ivMHWx-EevEv-cv {
-  color: rgb(var(--moe-color-theme));
-}
+.hope-c-PJLV {
+  &.hope-c-ivMHWx-EevEv-cv {
+    color: rgb(var(--moe-color-theme));
+  }
 
-.hope-c-PJLV.hope-c-ivMHWx-lnXQOQ-cv {
-  border-color: transparent;
-  color: var(--moe-color-text-primary);
+  &.hope-c-ivMHWx-lnXQOQ-cv {
+    border-color: transparent;
+    color: var(--moe-color-text-primary);
+  }
 }
 
 /* 链接下载文本区域占位符色 */
@@ -880,10 +882,12 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
 }
 
 /* 链接下载/BT下载表单说明文本色 */
-.hope-c-PJLV.hope-c-PJLV-ibFFErW-css,
-.hope-c-PJLV.hope-c-PJLV-ibSRtAz-css,
-.hope-c-PJLV.hope-c-PJLV-ijhsbmg-css {
-  color: var(--moe-color-text-secondary);
+.hope-c-PJLV{
+  &.hope-c-PJLV-ibFFErW-css,
+  &.hope-c-PJLV-ibSRtAz-css,
+  &.hope-c-PJLV-ijhsbmg-css {
+    color: var(--moe-color-text-secondary);
+  }
 }
 
 /* BT下载种子上传对话框悬停高亮 */
@@ -1422,18 +1426,20 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
  * - 悬停高亮
  * - 平移动效
  */
-.hope-c-PJLV.hope-c-PJLV-ikmVjeJ-css,
-.hope-c-PJLV.hope-c-PJLV-ieTkpPy-css,
-.hope-c-PJLV.hope-c-PJLV-icXpZyG-css {
-  transition:
-    transform .25s,
-    color .25s,
-    background-color .25s;
+.hope-c-PJLV {
+  &.hope-c-PJLV-ikmVjeJ-css,
+  &.hope-c-PJLV-ieTkpPy-css,
+  &.hope-c-PJLV-icXpZyG-css {
+    transition:
+      transform .25s,
+      color .25s,
+      background-color .25s;
 
-  &:hover {
-    color: #4a6cf7;
-    @include glass(var(--moe-opacity-medium));
-    transform: translateX(3px);
+    &:hover {
+      color: #4a6cf7;
+      @include glass(var(--moe-opacity-medium));
+      transform: translateX(3px);
+    }
   }
 }
 
