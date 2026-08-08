@@ -871,8 +871,12 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
   }
 
   &.hope-c-ivMHWx-lnXQOQ-cv {
-    border-color: transparent;
     color: var(--moe-color-text-primary);
+    border-color: transparent;
+    
+    &:hover {
+      border-color: transparent;
+    }
   }
 }
 
