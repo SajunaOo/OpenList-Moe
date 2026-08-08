@@ -520,6 +520,33 @@ pre {
 }
 
 /**
+ * 文件下载按钮组
+ * 
+ * - 按钮组毛玻璃背景
+ * - 按钮高亮修复
+ * - 图标按钮背景色和悬停高亮
+ */
+.hope-c-PJLV.hope-button__group {
+  backdrop-filter: blur(10px);
+
+  .hope-button {
+    backdrop-filter: none;
+
+    &:hover {
+      z-index: 1;
+    }
+  }
+
+  .hope-c-PJLV.hope-icon-button.hope-button {
+    @include glass(var(--moe-opacity-low));
+
+    &:hover {
+      @include glass(var(--moe-opacity-high));
+    }
+  }
+}
+
+/**
  * 文件预览/编辑编码下拉触发器样式修复
  * 
  * - 层级调整
