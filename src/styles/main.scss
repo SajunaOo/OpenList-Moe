@@ -908,7 +908,7 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
 
   &:hover,
   &[data-hover] {
-    background-color: rgb(var(--moe-color-bg-primary) / var(--moe-opacity-low));
+    @include glass(var(--moe-opacity-low));
     border-color: transparent;
     box-shadow: var(--moe-shadow-medium);
   }
