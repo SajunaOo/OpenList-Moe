@@ -458,6 +458,20 @@ pre {
   transition: background-color .25s; /** 日夜切换过渡 */
 }
 
+/** 图片查看器背景透明和圆角 */
+.hope-c-PJLV {
+  &.hope-c-PJLV-ibjaYuK-css {
+    background-color: transparent;
+  }
+
+  &.hope-c-PJLV-igpKcCx-css,
+  &.hope-c-PJLV-ifGosjg-css,
+  &.hope-c-PJLV-icqZcWy-css {
+    background-color: transparent;
+    border-radius: var(--hope-radii-xl);
+  }
+}
+
 /**
  * Aplayer 播放器
  * 
