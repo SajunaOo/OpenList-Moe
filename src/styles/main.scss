@@ -864,7 +864,12 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
 }
 
 /** =========== 离线下载 =========== */
-/* 标签页触发器选中与未选中高亮 */
+/** 
+ * 标签页触发器
+ * 
+ * - 选中与未选中高亮
+ * - 边框色去除
+ */
 .hope-c-PJLV {
   &.hope-c-ivMHWx-EevEv-cv {
     color: rgb(var(--moe-color-theme));
@@ -1376,14 +1381,9 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
   transition: background-color .25s; /** 日夜切换过渡 */
 }
 
-/** 再确认对话框毛玻璃背景和边框隐藏 */
+/** 再确认对话框毛玻璃背景和边框色去除 */
 .hope-c-PJLV.hope-popover__content {
   @include glass(var(--moe-opacity-high), 10px);
-  border-color: transparent;
-}
-
-/** 再确认对话框边框隐藏 */
-.hope-popover__header {
   border-color: transparent;
 }
 
@@ -1552,8 +1552,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
 }
 
 /** =========== 用户管理页 =========== */
-/**
- * 用户权限选项框毛玻璃容器  兼容压缩包密码输入 */
+/** 用户权限选项框毛玻璃容器 兼容压缩包密码输入 */
 .hope-c-PJLV-ikOKUHw-css {
   @include labelbox(10px);
 
