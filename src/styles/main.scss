@@ -878,23 +878,37 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
   &.hope-c-ivMHWx-lnXQOQ-cv {
     color: var(--moe-color-text-primary);
     border-color: transparent;
-    
+
     &:hover {
       border-color: transparent;
     }
   }
 }
 
-/* 链接下载文本区域占位符色 */
-.hope-c-PJLV.hope-textarea::placeholder {
-  color: var(--hope-colors-neutral11);
-}
-
-/* 链接下载/BT下载表单说明文本色 */
-.hope-c-PJLV{
+/**
+ * 链接下载/BT下载文本色 兼容种子预览
+ *
+ * - 链接下载/BT下载表单说明文本
+ * - 链接下载文本区域占位符
+ * - BT下载种子哈希文本
+ * - BT下载种子文件列表文件大小文本
+ */
+.hope-c-PJLV {
   &.hope-c-PJLV-ibFFErW-css,
   &.hope-c-PJLV-ibSRtAz-css,
   &.hope-c-PJLV-ijhsbmg-css {
+    color: var(--moe-color-text-secondary);
+  }
+
+  &.hope-textarea::placeholder {
+    color: var(--hope-colors-neutral11);
+  }
+
+  &.hope-c-PJLV-ikKEHLC-css {
+    color: var(--moe-color-text-secondary);
+  }
+
+  &.hope-c-PJLV-ihcWhxu-css {
     color: var(--moe-color-text-secondary);
   }
 }
@@ -914,7 +928,7 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
   }
 }
 
-/* BT下载种子文件列表悬停高亮 */
+/* BT下载种子文件列表悬停高亮 兼容种子预览 */
 .hope-c-PJLV.hope-c-PJLV-iylBXu-css {
   transition: background-color .75s;
 
@@ -923,11 +937,6 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
     @include glass(var(--moe-opacity-medium));
     transition: background-color .25s;
   }
-}
-
-/* BT下载种子文件列表文件大小文本色 */
-.hope-c-PJLV.hope-c-PJLV-ihcWhxu-css {
-  color: var(--moe-color-text-secondary);
 }
 
 /** =========== 重命名 =========== */
