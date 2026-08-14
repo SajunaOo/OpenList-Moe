@@ -564,6 +564,58 @@ pre {
 
 /** =========== 文件下载 =========== */
 /**
+ * 种子预览文件列表 兼容模态对话框
+ *
+ * - 边框色去除
+ * - 悬停高亮
+ */
+.hope-c-PJLV {
+  &.hope-c-PJLV-idgxnXl-css {
+    border-color: transparent;
+  }
+
+  &.hope-c-PJLV-iylBXu-css {
+    transition: background-color .75s;
+
+    &:hover,
+    &[data-hover] {
+      @include glass(var(--moe-opacity-medium));
+      transition: background-color .25s;
+    }
+  }
+}
+
+/**
+ * 种子预览文本色
+ *
+ * - 文件列表文件总大小/总数文本 兼容离线下载对话框链接下载表单说明文本
+ * - 哈希文本
+ * - 文件大小文本
+ */
+.hope-c-PJLV {
+  &.hope-c-PJLV-ibFFErW-css {
+    color: var(--moe-color-text-secondary);
+    transition: color .25s; /** 日夜切换过渡 */
+  }
+
+  &.hope-c-PJLV-ikKEHLC-css {
+    color: var(--moe-color-text-secondary);
+    transition: color .25s; /** 日夜切换过渡 */
+  }
+
+  &.hope-c-PJLV-ihcWhxu-css {
+    color: var(--moe-color-text-secondary);
+    transition: color .25s; /** 日夜切换过渡 */
+  }
+}
+
+/** 种子预览文件列表选择全部和文件名文本日夜切换过渡 */
+.hope-c-PJLV-ikhEzVU-css,
+.hope-c-PJLV-igglQMG-css {
+  transition: color .25s;
+}
+
+/**
  * 文件信息
  *
  * - 缩略图尺寸自适应
@@ -886,21 +938,13 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
 }
 
 /**
- * 链接下载/ BT 下载文本色 兼容种子预览
+ * 链接下载/ BT 下载文本色
  *
- * - 链接下载表单说明文本和 BT 下载文件列表文件总大小/总数文本
  * - 链接下载文本区域占位符
  * - BT 下载上传框说明文本
  * - BT 下载表单说明文本
- * - BT 下载种子哈希文本
- * - BT 下载种子文件列表文件大小文本
  */
 .hope-c-PJLV {
-  &.hope-c-PJLV-ibFFErW-css {
-    color: var(--moe-color-text-secondary);
-    transition: color .25s; /** 日夜切换过渡 */
-  }
-
   &.hope-textarea::placeholder {
     color: var(--hope-colors-neutral11);
   }
@@ -908,16 +952,6 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
   &.hope-c-PJLV-ibSRtAz-css,
   &.hope-c-PJLV-ijhsbmg-css {
     color: var(--moe-color-text-secondary);
-  }
-
-  &.hope-c-PJLV-ikKEHLC-css {
-    color: var(--moe-color-text-secondary);
-    transition: color .25s; /** 日夜切换过渡 */
-  }
-
-  &.hope-c-PJLV-ihcWhxu-css {
-    color: var(--moe-color-text-secondary);
-    transition: color .25s; /** 日夜切换过渡 */
   }
 }
 
@@ -934,34 +968,6 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
     border-color: transparent;
     box-shadow: var(--moe-shadow-medium);
   }
-}
-
-/**
- * BT 下载种子文件列表 兼容种子预览
- *
- * - 边框色去除
- * - 悬停高亮
- */
-.hope-c-PJLV {
-  &.hope-c-PJLV-idgxnXl-css {
-    border-color: transparent;
-  }
-
-  &.hope-c-PJLV-iylBXu-css {
-    transition: background-color .75s;
-
-    &:hover,
-    &[data-hover] {
-      @include glass(var(--moe-opacity-medium));
-      transition: background-color .25s;
-    }
-  }
-}
-
-/** BT 下载种子文件列表选择全部和文件名文本日夜切换过渡 */
-.hope-c-PJLV-ikhEzVU-css,
-.hope-c-PJLV-igglQMG-css {
-  transition: color .25s;
 }
 
 /** =========== 重命名 =========== */
