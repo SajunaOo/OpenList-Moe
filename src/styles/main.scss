@@ -888,7 +888,7 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
 /**
  * 链接下载/ BT 下载文本色 兼容种子预览
  *
- * - 链接下载和 BT 下载文件列表文件总大小/总数文本
+ * - 链接下载表单说明文本和 BT 下载文件列表文件总大小/总数文本
  * - 链接下载文本区域占位符
  * - BT 下载上传框说明文本
  * - BT 下载表单说明文本
@@ -956,6 +956,12 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
       transition: background-color .25s;
     }
   }
+}
+
+/** BT 下载种子文件列表选择全部和文件名文本日夜切换过渡 */
+.hope-c-PJLV-ikhEzVU-css,
+.hope-c-PJLV-igglQMG-css {
+  transition: color .25s;
 }
 
 /** =========== 重命名 =========== */
