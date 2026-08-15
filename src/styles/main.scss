@@ -593,16 +593,8 @@ pre {
  * - 文件大小文本
  */
 .hope-c-PJLV {
-  &.hope-c-PJLV-ibFFErW-css {
-    color: var(--moe-color-text-secondary);
-    transition: color .25s; /** 日夜切换过渡 */
-  }
-
-  &.hope-c-PJLV-ikKEHLC-css {
-    color: var(--moe-color-text-secondary);
-    transition: color .25s; /** 日夜切换过渡 */
-  }
-
+  &.hope-c-PJLV-ibFFErW-css,
+  &.hope-c-PJLV-ikKEHLC-css,
   &.hope-c-PJLV-ihcWhxu-css {
     color: var(--moe-color-text-secondary);
     transition: color .25s; /** 日夜切换过渡 */
