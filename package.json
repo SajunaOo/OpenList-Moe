@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "sass": "^1.97.3",
-    "terser": "^5.46.0",
+    "terser": "^5.50.0",
     "clean-css": "^5.3.3"
   }
 }
