@@ -66,7 +66,7 @@ jobs:
           OP_VERSION: ${{ needs.get_versions.outputs.op_version }}
 
       - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: openlist-moe-${{ needs.get_versions.outputs.op_version }}
           path: dist/
