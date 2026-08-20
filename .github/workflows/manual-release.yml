@@ -54,7 +54,7 @@ jobs:
       TZ: Asia/Shanghai
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Install Dependencies
         run: npm ci
@@ -110,7 +110,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Download Built Assets
         uses: actions/download-artifact@v8
