@@ -92,7 +92,7 @@ jobs:
           zip -qr "../release/OpenList-Moe-${{ needs.get_versions.outputs.moe_version }}.zip" css js
 
       - name: Update Assets
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ needs.get_versions.outputs.moe_version }}
           files: |
