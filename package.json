@@ -9,7 +9,7 @@
     "ci": "node build.js ci"
   },
   "dependencies": {
-    "sass": "^1.97.3",
+    "sass": "^1.102.0",
     "terser": "^5.50.0",
     "clean-css": "^5.3.3"
   }
