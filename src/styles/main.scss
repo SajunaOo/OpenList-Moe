@@ -587,6 +587,11 @@ pre {
   }
 }
 
+/** 文本编辑器字体大小调整按钮高亮修复 */
+.hope-c-jBnYHH-ifUEAog-css .hope-button:hover {
+  z-index: 1;
+}
+
 /**
  * 压缩文件面包屑
  * 
