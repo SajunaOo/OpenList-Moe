@@ -356,7 +356,14 @@ body {
 }
 
 /** ================== 文件预览 ================== */
-/** Markdown 区域/文件预览/代码块/播放器/缩略图/信息/按钮/面包屑 */
+/** 文件预览方式选择/Markdown 渲染/媒体预览/压缩文件/文本编辑器/文件下载 */
+/** =========== 预览方式 =========== */
+/** 文件预览方式选择下拉触发器边框隐藏 */
+.hope-c-PJLV.hope-select__trigger {
+  border-color: transparent;
+}
+
+/** =========== Markdown 渲染 =========== */
 /** Markdown 区域半透明背景 */
 .hope-c-PJLV {
   &.hope-c-PJLV-iiuDLME-css,
@@ -458,6 +465,13 @@ pre {
   transition: background-color .25s; /** 日夜切换过渡 */
 }
 
+/** Readme 自动渲染编码下拉触发器样式修复 兼容文本编辑器 */
+.hope-c-PJLV-ieoUhmm-css {
+  backdrop-filter: blur(10px);
+  transition: opacity .25s;
+}
+
+/** =========== 媒体预览 =========== */
 /** 图片查看器背景透明和圆角 */
 .hope-c-PJLV {
   &.hope-c-PJLV-ibjaYuK-css {
@@ -510,6 +524,48 @@ pre {
   transition: border-bottom .25s;
 }
 
+/** 视频预览自动下一页选项框毛玻璃容器 */
+.hope-c-PJLV-irBNHm-css {
+  @include labelbox(10px);
+}
+
+/** 视频预览第三方程序图标悬停高亮 */
+.hope-c-PJLV-iiGasCJ-css .hope-anchor {
+  transition: background-color .75s;
+
+  &:hover,
+  &[data-hover] {
+    @include glass(var(--moe-opacity-low));
+    transition: background-color .25s;
+  }
+}
+
+/** =========== 压缩文件 =========== */
+/**
+ * 压缩文件面包屑
+ * 
+ * - 链接内边距和圆角
+ * - 悬停文本色重置
+ */
+.obj-box {
+  .hope-breadcrumb__link {
+    padding: var(--hope-space-1);
+    border-radius: var(--hope-radii-lg);
+    word-break: break-all;
+
+    &:hover {
+      color: unset;
+    }
+  }
+}
+
+/** Github 压缩文件底部分割线和字符串文本色日夜切换过渡 */
+.hope-divider,
+.hope-c-PJLV-idKQrVC-css {
+  transition: color .25s;
+}
+
+/** =========== 文件下载 =========== */
 /**
  * 文件信息
  * 
@@ -560,33 +616,7 @@ pre {
   }
 }
 
-/** Readme 自动渲染编码下拉触发器样式修复 兼容文本编辑器 */
-.hope-c-PJLV-ieoUhmm-css {
-  backdrop-filter: blur(10px);
-  transition: opacity .25s;
-}
-
-/** 文件预览下拉触发器边框隐藏 */
-.hope-c-PJLV.hope-select__trigger {
-  border-color: transparent;
-}
-
-/** 文件预览自动下一页选项框毛玻璃容器 */
-.hope-c-PJLV-irBNHm-css {
-  @include labelbox(10px);
-}
-
-/** 文件预览第三方程序图标悬停高亮 */
-.hope-c-PJLV-iiGasCJ-css a {
-  transition: background-color .75s;
-
-  &:hover,
-  &[data-hover] {
-    @include glass(var(--moe-opacity-low));
-    transition: background-color .25s;
-  }
-}
-
+/** =========== 文本编辑器 =========== */
 /**
  * 文本编辑器工具栏
  * 
@@ -609,29 +639,6 @@ pre {
   z-index: 1;
 }
 
-/**
- * 压缩文件面包屑
- * 
- * - 链接内边距和圆角
- * - 悬停文本色重置
- */
-.obj-box {
-  .hope-breadcrumb__link {
-    padding: var(--hope-space-1);
-    border-radius: var(--hope-radii-lg);
-    word-break: break-all;
-
-    &:hover {
-      color: unset;
-    }
-  }
-}
-
-/** Github 压缩文件底部分割线和字符串文本色日夜切换过渡 */
-.hope-divider,
-.hope-c-PJLV-idKQrVC-css {
-  transition: color .25s;
-}
 
 /** ================== 工具栏 ================== */
 /** 右侧工具栏毛玻璃背景 */
