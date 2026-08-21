@@ -21,8 +21,8 @@ jobs:
     name: Get Version Info
     runs-on: ubuntu-latest
     outputs:
-      op_version: ${{ steps.get_op_version.outputs.OP_VERSION }}
-      moe_version: ${{ steps.get_moe_version.outputs.MOE_VERSION }}
+      op_version: ${{ steps.get_op_version.outputs.op_version }}
+      moe_version: ${{ steps.get_moe_version.outputs.moe_version }}
     steps:
       - name: Get OpenList Latest Version
         id: get_op_version
@@ -33,7 +33,7 @@ jobs:
             exit 1
           fi
           echo "OpenList Latest Version : $OP_VERSION"
-          echo "OP_VERSION=$OP_VERSION" >> $GITHUB_OUTPUT
+          echo "op_version=$OP_VERSION" >> $GITHUB_OUTPUT
 
       - name: Get Moe Latest Version
         id: get_moe_version
@@ -44,7 +44,7 @@ jobs:
             exit 1
           fi
           echo "Moe Latest Version : $MOE_VERSION"
-          echo "MOE_VERSION=$MOE_VERSION" >> $GITHUB_OUTPUT
+          echo "moe_version=$MOE_VERSION" >> $GITHUB_OUTPUT
 
   build:
     name: Build Assets
@@ -106,8 +106,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: [get_versions, build]
     if: ${{ inputs.operation_type == 'update-dist' || inputs.operation_type == 'full-release' }}
-    permissions:
-      contents: write
     steps:
       - name: Checkout Code
         uses: actions/checkout@v7
