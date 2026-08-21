@@ -355,7 +355,7 @@ body {
 }
 
 /** ================== 文件预览 ================== */
-/** 文件预览方式选择/Markdown 渲染/媒体预览/压缩文件/文本编辑器/文件下载 */
+/** 文件预览方式选择/Markdown 渲染/媒体预览/压缩文件/种子预览器/文本编辑器/文件下载 */
 /** =========== 预览方式 =========== */
 /** 文件预览方式选择下拉触发器边框隐藏 */
 .hope-c-PJLV.hope-select__trigger {
@@ -562,9 +562,9 @@ pre {
   transition: color .25s;
 }
 
-/** =========== 文件下载 =========== */
+/** =========== 种子预览器 =========== */
 /**
- * 种子预览文件列表 兼容模态对话框
+ * 种子预览器文件列表 兼容模态对话框
  *
  * - 边框色去除
  * - 悬停高亮
@@ -586,7 +586,7 @@ pre {
 }
 
 /**
- * 种子预览文本色
+ * 种子预览器文本色
  *
  * - 文件列表文件总大小/总数文本 兼容离线下载对话框链接下载表单说明文本
  * - 哈希文本
@@ -601,12 +601,36 @@ pre {
   }
 }
 
-/** 种子预览文件列表选择全部和文件名文本日夜切换过渡 */
+/** 种子预览器文件列表选择全部和文件名文本日夜切换过渡 */
 .hope-c-PJLV-ikhEzVU-css,
 .hope-c-PJLV-igglQMG-css {
   transition: color .25s;
 }
 
+/** =========== 文本编辑器 =========== */
+/**
+ * 文本编辑器工具栏
+ * 
+ * - 背景透明
+ * - 底部间距修复
+ */
+.hope-c-PJLV {
+  &.hope-c-PJLV-ikBAcuf-css,
+  &.hope-c-PJLV-igxEgse-css {
+    background-color: transparent;
+  }
+
+  &.hope-c-PJLV-iktNbUa-css {
+    margin-top: -1px;
+  }
+}
+
+/** 文本编辑器字体大小调整按钮高亮修复 */
+.hope-c-jBnYHH-ifUEAog-css .hope-button:hover {
+  z-index: 1;
+}
+
+/** =========== 文件下载 =========== */
 /**
  * 文件信息
  *
@@ -655,29 +679,6 @@ pre {
       @include glass(var(--moe-opacity-high));
     }
   }
-}
-
-/** =========== 文本编辑器 =========== */
-/**
- * 文本编辑器工具栏
- *
- * - 背景透明
- * - 底部间距修复
- */
-.hope-c-PJLV {
-  &.hope-c-PJLV-ikBAcuf-css,
-  &.hope-c-PJLV-igxEgse-css {
-    background-color: transparent;
-  }
-
-  &.hope-c-PJLV-iktNbUa-css {
-    margin-top: -1px;
-  }
-}
-
-/** 文本编辑器字体大小调整按钮高亮修复 */
-.hope-c-jBnYHH-ifUEAog-css .hope-button:hover {
-  z-index: 1;
 }
 
 /** ================== 工具栏 ================== */
