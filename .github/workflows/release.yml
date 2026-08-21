@@ -32,7 +32,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run ci
+        run: npm run build
         env:
           MOE_VERSION: ${{ github.ref_name }}
           OP_VERSION: ${{ steps.op_version.outputs.OP_VERSION }}

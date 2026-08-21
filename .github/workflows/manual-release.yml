@@ -60,7 +60,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run ci
+        run: npm run build
         env:
           MOE_VERSION: ${{ needs.get_versions.outputs.moe_version }}
           OP_VERSION: ${{ needs.get_versions.outputs.op_version }}
@@ -68,7 +68,7 @@ jobs:
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v7
         with:
-          name: openlist-moe-${{ needs.get_versions.outputs.op_version }}
+          name: openlist-moe-${{ needs.get_versions.outputs.moe_version }}
           path: dist/
           retention-days: 1
 
@@ -81,7 +81,7 @@ jobs:
       - name: Download Built Assets
         uses: actions/download-artifact@v8
         with:
-          name: openlist-moe-${{ needs.get_versions.outputs.op_version }}
+          name: openlist-moe-${{ needs.get_versions.outputs.moe_version }}
           path: dist/
 
       - name: Prepare Release Assets
@@ -115,7 +115,7 @@ jobs:
       - name: Download Built Assets
         uses: actions/download-artifact@v8
         with:
-          name: openlist-moe-${{ needs.get_versions.outputs.op_version }}
+          name: openlist-moe-${{ needs.get_versions.outputs.moe_version }}
           path: dist/
 
       - name: Deploy To Dist Branch

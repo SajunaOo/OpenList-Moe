@@ -32,7 +32,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run ci
+        run: npm run build
         env:
           # PR number + Run ID
           MOE_VERSION: ${{ github.event.pull_request.number || 'manual' }}-${{ github.run_id }}
