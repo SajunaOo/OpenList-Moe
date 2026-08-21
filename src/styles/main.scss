@@ -587,6 +587,23 @@ pre {
   }
 }
 
+/**
+ * 文本编辑器工具栏
+ * 
+ * - 背景透明
+ * - 底部间距修复
+ */
+.hope-c-PJLV {
+  &.hope-c-PJLV-ikBAcuf-css,
+  &.hope-c-PJLV-igxEgse-css {
+    background-color: transparent;
+  }
+
+  &.hope-c-PJLV-iktNbUa-css {
+    margin-top: -1px;
+  }
+}
+
 /** 文本编辑器字体大小调整按钮高亮修复 */
 .hope-c-jBnYHH-ifUEAog-css .hope-button:hover {
   z-index: 1;
