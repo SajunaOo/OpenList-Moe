@@ -560,15 +560,8 @@ pre {
   }
 }
 
-/**
- * 文件预览/编辑编码下拉触发器样式修复
- * 
- * - 层级调整
- * - 毛玻璃背景
- * - 透明度过渡
- */
-.hope-c-PJLV.hope-c-PJLV-iciJSBF-css {
-  z-index: 99;
+/** Readme 自动渲染编码下拉触发器样式修复 兼容文本编辑器 */
+.hope-c-PJLV-ieoUhmm-css {
   backdrop-filter: blur(10px);
   transition: opacity .25s;
 }
