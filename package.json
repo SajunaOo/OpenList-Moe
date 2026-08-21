@@ -1,12 +1,11 @@
 {
   "name": "openlist-moe-build",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "OpenList Moe 构建工具",
   "private": true,
   "scripts": {
-    "build": "node build.js prod",
     "dev": "node build.js dev",
-    "ci": "node build.js ci"
+    "build": "node build.js build"
   },
   "dependencies": {
     "sass": "^1.102.0",

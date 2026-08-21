@@ -1,5 +1,5 @@
 /**
- * OpenList Moe {{MOE_VERSION}} - {{TIMESTAMP}}
+ * OpenList Moe {{MOE_VERSION_TAG}}
  * Repository: https://github.com/SajunaOo/OpenList-Moe
  * Author: 朱茱 (https://www.isajuna.com)
  * (C) 2025 朱茱 - AGPL-3.0 Licensed
@@ -36,7 +36,7 @@ document.documentElement.style.setProperty(
 
 /** 控制台输出 */
 console.log(
-  '\n %c OpenList Moe %c {{MOE_VERSION_LOG}} ',
+  '\n %c OpenList Moe %c {{MOE_VERSION}} ',
   'padding: 5px 0; border-radius: 3px 0 0 3px; color: #fff; background: #FF6699; font-weight: bold;',
   'padding: 5px 0; border-radius: 0 3px 3px 0; color: #fff; background: #FF9999; font-weight: bold;'
 );
