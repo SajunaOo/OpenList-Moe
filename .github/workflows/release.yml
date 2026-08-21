@@ -25,17 +25,17 @@ jobs:
             echo "Failed To Get OpenList Latest Version" >&2
             exit 1
           fi
-          echo "OpenList Latest version : $OP_VERSION"
-          echo "OP_VERSION=$OP_VERSION" >> $GITHUB_OUTPUT
+          echo "OpenList Latest Version : $OP_VERSION"
+          echo "op_version=$OP_VERSION" >> $GITHUB_OUTPUT
 
       - name: Install Dependencies
         run: npm ci
 
       - name: Build
-        run: npm run ci
+        run: npm run build
         env:
           MOE_VERSION: ${{ github.ref_name }}
-          OP_VERSION: ${{ steps.op_version.outputs.OP_VERSION }}
+          OP_VERSION: ${{ steps.op_version.outputs.op_version }}
 
       - name: Deploy To Dist Branch
         uses: JamesIves/github-pages-deploy-action@v4

@@ -1,286 +1,189 @@
-const sass = require('sass');
-const fs = require('fs');
-const path = require('path');
-const { minify: terserMinify } = require('terser');
-const CleanCSS = require('clean-css');
+const sass = require("sass");
+const fs = require("fs");
+const path = require("path");
+const { minify: terserMinify } = require("terser");
+const CleanCSS = require("clean-css");
 
-// 配置对象
+/** 配置 */
 const CONFIG = {
-  headerLines: 15,
-  outputDir: 'dist',
-  css: {
-    input: 'src/styles/main.scss',
-    prodFile: 'OpenList-Moe.min.css',
-    devFile: 'OpenList-Moe.css',
-    icon: '🎨',
-  },
-  js: {
-    input: 'src/script/main.js',
-    prodFile: 'OpenList-Moe.min.js',
-    devFile: 'OpenList-Moe.js',
-    icon: '✨',
+  outputDir: "dist",
+  headerLines: 15, // 头部注释行数（不参与压缩编译）
+  types: {
+    css: {
+      input: "src/styles/main.scss",
+      devFile: "OpenList-Moe.css",
+      prodFile: "OpenList-Moe.min.css",
+      icon: "🎨",
+    },
+    js: {
+      input: "src/script/main.js",
+      devFile: "OpenList-Moe.js",
+      prodFile: "OpenList-Moe.min.js",
+      icon: "✨",
+    },
   },
 };
 
-// 工具函数
-const utils = {
-  getBuildInfo: async (isLocalBuild = true) => {
-    const TIMESTAMP = utils.getCurrentTimestamp();
+/** 时间戳（本地版本标识 / 发布头部展示） */
+const timestampNow = () => {
+  const now = new Date();
+  const pad = (n) => String(n).padStart(2, "0");
+  return `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}${pad(now.getHours())}${pad(now.getMinutes())}`;
+};
 
-    // 本地构建直接使用硬编码值
-    if (isLocalBuild) {
-      return {
-        MOE_VERSION: 'Test',
-        MOE_VERSION_LOG: TIMESTAMP, // 本地构建时 MOE_VERSION_LOG 等于 TIMESTAMP
-        OP_VERSION: 'Test',
-        TIMESTAMP,
-      };
-    }
+/** 占位符变量 */
+const getVariables = (isDev) => {
+  const timestamp = timestampNow();
 
-    // CI 构建使用环境变量
-    const { MOE_VERSION, OP_VERSION } = process.env;
-
-    if (!MOE_VERSION || !OP_VERSION) {
-      throw new Error('CI 模式下缺少必要的环境变量 MOE_VERSION 或 OP_VERSION');
-    }
-
+  // 本地开发：Moe 用时间戳标识，OpenList 为 latest
+  if (isDev)
     return {
-      MOE_VERSION,
-      MOE_VERSION_LOG: MOE_VERSION, // CI 构建时 MOE_VERSION_LOG 等于 MOE_VERSION
-      OP_VERSION,
-      TIMESTAMP,
-    };
-  },
-
-  getCurrentTimestamp: () => {
-    const now = new Date();
-    const pad = (n) => String(n).padStart(2, '0');
-    return `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(
-      now.getDate()
-    )}${pad(now.getHours())}${pad(now.getMinutes())}`;
-  },
-
-  ensureDir: (dir) => {
-    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-  },
-
-  readFile: (filePath) => {
-    try {
-      return fs.readFileSync(filePath, 'utf-8');
-    } catch (error) {
-      throw new Error(`读取文件失败 ${filePath}: ${error.message}`);
-    }
-  },
-
-  replacePlaceholders: (content, buildInfo) => {
-    const { MOE_VERSION, OP_VERSION, TIMESTAMP, MOE_VERSION_LOG } = buildInfo;
-
-    const replacements = {
-      '{{MOE_VERSION}}': MOE_VERSION,
-      '{{MOE_VERSION_LOG}}': MOE_VERSION_LOG,
-      '{{OP_VERSION}}': OP_VERSION,
-      '{{TIMESTAMP}}': TIMESTAMP,
+      MOE_VERSION_TAG: timestamp,
+      MOE_VERSION: timestamp,
+      OP_VERSION: "latest",
     };
 
-    return Object.entries(replacements).reduce(
-      (str, [key, value]) => str.replace(new RegExp(key, 'g'), value),
-      content
-    );
-  },
+  // 发布构建：两个环境变量必须同时存在
+  const { MOE_VERSION, OP_VERSION } = process.env;
+  const missing = [];
+  if (!MOE_VERSION) missing.push("MOE_VERSION");
+  if (!OP_VERSION) missing.push("OP_VERSION");
+  if (missing.length)
+    throw new Error(`缺少环境变量: ${missing.join("、")}，请检查工作流`);
 
-  calculateCompression: (original, compressed) => {
-    const originalSize = Buffer.byteLength(original, 'utf-8');
-    const compressedSize = Buffer.byteLength(compressed, 'utf-8');
-    const ratio = (
-      ((originalSize - compressedSize) / originalSize) *
-      100
-    ).toFixed(1);
-    return {
-      originalKB: (originalSize / 1024).toFixed(1),
-      compressedKB: (compressedSize / 1024).toFixed(1),
-      ratio,
-    };
-  },
+  return {
+    MOE_VERSION_TAG: `${MOE_VERSION} - ${timestamp}`,
+    MOE_VERSION,
+    OP_VERSION,
+  };
 };
 
-// 核心处理函数
-const processors = {
-  // 编译源文件
-  compileSource: (type, buildInfo) => {
-    const config = CONFIG[type];
-    const content = utils.readFile(config.input);
+/** 单次正则替换所有占位符（一次扫描，优于逐 key replaceAll） */
+const replacePlaceholders = (content, vars) =>
+  content.replace(/\{\{(\w+)\}\}/g, (match, key) => vars[key] ?? match);
 
-    // 分离头文件和主体
-    const lines = content.split('\n');
-    const headerLines = lines.slice(0, CONFIG.headerLines);
-    const bodyLines = lines.slice(CONFIG.headerLines);
-
-    // 分别替换占位符
-    const header = utils.replacePlaceholders(headerLines.join('\n'), buildInfo);
-    let body = utils.replacePlaceholders(bodyLines.join('\n'), buildInfo);
-
-    // 编译 - 将 SCSS 编译为 CSS
-    if (type === 'css') {
-      const result = sass.compileString(body, {
-        style: 'expanded',
-        charset: false,
-      });
-      body = result.css.replace(/@charset\s+["']UTF-8["'];?\s*/gi, '');
-    }
-
-    return { header, body };
-  },
-
-  // 压缩内容
-  compressContent: async (content, type) => {
-    if (type === 'css') {
-      return new CleanCSS({
-        level: { 1: { all: true }, 2: { all: true } },
-      }).minify(content).styles;
-    }
-    // JS 类型
-    const result = await terserMinify(content);
-    if (result.error) throw result.error;
-    return result.code;
-  },
+/** 压缩率统计 */
+const compressionStats = (original, compressed) => {
+  const toKB = (buf) => (Buffer.byteLength(buf) / 1024).toFixed(1);
+  const originalKB = toKB(original);
+  const compressedKB = toKB(compressed);
+  return {
+    originalKB,
+    compressedKB,
+    ratio: (((originalKB - compressedKB) / originalKB) * 100).toFixed(1),
+  };
 };
 
-// 构建函数
-const build = async (type, buildInfo, isDevBuild = false) => {
-  const config = CONFIG[type];
-  const startTime = Date.now();
-  console.log(
-    `${config.icon} 构建${
-      isDevBuild ? '开发版' : '生产版'
-    } ${type.toUpperCase()}...`
+/** 复用压缩器实例，避免每次构建重复构造 */
+const cssMinifier = new CleanCSS({
+  level: { 1: { all: true }, 2: { all: true } },
+});
+
+/** 编译源文件：整体替换占位符后，分离头部注释与主体 */
+const compileSource = (type, vars) => {
+  const content = replacePlaceholders(
+    fs.readFileSync(CONFIG.types[type].input, "utf-8"),
+    vars,
   );
 
-  const { header, body } = processors.compileSource(type, buildInfo);
+  // 只拆分前 headerLines 行做头部，body 用 slice 保留剩余原文（避免 split 截断陷阱 & 大文件全量拆行）
+  const header = content.split("\n", CONFIG.headerLines).join("\n");
+  let body = content.slice(header.length + 1);
 
-  const outputDir = `${CONFIG.outputDir}/${type}`;
-  utils.ensureDir(outputDir);
+  if (type === "css") {
+    body = sass
+      .compileString(body, { style: "expanded", charset: false })
+      .css.replace(/@charset\s+["']UTF-8["'];?\s*/gi, "");
+  }
+  return { header, body };
+};
 
-  // 根据构建类型选择文件名
-  const fileName = isDevBuild ? config.devFile : config.prodFile;
-  const outputPath = path.join(outputDir, fileName);
+/** 压缩（参数与原有逻辑一致） */
+const compressContent = async (content, type) => {
+  if (type === "css") return cssMinifier.minify(content).styles;
+  const result = await terserMinify(content);
+  if (result.error) throw result.error;
+  return result.code;
+};
 
-  try {
-    let outputContent;
-    if (isDevBuild) {
-      // 开发版本 - 不压缩
-      outputContent = `${header}\n${body}`;
-      // 直接计算开发版本文件大小
-      const devSize = Buffer.byteLength(outputContent, 'utf-8');
-      const devSizeKB = (devSize / 1024).toFixed(1);
-      console.log(`📊 文件大小: ${devSizeKB}KB (未压缩)`);
-    } else {
-      // 生产版本 - 压缩
-      const compressed = await processors.compressContent(body, type);
-      outputContent = `${header}\n\n${compressed}`;
-      const devContent = `${header}\n${body}`; // 开发版整体内容用于正确比较压缩率
-      const stats = utils.calculateCompression(devContent, outputContent);
-      console.log(
-        `📊 压缩率: ${stats.ratio}% (${stats.originalKB}KB → ${stats.compressedKB}KB)`
-      );
-    }
+/** 构建单个类型：写文件并返回统计 */
+const build = async (type, vars, isDev) => {
+  const config = CONFIG.types[type];
+  const startTime = Date.now();
+  const { header, body } = compileSource(type, vars);
 
-    fs.writeFileSync(outputPath, outputContent);
-    const buildTime = Date.now() - startTime;
-    console.log(`${config.icon} ${outputPath} (${buildTime}ms)`);
+  const devContent = `${header}\n${body}`;
+  const prodContent = `${header}\n\n${await compressContent(body, type)}`;
+  const stats = compressionStats(devContent, prodContent);
 
-    return true;
-  } catch (error) {
-    const buildTime = Date.now() - startTime;
+  const outDir = path.join(CONFIG.outputDir, type);
+  fs.mkdirSync(outDir, { recursive: true });
+
+  // 发布：仅压缩版；开发：压缩版 + 未压缩版（按展示顺序写入）
+  const written = [];
+  const write = (file, content) => {
+    const outPath = path.join(outDir, file);
+    fs.writeFileSync(outPath, content);
+    written.push(outPath);
+  };
+  if (isDev) write(config.devFile, devContent);
+  write(config.prodFile, prodContent);
+
+  return { type, stats, written, time: Date.now() - startTime };
+};
+
+/** 批量构建 */
+const buildAll = async (vars, isDev) => {
+  const startTime = Date.now();
+  const results = await Promise.allSettled(
+    Object.keys(CONFIG.types).map((type) => build(type, vars, isDev)),
+  );
+
+  const failed = results.filter((r) => r.status === "rejected");
+  if (failed.length)
     throw new Error(
-      `${type.toUpperCase()}构建失败: ${error.message} (耗时: ${buildTime}ms)`
+      `请检查代码: ${failed.map((r) => r.reason.message).join("; ")}`,
     );
+
+  // 按类型固定顺序（css → js）汇总输出
+  console.log("");
+  for (const {
+    value: { type, stats, written, time },
+  } of results) {
+    const { icon } = CONFIG.types[type];
+    const sizeInfo = `📊 ${stats.originalKB}KB → ${stats.compressedKB}KB (压缩率 ${stats.ratio}%)`;
+    console.log(`${icon} ${type.toUpperCase()} 构建完成 (${time}ms)`);
+    console.log(`   ${sizeInfo}`);
+    written.forEach((file) => console.log(`   📄 ${file}`));
+    console.log("");
   }
+
+  console.log(`✅ 构建成功! 总耗时: ${Date.now() - startTime}ms`);
 };
 
-// 批量构建
-const buildAll = async (buildInfo, isDevBuild = false) => {
-  const startTime = Date.now();
-  console.log('\n🚀 并行构建开始...');
-
-  const results = await Promise.allSettled([
-    build('css', buildInfo, isDevBuild),
-    build('js', buildInfo, isDevBuild),
-  ]);
-
-  const completed = results.map((result, index) => ({
-    type: ['css', 'js'][index],
-    success: result.status === 'fulfilled' && result.value,
-    error: result.status === 'rejected' ? result.reason : null,
-  }));
-
-  const totalBuildTime = Date.now() - startTime;
-
-  // 输出构建结果摘要
-  const successful = completed.filter((item) => item.success);
-  const failed = completed.filter((item) => !item.success);
-
-  if (failed.length > 0) {
-    console.log(`\n❌ 构建失败: ${failed.map((item) => item.type).join(', ')}`);
-    failed.forEach(
-      (item) =>
-        item.error &&
-        console.error(`   ${item.type.toUpperCase()}错误:`, item.error.message)
-    );
-    return false;
-  } else {
-    console.log(`\n✅ 构建成功! 总耗时: ${totalBuildTime}ms`);
-    if (successful.length > 0) {
-      console.log(
-        `📁 输出文件: ${successful
-          .map((item) =>
-            path.basename(
-              CONFIG[item.type][isDevBuild ? 'devFile' : 'prodFile']
-            )
-          )
-          .join(', ')}`
-      );
-    }
-    return true;
-  }
-};
-
-// 主入口函数
+/** 主入口 */
 const main = async () => {
-  const args = process.argv.slice(2);
-  const buildType = args[0] || 'prod'; // 默认生产构建
-
-  if (!['ci', 'prod', 'dev'].includes(buildType)) {
-    console.log(`\n❌ 未知构建类型: ${buildType}`);
-    console.log('可用的构建类型: ci, prod, dev');
+  const mode = process.argv[2] || "dev";
+  if (!["dev", "build"].includes(mode)) {
+    console.log(`\n❌ 未知构建类型: ${mode}`);
+    console.log("可用的构建类型: dev, build");
     process.exit(1);
   }
 
-  console.log(
-    `🚀 OpenList Moe ${buildType === 'ci' ? 'CI ' : '本地'}构建系统\n` +
-      '='.repeat(50)
-  );
+  const isDev = mode === "dev";
+  console.log(`🚀 OpenList Moe 构建\n`);
 
   try {
-    const isCIBuild = buildType === 'ci';
-    const buildInfo = await utils.getBuildInfo(!isCIBuild); // CI 构建时传入 false，本地构建时传入 true
-    const buildTypeName = isCIBuild
-      ? 'CI 生产'
-      : buildType === 'dev'
-      ? '本地开发'
-      : '本地生产';
-    console.log(`${buildType === 'dev' ? '🔧' : '📦'} ${buildTypeName}构建`);
+    const vars = getVariables(isDev);
     console.log(
-      `📌 版本: Moe ${buildInfo.MOE_VERSION}, OpenList ${buildInfo.OP_VERSION}, 时间戳: ${buildInfo.TIMESTAMP}`
+      `📌 版本: Moe ${vars.MOE_VERSION} | OpenList ${vars.OP_VERSION}`,
     );
 
-    const isDevBuild = buildType === 'dev';
-    const success = await buildAll(buildInfo, isDevBuild);
-    if (!success) process.exit(1);
+    await buildAll(vars, isDev);
   } catch (error) {
-    console.error(`\n💥 构建过程异常: ${error.message}`);
+    console.error(`💥 ${error.message}`);
     process.exit(1);
   }
 };
 
-// 运行主程序
 main();

@@ -26,17 +26,17 @@ jobs:
             exit 1
           fi
           echo "OpenList Latest Version : $OP_VERSION"
-          echo "OP_VERSION=$OP_VERSION" >> $GITHUB_OUTPUT
+          echo "op_version=$OP_VERSION" >> $GITHUB_OUTPUT
 
       - name: Install Dependencies
         run: npm ci
 
       - name: Build
-        run: npm run ci
+        run: npm run build
         env:
           # PR number + Run ID
           MOE_VERSION: ${{ github.event.pull_request.number || 'manual' }}-${{ github.run_id }}
-          OP_VERSION: ${{ steps.op_version.outputs.OP_VERSION }}
+          OP_VERSION: ${{ steps.op_version.outputs.op_version }}
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v7
