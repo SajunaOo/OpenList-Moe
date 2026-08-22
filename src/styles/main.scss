@@ -809,12 +809,12 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
  * - 悬停高亮
  * - 最后一项分割线隐藏
  */
-.hope-c-PJLV-idcOWKd-css {
-  transition: background-color .75s;
+.hope-c-PJLV.hope-c-PJLV-idcOWKd-css {
+  transition: background-color .25s;
 
   &:hover,
   &[data-hover] {
-    transition: background-color .25s;
+    background-color: rgb(var(--moe-color-bg-primary) / var(--moe-opacity-medium));
   }
 
   &:last-of-type {
@@ -1291,6 +1291,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
   transition:
     background-color .25s,
     backdrop-filter .25s;
+
   &:hover {
     @include glass(var(--moe-opacity-medium));
     backdrop-filter: none;
