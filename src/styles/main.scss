@@ -42,6 +42,7 @@
   --moe-color-bg-primary: 255 255 255; /** 背景主色 */
   --moe-color-text-primary: #000; /** 主要文本色 */
   --moe-color-text-secondary: #444; /** 次要文本色 */
+  --moe-color-text-highlight: #fff; /** 高亮文本色 */
   --moe-color-checkbox: #000; /** 复选框色 */
   --moe-color-switch: #000; /** 开关色 */
   --moe-color-border: #000; /** 边框/阴影色 */
@@ -69,6 +70,7 @@
   --moe-color-bg-primary: 0 0 0;
   --moe-color-text-primary: #fff;
   --moe-color-text-secondary: var(--hope-colors-neutral11);
+  --moe-color-text-highlight: #000;
   --moe-color-checkbox: #fff;
   --moe-color-switch: #fff;
   --moe-color-border: #fff;
@@ -219,15 +221,16 @@ body {
  */
 .hope-c-PJLV {
   &.hope-breadcrumb__link {
-    &:hover,
-    &[data-hover] {
-      background-color: rgb(var(--moe-color-theme));
-    }
-
     transition:
       color .25s,
       background-color .25s,
       box-shadow .25s;
+
+    &:hover,
+    &[data-hover] {
+      color: var(--moe-color-text-highlight);
+      background-color: rgb(var(--moe-color-theme));
+    }
 
     &:focus {
       box-shadow: var(--moe-shadow-medium);
@@ -328,19 +331,19 @@ body {
 /**
  * 列表右键菜单项
  * 
- * - 菜单项文本色
  * - 圆角与样式过渡
+ * - 菜单项文本色
  */
 .solid-contextmenu__item__content {
-  .hope-text {
-    color: var(--moe-color-text-primary);
-  }
-
   color: rgb(var(--moe-color-text)) !important;
   border-radius: var(--hope-radii-md);
   transition:
     transform .25s,
     background-color .75s;
+
+  .hope-text {
+    color: var(--moe-color-text-primary);
+  }
 }
 
 /** 列表右键菜单项悬停/焦点高亮和平移动效 */
@@ -554,7 +557,7 @@ pre {
     word-break: break-all;
 
     &:hover {
-      color: unset;
+      color: var(--moe-color-text-highlight);
     }
   }
 }
@@ -755,15 +758,15 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
  * - 文本色日夜切换过渡
  */
 .folder-tree-box .hope-text {
-  &:hover,
-  &[data-hover] {
-    background-color: rgb(var(--moe-color-theme));
-    transition: background-color .25s;
-  }
-
   transition:
     color .25s,
-    background-color .75s;
+    background-color .25s;
+
+  &:hover,
+  &[data-hover] {
+    color: var(--moe-color-text-highlight);
+    background-color: rgb(var(--moe-color-theme));
+  }
 }
 
 /** 通用文件目录树选中项悬停文本高亮 */
@@ -986,7 +989,7 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
 
   &:focus,
   &[data-focus] {
-    border-color: unset;
+    border-color: var(--moe-color-border);
     box-shadow: var(--moe-shadow-thin);
   }
 
@@ -1111,12 +1114,11 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
  */
 .hope-list__item .hope-anchor {
   color: var(--moe-color-text-primary);
-  transition: background-color .75s;
+  transition: background-color .25s;
 
   &:hover,
   &[data-hover] {
     background-color: rgb(var(--moe-color-theme));
-    transition: background-color .25s;
   }
 }
 
@@ -1148,12 +1150,11 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
   .hope-anchor {
     transition:
       color .25s,
-      background-color .75s;
+      background-color .25s;
 
     &:hover,
     &[data-hover] {
       background-color: rgb(var(--moe-color-theme));
-      transition: background-color .25s;
     }
   }
 
@@ -1253,7 +1254,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
 
   &:focus,
   &[data-focus] {
-    border-color: unset;
+    border-color: var(--moe-color-border);
     box-shadow: var(--moe-shadow-thin);
   }
 }
@@ -1287,7 +1288,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
     box-shadow .25s;
 
   &[data-focus] {
-    border-color: unset;
+    border-color: var(--moe-color-border);
     box-shadow: var(--moe-shadow-medium);
   }
 }
