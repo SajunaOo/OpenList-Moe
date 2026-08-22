@@ -1,5 +1,5 @@
 <div align="center">
-  
+
 <!-- 项目头像 -->
 <a href="https://github.com/SajunaOo/OpenList-Moe" target="_blank">
   <img width="160" src="https://cdn.jsdmirror.com/gh/SajunaOo/Image/avatar/avatar2.webp" alt="OpenList Moe">
@@ -96,7 +96,7 @@
 
 /**
  * 自定义字体
- * 
+ *
  * - 全局字体
  * - Markdown 区域字体
  * - Aplayer 音乐播放器字体
