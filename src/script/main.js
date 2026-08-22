@@ -3,7 +3,7 @@
  * Repository: https://github.com/SajunaOo/OpenList-Moe
  * Author: 朱茱 (https://www.isajuna.com)
  * (C) 2025 朱茱 - AGPL-3.0 Licensed
- * 
+ *
  * Beautification component crafted for:
  * OpenList {{OP_VERSION}} - (C) OpenListTeam - AGPL-3.0 Licensed
  */
