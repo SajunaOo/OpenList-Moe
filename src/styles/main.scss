@@ -262,10 +262,6 @@ body {
   &:hover,
   &[data-hover] {
     backdrop-filter: blur(10px);
-    transition:
-      transform .45s,
-      backdrop-filter 1s,
-      border-color .25s;
   }
 }
 
@@ -339,7 +335,7 @@ body {
   border-radius: var(--hope-radii-md);
   transition:
     transform .25s,
-    background-color .75s;
+    background-color .25s;
 
   .hope-text {
     color: var(--moe-color-text-primary);
@@ -502,11 +498,10 @@ pre {
 
   .aplayer-list {
     ol li {
-      transition: background-color .75s;
+      transition: background-color .25s;
 
       &:hover {
         background-color: rgb(var(--moe-color-bg-primary) / var(--moe-opacity-high)) !important;
-        transition: background-color .25s;
       }
     }
 
@@ -534,12 +529,11 @@ pre {
 
 /** 视频预览第三方程序图标悬停高亮 */
 .hope-c-PJLV-iiGasCJ-css .hope-anchor {
-  transition: background-color .75s;
+  transition: background-color .25s;
 
   &:hover,
   &[data-hover] {
     @include glass(var(--moe-opacity-low));
-    transition: background-color .25s;
   }
 }
 
@@ -650,18 +644,11 @@ pre {
   transition: background-color .25s; /** 日夜切换过渡 */
 }
 
-/** 右侧工具栏图标样式悬停过渡 */
+/** 右侧工具栏图标样式过渡 */
 .hope-c-PJLV.left-toolbar-box .hope-icon {
   transition:
-    color .75s,
-    background-color .5s;
-
-  &:hover,
-  &[data-hover] {
-    transition: 
-      color .25s cubic-bezier(.4, 0, 1, 1),
-      background-color .25s cubic-bezier(.4, 0, 1, 1);
-  }
+    color .25s,
+    background-color .25s;
 }
 
 /**
@@ -942,11 +929,10 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
   @include glass(var(--moe-opacity-high), 10px);
 
   .hope-select__option {
-    transition: background-color .75s;
+    transition: background-color .25s;
 
     &[data-active] {
       @include glass(var(--moe-opacity-medium));
-      transition: background-color .25s;
     }
   }
 }
@@ -961,12 +947,11 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
   @include glass(var(--moe-opacity-high), 10px);
 
   .hope-menu__item {
-    transition: background-color .75s;
+    transition: background-color .25s;
   }
 
   .hope-menu__item[data-active] {
     @include glass(var(--moe-opacity-medium));
-    transition: background-color .25s;
   }
 }
 
@@ -1296,8 +1281,8 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
 /**
  * 列表布局
  * 
+ * - 毛玻璃背景
  * - 背景色日夜切换过渡
- * - 毛玻璃背景过渡
  * - 悬停高亮
  * - 按钮样式修复（覆盖通用按钮样式）
  */
@@ -1305,12 +1290,10 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
   backdrop-filter: blur(10px);
   transition:
     background-color .25s,
-    backdrop-filter .3s;
-
+    backdrop-filter .25s;
   &:hover {
     @include glass(var(--moe-opacity-medium));
     backdrop-filter: none;
-    transition: backdrop-filter 1s;
 
     td {
       background-color: transparent !important;
@@ -1407,16 +1390,12 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
   transition:
     transform .25s,
     color .25s,
-    background-color .75s;
+    background-color .25s;
 
   &:hover {
     color: #4a6cf7;
     @include glass(var(--moe-opacity-medium));
     transform: translateX(3px);
-    transition:
-      transform .25s,
-      color .25s,
-      background-color .25s;
   }
 }
 
@@ -1561,7 +1540,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
   transition:
     color .25s,
     background-color .25s,
-    backdrop-filter .3s,
+    backdrop-filter .25s,
     border-color .25s,
     box-shadow .25s;
 
@@ -1569,10 +1548,6 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
   &[data-hover] {
     backdrop-filter: none;
     box-shadow: var(--moe-shadow-theme-thin);
-    transition:
-      backdrop-filter 1s,
-      border-color .25s,
-      box-shadow .25s;
   }
 
   .hope-button {
