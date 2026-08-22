@@ -557,7 +557,7 @@ pre {
     word-break: break-all;
 
     &:hover {
-      color: unset;
+      color: var(--moe-color-text-highlight);
     }
   }
 }
@@ -989,7 +989,7 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
 
   &:focus,
   &[data-focus] {
-    border-color: unset;
+    border-color: var(--moe-color-border);
     box-shadow: var(--moe-shadow-thin);
   }
 
@@ -1254,7 +1254,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
 
   &:focus,
   &[data-focus] {
-    border-color: unset;
+    border-color: var(--moe-color-border);
     box-shadow: var(--moe-shadow-thin);
   }
 }
@@ -1288,7 +1288,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
     box-shadow .25s;
 
   &[data-focus] {
-    border-color: unset;
+    border-color: var(--moe-color-border);
     box-shadow: var(--moe-shadow-medium);
   }
 }
