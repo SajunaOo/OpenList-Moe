@@ -355,7 +355,7 @@ body {
 }
 
 /** ================== 文件预览 ================== */
-/** 文件预览方式选择/Markdown 渲染/媒体预览/压缩文件/文本编辑器/文件下载 */
+/** 文件预览方式选择/Markdown 渲染/媒体预览/压缩文件/种子预览器/文本编辑器/文件下载 */
 /** =========== 预览方式 =========== */
 /** 文件预览方式选择下拉触发器边框隐藏 */
 .hope-c-PJLV.hope-select__trigger {
@@ -562,6 +562,74 @@ pre {
   transition: color .25s;
 }
 
+/** =========== 种子预览器 =========== */
+/**
+ * 种子预览器文件列表 兼容模态对话框
+ *
+ * - 边框色去除
+ * - 悬停高亮
+ */
+.hope-c-PJLV {
+  &.hope-c-PJLV-idgxnXl-css {
+    border-color: transparent;
+  }
+
+  &.hope-c-PJLV-iylBXu-css {
+    transition: background-color .75s;
+
+    &:hover,
+    &[data-hover] {
+      @include glass(var(--moe-opacity-medium));
+      transition: background-color .25s;
+    }
+  }
+}
+
+/**
+ * 种子预览器文本色
+ *
+ * - 文件列表文件总大小/总数文本 兼容离线下载对话框链接下载表单说明文本
+ * - 哈希文本
+ * - 文件大小文本
+ */
+.hope-c-PJLV {
+  &.hope-c-PJLV-ibFFErW-css,
+  &.hope-c-PJLV-ikKEHLC-css,
+  &.hope-c-PJLV-ihcWhxu-css {
+    color: var(--moe-color-text-secondary);
+    transition: color .25s; /** 日夜切换过渡 */
+  }
+}
+
+/** 种子预览器文件列表选择全部和文件名文本日夜切换过渡 */
+.hope-c-PJLV-ikhEzVU-css,
+.hope-c-PJLV-igglQMG-css {
+  transition: color .25s;
+}
+
+/** =========== 文本编辑器 =========== */
+/**
+ * 文本编辑器工具栏
+ * 
+ * - 背景透明
+ * - 底部间距修复
+ */
+.hope-c-PJLV {
+  &.hope-c-PJLV-ikBAcuf-css,
+  &.hope-c-PJLV-igxEgse-css {
+    background-color: transparent;
+  }
+
+  &.hope-c-PJLV-iktNbUa-css {
+    margin-top: -1px;
+  }
+}
+
+/** 文本编辑器字体大小调整按钮高亮修复 */
+.hope-c-jBnYHH-ifUEAog-css .hope-button:hover {
+  z-index: 1;
+}
+
 /** =========== 文件下载 =========== */
 /**
  * 文件信息
@@ -611,29 +679,6 @@ pre {
       @include glass(var(--moe-opacity-high));
     }
   }
-}
-
-/** =========== 文本编辑器 =========== */
-/**
- * 文本编辑器工具栏
- *
- * - 背景透明
- * - 底部间距修复
- */
-.hope-c-PJLV {
-  &.hope-c-PJLV-ikBAcuf-css,
-  &.hope-c-PJLV-igxEgse-css {
-    background-color: transparent;
-  }
-
-  &.hope-c-PJLV-iktNbUa-css {
-    margin-top: -1px;
-  }
-}
-
-/** 文本编辑器字体大小调整按钮高亮修复 */
-.hope-c-jBnYHH-ifUEAog-css .hope-button:hover {
-  z-index: 1;
 }
 
 /** ================== 工具栏 ================== */
@@ -860,6 +905,70 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
   &:hover,
   &[data-hover] {
     box-shadow: var(--moe-shadow-theme-thin);
+  }
+}
+
+/** =========== 离线下载 =========== */
+/** 
+ * 标签页触发器
+ * 
+ * - 选中与未选中高亮
+ * - 边框色去除
+ */
+.hope-c-PJLV-igtSLlA-css {
+  .hope-c-ivMHWx-EevEv-cv {
+    color: rgb(var(--moe-color-theme));
+  }
+
+  .hope-c-ivMHWx-lnXQOQ-cv {
+    color: var(--moe-color-text-primary);
+    border-color: transparent;
+
+    &:hover {
+      border-color: transparent;
+    }
+  }
+}
+
+/**
+ * 链接下载/ BT 下载文本色
+ *
+ * - 链接下载文本区域占位符
+ * - BT 下载上传框说明文本
+ * - BT 下载表单说明文本
+ */
+.hope-c-PJLV {
+  &.hope-textarea::placeholder {
+    color: var(--hope-colors-neutral11);
+  }
+
+  &.hope-c-PJLV-ibSRtAz-css,
+  &.hope-c-PJLV-ijhsbmg-css {
+    color: var(--moe-color-text-secondary);
+  }
+}
+
+/* BT 下载种子上传对话框悬停高亮 */
+.hope-c-PJLV.hope-c-PJLV-icJplsR-css {
+  transition:
+    background-color .25s,
+    border-color .25s,
+    box-shadow .25s;
+
+  &:hover,
+  &[data-hover] {
+    @include glass(var(--moe-opacity-low));
+    border-color: transparent;
+    box-shadow: var(--moe-shadow-medium);
+  }
+}
+
+/* BT 下载重新选择按钮边框色去除 */
+.hope-c-PJLV.hope-c-ivMHWx-kzRvMQ-size-xs {
+  border-color: transparent;
+
+  &:hover{
+    border-color: transparent;
   }
 }
 
@@ -1330,14 +1439,9 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
   transition: background-color .25s; /** 日夜切换过渡 */
 }
 
-/** 再确认对话框毛玻璃背景和边框隐藏 */
+/** 再确认对话框毛玻璃背景和边框色去除 */
 .hope-c-PJLV.hope-popover__content {
   @include glass(var(--moe-opacity-high), 10px);
-  border-color: transparent;
-}
-
-/** 再确认对话框边框隐藏 */
-.hope-popover__header {
   border-color: transparent;
 }
 
@@ -1384,18 +1488,20 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
  * - 悬停高亮
  * - 平移动效
  */
-.hope-c-PJLV.hope-c-PJLV-ikmVjeJ-css,
-.hope-c-PJLV.hope-c-PJLV-ieTkpPy-css,
-.hope-c-PJLV.hope-c-PJLV-icXpZyG-css {
-  transition:
-    transform .25s,
-    color .25s,
-    background-color .25s;
+.hope-c-PJLV {
+  &.hope-c-PJLV-ikmVjeJ-css,
+  &.hope-c-PJLV-ieTkpPy-css,
+  &.hope-c-PJLV-icXpZyG-css {
+    transition:
+      transform .25s,
+      color .25s,
+      background-color .25s;
 
-  &:hover {
-    color: #4a6cf7;
-    @include glass(var(--moe-opacity-medium));
-    transform: translateX(3px);
+    &:hover {
+      color: #4a6cf7;
+      @include glass(var(--moe-opacity-medium));
+      transform: translateX(3px);
+    }
   }
 }
 
@@ -1504,8 +1610,7 @@ div.hope-c-PJLV.hope-c-PJLV-igmvEDM-css {
 }
 
 /** =========== 用户管理页 =========== */
-/**
- * 用户权限选项框毛玻璃容器  兼容压缩包密码输入 */
+/** 用户权限选项框毛玻璃容器 兼容压缩包密码输入 */
 .hope-c-PJLV-ikOKUHw-css {
   @include labelbox(10px);
 
