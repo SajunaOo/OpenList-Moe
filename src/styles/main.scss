@@ -501,12 +501,12 @@ pre {
       transition: background-color .25s;
 
       &:hover {
-        background-color: rgb(var(--moe-color-bg-primary) / var(--moe-opacity-high)) !important;
+        background-color: rgb(var(--moe-color-bg-primary) / var(--moe-opacity-medium)) !important;
       }
     }
 
     .aplayer-list-light {
-      background-color: rgb(var(--moe-color-bg-primary) / var(--moe-opacity-high)) !important;
+      background-color: rgb(var(--moe-color-bg-primary) / var(--moe-opacity-medium)) !important;
     }
   }
 }
