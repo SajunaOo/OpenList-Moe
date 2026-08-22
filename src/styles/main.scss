@@ -963,6 +963,15 @@ div.hope-c-PJLV.hope-c-PJLV-ieGWMbI-css {
   }
 }
 
+/* BT 下载重新选择按钮边框色去除 */
+.hope-c-PJLV.hope-c-ivMHWx-kzRvMQ-size-xs {
+  border-color: transparent;
+
+  &:hover{
+    border-color: transparent;
+  }
+}
+
 /** =========== 重命名 =========== */
 /** 重命名方式选项框容器 */
 .hope-c-PJLV-ieqwtmo-css .hope-radio {
