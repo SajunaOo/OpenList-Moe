@@ -331,19 +331,19 @@ body {
 /**
  * 列表右键菜单项
  * 
- * - 菜单项文本色
  * - 圆角与样式过渡
+ * - 菜单项文本色
  */
 .solid-contextmenu__item__content {
-  .hope-text {
-    color: var(--moe-color-text-primary);
-  }
-
   color: rgb(var(--moe-color-text)) !important;
   border-radius: var(--hope-radii-md);
   transition:
     transform .25s,
     background-color .75s;
+
+  .hope-text {
+    color: var(--moe-color-text-primary);
+  }
 }
 
 /** 列表右键菜单项悬停/焦点高亮和平移动效 */
