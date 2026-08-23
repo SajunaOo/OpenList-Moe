@@ -60,6 +60,11 @@ applyThemeColor();
   }
   const CHILD_SELECTORS = children;
 
+  // 预编译组合选择器
+  const COMBINED_SELECTOR = CHILD_SELECTORS.map((s) => `:scope > ${s}`).join(
+    ", ",
+  );
+
   // ---------- 状态 ----------
   let container = null;
   let observer = null;
@@ -72,9 +77,19 @@ applyThemeColor();
   let retryTimeoutId = null;
   let initTimeoutId = null;
 
-  // ---------- 路径检测 ----------
+  // ---------- 工具函数 ----------
   function isFrontPage() {
     return !window.location.pathname.startsWith(ADMIN_PATH);
+  }
+
+  // ---------- 通用防抖更新 ----------
+  function scheduleUpdate() {
+    if (isUpdatePending) return;
+    isUpdatePending = true;
+    requestAnimationFrame(() => {
+      isUpdatePending = false;
+      updateGlass();
+    });
   }
 
   // ---------- 玻璃控制 ----------
@@ -86,15 +101,13 @@ applyThemeColor();
 
   function hasDirectChild(parent) {
     if (!parent) return false;
-    const combinedSelector = CHILD_SELECTORS.map((s) => `:scope > ${s}`).join(
-      ", ",
-    );
-    return parent.querySelector(combinedSelector) !== null;
+    return parent.querySelector(COMBINED_SELECTOR) !== null;
   }
 
   // ---------- 核心更新 ----------
   function updateGlass() {
     if (!isActive) return;
+
     if (!container || !document.body.contains(container)) {
       container = document.querySelector(CONTAINER_SELECTOR);
       if (!container) {
@@ -102,15 +115,7 @@ applyThemeColor();
         return;
       }
       if (observer) observer.disconnect();
-      observer = new MutationObserver(() => {
-        if (!isUpdatePending) {
-          isUpdatePending = true;
-          requestAnimationFrame(() => {
-            isUpdatePending = false;
-            updateGlass();
-          });
-        }
-      });
+      observer = new MutationObserver(scheduleUpdate);
       observer.observe(container, { childList: true, subtree: false });
     }
     setGlass(!hasDirectChild(container));
@@ -119,6 +124,7 @@ applyThemeColor();
   // ---------- 初始化 ----------
   function init() {
     if (isActive) return;
+
     container = document.querySelector(CONTAINER_SELECTOR);
     if (!container) {
       if (retryCount >= MAX_RETRY_ATTEMPTS) return;
@@ -127,21 +133,37 @@ applyThemeColor();
       retryTimeoutId = setTimeout(init, RETRY_INTERVAL_MS);
       return;
     }
+
     retryCount = 0;
     isActive = true;
-    observer = new MutationObserver(() => {
-      if (!isUpdatePending) {
-        isUpdatePending = true;
-        requestAnimationFrame(() => {
-          isUpdatePending = false;
-          updateGlass();
-        });
-      }
-    });
+    observer = new MutationObserver(scheduleUpdate);
     observer.observe(container, { childList: true, subtree: false });
     updateGlass();
+
     if (initTimeoutId) clearTimeout(initTimeoutId);
     initTimeoutId = setTimeout(updateGlass, 50);
+  }
+
+  // ---------- 重置 ----------
+  function reset() {
+    if (observer) {
+      observer.disconnect();
+      observer = null;
+    }
+    container = null;
+    isActive = false;
+    isGlassOn = false;
+    retryCount = 0;
+    isUpdatePending = false;
+    if (retryTimeoutId) {
+      clearTimeout(retryTimeoutId);
+      retryTimeoutId = null;
+    }
+    if (initTimeoutId) {
+      clearTimeout(initTimeoutId);
+      initTimeoutId = null;
+    }
+    init();
   }
 
   // ---------- 销毁 ----------
@@ -170,14 +192,21 @@ applyThemeColor();
   }
 
   // ---------- URL 变化处理 ----------
-  function onUrlChange() {
+  function handleUrlChange() {
     const current = window.location.href;
     if (current === lastUrl) return;
     lastUrl = current;
+
     if (!isFrontPage()) {
       if (isActive) destroy();
+      return;
+    }
+
+    if (!isActive) {
+      init();
     } else {
-      if (!isActive) init();
+      reset();
+      window.dispatchEvent(new CustomEvent("moe:glass:reset"));
     }
   }
 
@@ -190,7 +219,7 @@ applyThemeColor();
       destroy();
     }
     if (urlPollId) clearInterval(urlPollId);
-    urlPollId = setInterval(onUrlChange, URL_POLL_INTERVAL_MS);
+    urlPollId = setInterval(handleUrlChange, URL_POLL_INTERVAL_MS);
   }
 
   if (document.readyState === "loading") {
@@ -204,22 +233,42 @@ applyThemeColor();
 //  备案号模块
 // ============================================================
 (function () {
-  if (config.beian?.enabled !== true) return;
-  if (window.location.pathname.startsWith(ADMIN_PATH)) return;
-
+  // ---------- 配置 ----------
   const BEIAN_TEXT = config.beian?.text || "豫 ICP 备 2025000000 号";
   const BEIAN_LINK = config.beian?.link || "https://beian.miit.gov.cn";
   const BEIAN_CLASS_NAME =
     config.beian?.className || "hope-anchor hope-c-PJLV-idrWMwW-css";
   const BEIAN_TIMEOUT_MS = config.beian?.timeout ?? 3000;
 
-  const root = document.querySelector("#root");
-  if (!root) return;
-
+  // ---------- 状态 ----------
   let observer = null;
   let beianTimeoutId = null;
+  let isInserted = false;
+  let root = null;
 
-  function insertBeian(footer) {
+  // ---------- 工具函数 ----------
+  function getRoot() {
+    if (!root || !document.body.contains(root)) {
+      root = document.querySelector("#root");
+    }
+    return root;
+  }
+
+  function cleanup() {
+    if (observer) {
+      observer.disconnect();
+      observer = null;
+    }
+    if (beianTimeoutId) {
+      clearTimeout(beianTimeoutId);
+      beianTimeoutId = null;
+    }
+  }
+
+  // ---------- 插入 ----------
+  function insert(footer) {
+    if (footer.querySelector(".beian-container")) return;
+
     const wrapper = document.createElement("div");
     wrapper.className = "beian-container";
     wrapper.style.textAlign = "center";
@@ -237,33 +286,62 @@ applyThemeColor();
     footer.appendChild(wrapper);
     wrapper.hidden = false;
 
-    observer && observer.disconnect();
-    beianTimeoutId && clearTimeout(beianTimeoutId);
+    isInserted = true;
+    cleanup();
   }
 
-  function checkFooter() {
-    const footer = root.querySelector(":scope > .footer");
+  // ---------- 检查并插入 ----------
+  function checkAndInsert() {
+    const currentRoot = getRoot();
+    if (!currentRoot) return false;
+    const footer = currentRoot.querySelector(":scope > .footer");
     if (footer) {
-      insertBeian(footer);
+      insert(footer);
       return true;
     }
     return false;
   }
 
-  if (!checkFooter()) {
+  // ---------- 启动 ----------
+  function start() {
+    if (config.beian?.enabled !== true) return;
+    if (window.location.pathname.startsWith(ADMIN_PATH)) return;
+
+    const currentRoot = getRoot();
+    if (!currentRoot) return;
+
+    if (checkAndInsert()) return;
+
     observer = new MutationObserver(() => {
-      if (checkFooter()) observer.disconnect();
+      if (checkAndInsert()) cleanup();
     });
-    observer.observe(root, { childList: true, subtree: false });
-    beianTimeoutId = setTimeout(
-      () => observer && observer.disconnect(),
-      BEIAN_TIMEOUT_MS,
-    );
+    observer.observe(currentRoot, { childList: true, subtree: false });
+    beianTimeoutId = setTimeout(cleanup, BEIAN_TIMEOUT_MS);
   }
+
+  // ---------- 重置 ----------
+  function reset() {
+    cleanup();
+
+    if (isInserted) {
+      const currentRoot = getRoot();
+      if (currentRoot && currentRoot.querySelector(":scope > .footer")) {
+        return;
+      }
+      isInserted = false;
+    }
+
+    start();
+  }
+
+  // ---------- 事件监听 ----------
+  window.addEventListener("moe:glass:reset", reset);
+
+  start();
 })();
 
 // ============================================================
-//  控制台品牌信息
+//  控制台信息
 // ============================================================
 console.log(
   "\n %c OpenList Moe %c {{MOE_VERSION}} ",
