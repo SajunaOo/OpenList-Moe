@@ -252,11 +252,6 @@ body {
     box-shadow .25s;
 }
 
-/** 选中项毛玻璃背景 */
-.selected {
-  backdrop-filter: blur(5px);
-}
-
 /** 列表项目录大小普通文本样式调整 */
 .size {
   display: flex;
