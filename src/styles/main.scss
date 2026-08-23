@@ -257,14 +257,6 @@ body {
   backdrop-filter: blur(5px);
 }
 
-/** 列表项悬停毛玻璃背景 */
-.viselect-item {
-  &:hover,
-  &[data-hover] {
-    backdrop-filter: blur(10px);
-  }
-}
-
 /** 列表项目录大小普通文本样式调整 */
 .size {
   display: flex;

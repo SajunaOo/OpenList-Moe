@@ -14,6 +14,11 @@
  * Maintains optimal readability and usability through clean, minimal aesthetics.
  */
 
+// ============================================================
+//  全局配置
+// ============================================================
+const config = window.MOE_CONFIG || {};
+
 /** 全屏背景图加载完成淡入 */
 function OpenList_Loaded() {
   document.body.classList.add('loaded');
@@ -33,6 +38,168 @@ document.documentElement.style.setProperty(
   '--moe-color-theme',
   hexToRgb(window.OPENLIST_CONFIG?.main_color)
 );
+
+// ============================================================
+//  毛玻璃模块
+// ============================================================
+(function () {
+  // ---------- 配置 ----------
+  const BLUR_PX = config.glass?.blur ?? 3;
+  const ADMIN_PATH = config.adminPath || "/@manage";
+  const CONTAINER_SELECTOR = config.glass?.container || ".obj-box";
+  const URL_POLL_INTERVAL_MS = config.glass?.urlPollInterval ?? 1500;
+  const RETRY_INTERVAL_MS = config.glass?.retryInterval ?? 100;
+  const RETRY_TIMEOUT_MS = config.glass?.retryTimeoutMs ?? 3000;
+  const MAX_RETRY_ATTEMPTS = Math.ceil(RETRY_TIMEOUT_MS / RETRY_INTERVAL_MS);
+
+  let children = config.glass?.children;
+  if (typeof children === "string") {
+    children = children
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+  } else if (!Array.isArray(children) || children.length === 0) {
+    children = [".hope-c-PJLV-iiRelTQ-css", ".hope-c-PJLV-ibZqGFV-css"];
+  }
+  const CHILD_SELECTORS = children;
+
+  // ---------- 状态 ----------
+  let container = null;
+  let observer = null;
+  let isActive = false;
+  let isGlassOn = false;
+  let isUpdatePending = false;
+  let retryCount = 0;
+  let lastUrl = window.location.href;
+  let urlPollId = null;
+  let retryTimeoutId = null;
+  let initTimeoutId = null;
+
+  // ---------- 路径检测 ----------
+  function isFrontPage() {
+    return !window.location.pathname.startsWith(ADMIN_PATH);
+  }
+
+  // ---------- 玻璃控制 ----------
+  function setGlass(enable) {
+    if (!isActive || !container || enable === isGlassOn) return;
+    container.style.backdropFilter = enable ? `blur(${BLUR_PX}px)` : "none";
+    isGlassOn = enable;
+  }
+
+  function hasDirectChild(parent) {
+    if (!parent) return false;
+    const combinedSelector = CHILD_SELECTORS.map((s) => `:scope > ${s}`).join(", ");
+    return parent.querySelector(combinedSelector) !== null;
+  }
+
+  // ---------- 核心更新 ----------
+  function updateGlass() {
+    if (!isActive) return;
+    if (!container || !document.body.contains(container)) {
+      container = document.querySelector(CONTAINER_SELECTOR);
+      if (!container) {
+        setGlass(false);
+        return;
+      }
+      if (observer) observer.disconnect();
+      observer = new MutationObserver(() => {
+        if (!isUpdatePending) {
+          isUpdatePending = true;
+          requestAnimationFrame(() => {
+            isUpdatePending = false;
+            updateGlass();
+          });
+        }
+      });
+      observer.observe(container, { childList: true, subtree: false });
+    }
+    setGlass(!hasDirectChild(container));
+  }
+
+  // ---------- 初始化 ----------
+  function init() {
+    if (isActive) return;
+    container = document.querySelector(CONTAINER_SELECTOR);
+    if (!container) {
+      if (retryCount >= MAX_RETRY_ATTEMPTS) return;
+      retryCount++;
+      if (retryTimeoutId) clearTimeout(retryTimeoutId);
+      retryTimeoutId = setTimeout(init, RETRY_INTERVAL_MS);
+      return;
+    }
+    retryCount = 0;
+    isActive = true;
+    observer = new MutationObserver(() => {
+      if (!isUpdatePending) {
+        isUpdatePending = true;
+        requestAnimationFrame(() => {
+          isUpdatePending = false;
+          updateGlass();
+        });
+      }
+    });
+    observer.observe(container, { childList: true, subtree: false });
+    updateGlass();
+    if (initTimeoutId) clearTimeout(initTimeoutId);
+    initTimeoutId = setTimeout(updateGlass, 50);
+  }
+
+  // ---------- 销毁 ----------
+  function destroy() {
+    isActive = false;
+    if (observer) {
+      observer.disconnect();
+      observer = null;
+    }
+    if (urlPollId) {
+      clearInterval(urlPollId);
+      urlPollId = null;
+    }
+    if (retryTimeoutId) {
+      clearTimeout(retryTimeoutId);
+      retryTimeoutId = null;
+    }
+    if (initTimeoutId) {
+      clearTimeout(initTimeoutId);
+      initTimeoutId = null;
+    }
+    isGlassOn = false;
+    container = null;
+    retryCount = 0;
+    isUpdatePending = false;
+  }
+
+  // ---------- URL 变化处理 ----------
+  function onUrlChange() {
+    const current = window.location.href;
+    if (current === lastUrl) return;
+    lastUrl = current;
+    if (!isFrontPage()) {
+      if (isActive) destroy();
+    } else {
+      if (!isActive) init();
+    }
+  }
+
+  // ---------- 启动 ----------
+  function start() {
+    lastUrl = window.location.href;
+    if (isFrontPage()) {
+      init();
+    } else {
+      destroy();
+    }
+    if (urlPollId) clearInterval(urlPollId);
+    urlPollId = setInterval(onUrlChange, URL_POLL_INTERVAL_MS);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", start);
+  } else {
+    start();
+  }
+})();
 
 /** 控制台输出 */
 console.log(
