@@ -548,6 +548,14 @@ pre {
   }
 }
 
+/** 压缩文件列表项悬停毛玻璃背景 */
+.hope-c-PJLV-iiRelTQ-css .list-item {
+  &:hover,
+  &[data-hover] {
+    backdrop-filter: blur(10px);
+  }
+}
+
 /** Github 压缩文件底部分割线和字符串文本色日夜切换过渡 */
 .hope-divider,
 .hope-c-PJLV-idKQrVC-css {
