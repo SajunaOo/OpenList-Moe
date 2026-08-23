@@ -10,11 +10,13 @@
 
 ```css
 :root {
-  --moe-color-checkbox: #000; /* 白天模式 */
+  /* 白天模式 */
+  --moe-color-checkbox: #000;
 }
 
 .hope-ui-dark {
-  --moe-color-checkbox: #fff; /* 夜间模式 */
+ /* 夜间模式 */
+  --moe-color-checkbox: #fff;
 }
 ```
 
@@ -31,7 +33,7 @@ window.MOE_CONFIG = {
   beian: {
     enabled: true,                               /** 是否启用 */
     text: "豫 ICP 备 2025000000 号",              /** 备案号文本 */
-    link: "https://beian.miit.gov.cn",           /** 备案号链接 */
+    link: "https://beian.miit.gov.cn",           /** 备案号链接（可省略） */
     className: "hope-anchor hope-c-PJLV-idrWMwW-css", /** 链接样式类（可省略） */
     timeout: 3000,                               /** 超时时间 ms（可省略） */
   },

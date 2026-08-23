@@ -112,7 +112,7 @@ body,.markdown-body,.aplayer,.art-video-player,[class*="hint--"]:after {
 
 在 OpenList 的 **自定义内容** 添加以下代码：
 
-> 💡 **备案**：不需要备案号时，删除 `MOE_CONFIG` 配置即可。
+> 💡 **备案**：不需要备案号时，删除 `MOE_CONFIG` 配置；使用工信部链接时，可以删除 `beian.link` 配置。
 >
 > 💡 **JS**：`MOE_CONFIG` 配置必须放在 JS 之前，否则配置不会生效。
 
