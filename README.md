@@ -77,9 +77,10 @@
 
 在 OpenList 的 **自定义头部** 添加以下代码：
 
-> 💡 **背景**：建议使用简洁素雅的图片，花哨的图片容易影响界面可读性与视觉效果；修改下方 URL 即可自定义，删除背景 CSS 则使用 OpenList Moe 默认背景。
+> [!IMPORTANT]
+> 🖼️ **背景**：建议使用简洁素雅的图片，花哨的图片容易影响界面可读性与视觉效果；修改下方 URL 即可自定义，删除背景 CSS 则使用 OpenList Moe 默认背景。
 >
-> 💡 **字体**：修改下方 `href` 和 `font-family` 可自定义字体；删除字体 `<link>` 和字体 CSS 则使用 OpenList 默认字体。
+> 🖋️ **字体**：修改下方 `href` 和 `font-family` 可自定义字体；删除字体 `<link>` 和字体 CSS 则使用 OpenList 默认字体。
 
 ```html
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600&display=swap" rel="stylesheet">
@@ -112,9 +113,11 @@ body,.markdown-body,.aplayer,.art-video-player,[class*="hint--"]:after {
 
 在 OpenList 的 **自定义内容** 添加以下代码：
 
-> 💡 **备案**：不需要备案号时，删除 `MOE_CONFIG` 配置；使用工信部链接时，可以删除 `beian.link` 配置。
->
-> 💡 **JS**：`MOE_CONFIG` 配置必须放在 JS 之前，否则配置不会生效。
+> [!IMPORTANT]
+> 🛡️ **备案**：不需要备案号时，删除 `MOE_CONFIG` 配置；使用工信部链接时，可以删除 `beian.link` 配置。
+
+> [!CAUTION]
+> ⚠️ **JS**：`MOE_CONFIG` 配置必须放在 JS 之前，否则配置不会生效。
 
 ```html
 <script>
@@ -129,6 +132,7 @@ window.MOE_CONFIG = {
 <script src="https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe@dist/js/OpenList-Moe.min.js"></script>
 ```
 
+> [!NOTE]
 > 📖 如需高级配置（元素样式、完整 MOE_CONFIG、常见问题），请查阅 **[高级配置文档](ADVANCED.md)**。
 
 ## 📁 项目结构
