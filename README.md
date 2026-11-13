@@ -11,33 +11,33 @@
 <!-- 徽标区 -->
 <p>
   <!-- Release Version -->
-  <a href="https://github.com/SajunaOo/OpenList-Moe/releases"><img src="https://img.shields.io/github/v/release/SajunaOo/OpenList-Moe?&style=flat-square&color=4A90E2" alt="Release (with filter)"></a>
-   <!-- Downloads -->
-  <a href="https://github.com/SajunaOo/OpenList-Moe/releases"><img src="https://img.shields.io/github/downloads/SajunaOo/OpenList-Moe/total?style=flat-square&color=7ED321&logo=github" alt="Downloads"></a>
+  <a href="https://github.com/SajunaOo/OpenList-Moe/releases"><img src="https://img.shields.io/github/v/release/SajunaOo/OpenList-Moe?style=flat-square&color=4A90E2"></a>
+  <!-- Downloads -->
+  <a href="https://github.com/SajunaOo/OpenList-Moe/releases"><img src="https://img.shields.io/github/downloads/SajunaOo/OpenList-Moe/total?style=flat-square&color=7ED321&logo=github"></a>
   <!-- Build Status -->
-  <a href="https://github.com/SajunaOo/OpenList-Moe/actions/workflows/release.yml"><img src="https://img.shields.io/github/actions/workflow/status/SajunaOo/OpenList-Moe/release.yml?style=flat-square" alt="Build Status"></a>
+  <a href="https://github.com/SajunaOo/OpenList-Moe/actions/workflows/release.yml"><img src="https://img.shields.io/github/actions/workflow/status/SajunaOo/OpenList-Moe/release.yml?style=flat-square"></a>
   <!-- License -->
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/SajunaOo/OpenList-Moe?style=flat-square&color=9013FE&label=License" alt="License"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/SajunaOo/OpenList-Moe?style=flat-square&color=9013FE&label=License"></a>
   <!-- Stars -->
-  <a href="https://github.com/SajunaOo/OpenList-Moe/stargazers"><img src="https://img.shields.io/github/stars/SajunaOo/OpenList-Moe?style=flat-square&color=F5A623" alt="Repo stars"></a>
+  <a href="https://github.com/SajunaOo/OpenList-Moe/stargazers"><img src="https://img.shields.io/github/stars/SajunaOo/OpenList-Moe?style=flat-square&color=F5A623"></a>
 </p>
 
 <!-- 项目简介 -->
 <p>
-  <strong>为 OpenList 全局注入半透明模糊效果<br>支持日夜切换，覆盖文件列表/预览/后台等全组件</strong>
+  <strong>为 OpenList 全局注入半透明模糊效果<br>支持日夜切换，覆盖文件列表 / 预览 / 后台等全组件</strong>
 </p>
 
 </div>
 
 ## ✨ 特性
 
-🌓 **兼容日/夜间模式** - 自动适配不同背景与配色方案
+- 🌓 **兼容日 / 夜间模式** — 自动适配不同背景与配色方案
 
-🪟 **全元素毛玻璃效果** - 半透明元素结合背景模糊
+- 🪟 **全元素毛玻璃效果** — 半透明元素结合背景模糊
 
-🎨 **多层次透明度调校** - 完美的视觉层次感
+- 🎨 **多层次透明度调校** — 完美的视觉层次感
 
-📱 **响应式设计** - 完美适配桌面端和移动端
+- 📱 **响应式设计** — 完美适配桌面端和移动端
 
 ## 🖼️ 截图
 
@@ -77,33 +77,34 @@
 
 在 OpenList 的 **自定义头部** 添加以下代码：
 
+> [!IMPORTANT]
+> 🖼️ **背景**：建议使用简洁素雅的图片，花哨的图片容易影响界面可读性与视觉效果；修改下方 URL 即可自定义，删除背景 CSS 则使用 OpenList Moe 默认背景。
+>
+> 🖋️ **字体**：修改下方 `href` 和 `font-family` 可自定义字体；删除字体 `<link>` 和字体 CSS 则使用 OpenList 默认字体。
+
 ```html
-<!-- 修改 href 和 font-family 以自定义字体，删除字体 <link> 和字体 CSS 则使用 OpenList 默认字体 -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe@dist/css/OpenList-Moe.min.css" rel="stylesheet">
 
 <style>
-/** 修改 URL 以自定义背景，删除背景 CSS 则使用 OpenList Moe 默认背景 */
 :root {
-  --moe-bg-image-desktop: url("https://cdn.jsdmirror.com/gh/SajunaOo/Image/OpenList-Moe/light_desktop/玫瑰花海_1.webp"); /** 默认白天模式桌面端背景图 */
-  --moe-bg-image-mobile: url("https://cdn.jsdmirror.com/gh/SajunaOo/Image/OpenList-Moe/light_mobile/沉浸感_5.webp"); /** 默认白天模式移动端背景图 */
+  /** 白天模式背景图 */
+  --moe-bg-image-desktop: url("https://cdn.jsdmirror.com/gh/SajunaOo/Image/OpenList-Moe/light_desktop/玫瑰花海_1.webp");
+  --moe-bg-image-mobile: url("https://cdn.jsdmirror.com/gh/SajunaOo/Image/OpenList-Moe/light_mobile/沉浸感_5.webp");
 }
 
 .hope-ui-dark {
-  --moe-bg-image-desktop: url("https://cdn.jsdmirror.com/gh/SajunaOo/Image/OpenList-Moe/dark_desktop/中秋佳节_3.webp"); /** 默认夜间模式桌面端背景图 */
-  --moe-bg-image-mobile: url("https://cdn.jsdmirror.com/gh/SajunaOo/Image/OpenList-Moe/dark_mobile/雪中小屋_5.webp"); /** 默认夜间模式移动端背景图 */
+  /** 夜间模式背景图 */
+  --moe-bg-image-desktop: url("https://cdn.jsdmirror.com/gh/SajunaOo/Image/OpenList-Moe/dark_desktop/中秋佳节_3.webp");
+  --moe-bg-image-mobile: url("https://cdn.jsdmirror.com/gh/SajunaOo/Image/OpenList-Moe/dark_mobile/雪中小屋_5.webp");
 }
 
 /**
  * 自定义字体
- *
- * - 全局字体
- * - Markdown 区域字体
- * - Aplayer 音乐播放器字体
- * - ArtPlayer 视频播放器和 tooltip 提示字体
+ * 覆盖：全局 / Markdown / Aplayer / ArtPlayer / Tooltip
  */
-body, .markdown-body, .aplayer, .art-video-player, [class*=hint--]:after {
-  font-family: 'Noto Serif SC' !important;
+body,.markdown-body,.aplayer,.art-video-player,[class*="hint--"]:after {
+  font-family: "Noto Serif SC" !important;
 }
 </style>
 ```
@@ -112,38 +113,27 @@ body, .markdown-body, .aplayer, .art-video-player, [class*=hint--]:after {
 
 在 OpenList 的 **自定义内容** 添加以下代码：
 
+> [!IMPORTANT]
+> 🛡️ **备案**：不需要备案号时，删除 `MOE_CONFIG` 配置；使用工信部链接时，可以删除 `beian.link` 配置。
+
+> [!CAUTION]
+> ⚠️ **JS**：`MOE_CONFIG` 配置必须放在 JS 之前，否则配置不会生效。
+
 ```html
-<script src="https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe@dist/js/OpenList-Moe.min.js"></script>
-
-<!-- 如果你不需要添加备案号，请删除以下代码 -->
-<div class="beian-container" style="text-align: center;" hidden>
-  <a class="hope-anchor hope-c-PJLV-idrWMwW-css" href="https://beian.miit.gov.cn" target="_blank" rel="noopener" style="font-size: 14px;">
-    豫 ICP 备 2025000000 号</a>
-</div>
-
 <script>
-/** 备案信息加载 */
-(()=>{const e=new MutationObserver(()=>{const o=document.querySelector(".footer"),n=document.querySelector(".beian-container");o&&n&&(o.append(n),n.hidden=!1,e.disconnect(),clearTimeout(t))}),t=setTimeout(()=>e.disconnect(),5e3);e.observe(document.body,{childList:!0,subtree:!0})})();
+window.MOE_CONFIG = {
+  beian: {
+    enabled: true,
+    text: "豫 ICP 备 2025000000 号",
+    link: "https://beian.miit.gov.cn"
+  }
+};
 </script>
+<script src="https://cdn.jsdmirror.com/gh/SajunaOo/OpenList-Moe@dist/js/OpenList-Moe.min.js"></script>
 ```
 
-## 🎨 自定义配置
-
-### 查看源码变量
-
-如果你需要深度定制特定元素的样式，可以参考 [main.scss](src/styles/main.scss) 中的 **全局变量定义** 部分。
-
-### 示例：修改复选框颜色
-
-```css
-:root {
-  --moe-color-checkbox: #f8b34e; /** 白天模式复选框颜色 */
-}
-
-.hope-ui-dark {
-  --moe-color-checkbox: #f8b34e; /** 夜间模式复选框颜色 */
-}
-```
+> [!NOTE]
+> 📖 如需高级配置（元素样式、完整 MOE_CONFIG、常见问题），请查阅 **[高级配置文档](ADVANCED.md)**。
 
 ## 📁 项目结构
 
@@ -157,15 +147,16 @@ OpenList-Moe/
 ├── dist/                 # 构建输出
 ├── screenshot/           # 效果截图
 ├── build.js              # 构建脚本
-└── README.md             # 项目文档
+├── README.md             # 项目文档
+└── ADVANCED.md           # 高级配置
 ```
 
 ## 📄 许可证
 
-本项目采用 **AGPL-3.0** 许可证。详见 [LICENSE](LICENSE) 文件。
+本项目采用 **AGPL-3.0** 许可证。详见 **[LICENSE](LICENSE)** 文件。
 
 ## 🤩 贡献者
 
 <a href="https://github.com/SajunaOo/OpenList-Moe/graphs/contributors">
-  <img src="https://contrib.sajuna.moe/api?repo=SajunaOo/OpenList-Moe&radius=64" />
+  <img src="https://contrib.sajuna.moe/api?no_bot=true&repo=SajunaOo/OpenList-Moe" />
 </a>

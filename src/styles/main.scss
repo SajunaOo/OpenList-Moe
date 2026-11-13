@@ -252,19 +252,6 @@ body {
     box-shadow .25s;
 }
 
-/** 选中项毛玻璃背景 */
-.selected {
-  backdrop-filter: blur(5px);
-}
-
-/** 列表项悬停毛玻璃背景 */
-.viselect-item {
-  &:hover,
-  &[data-hover] {
-    backdrop-filter: blur(10px);
-  }
-}
-
 /** 列表项目录大小普通文本样式调整 */
 .size {
   display: flex;
@@ -553,6 +540,14 @@ pre {
     &:hover {
       color: var(--moe-color-text-highlight);
     }
+  }
+}
+
+/** 压缩文件列表项悬停毛玻璃背景 */
+.hope-c-PJLV-iiRelTQ-css .list-item {
+  &:hover,
+  &[data-hover] {
+    backdrop-filter: blur(10px);
   }
 }
 
